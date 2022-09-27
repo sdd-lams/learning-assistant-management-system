@@ -1,0 +1,48 @@
+/* You can add global styles to this file, and also import other style files */
+@import "https://use.fontawesome.com/releases/v5.5.0/css/all.css";
+*,
+::before,
+::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+
+:root {
+  --main-color: #613194;
+  --main-color-faded: #8251b6;
+  --seconday-color: #ed5101;
+}
+.flex-cont {
+  display: flex;
+}
+
+.col {
+  flex-flow: column;
+}
+
+.alg-cnt {
+  align-items: center;
+}
+
+.center-txt {
+  text-align: center;
+}
+
+.text-lg {
+  font-size: 4rem;
+}
+
+.header {
+  font-size: 6.5rem;
+  margin: 0;
+}
+
+.purp {
+  color: var(--main-color);
+}
+
+.fnt-bold {
+  font-weight: bold;
+}

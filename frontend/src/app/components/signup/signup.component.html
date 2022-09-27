@@ -1,0 +1,59 @@
+<div id="login-wrapper" class="flex-cont">
+  <div class="login-left alg-cnt flex-cont">
+    <div class="inner-wrap">
+      <h2 class="center-txt header purp fnt-bold">LAMS</h2>
+      <h2 class="purp center-txt">Sign Up</h2>
+      <p class="no-account center-txt">
+        Alread have an account?
+        <a routerLink="/login">Login</a>
+      </p>
+      <div>
+        <div class="input-group">
+          <label for="email">Email Address</label>
+          <input
+            type="email"
+            name="email"
+            placeholder="Please enter a valid email"
+            #userEmail
+            required
+          />
+        </div>
+        <div class="input-group">
+          <label for="password">Password</label>
+          <input
+            type="password"
+            name="password"
+            placeholder="Please enter your password"
+            #userPass
+            required
+          />
+        </div>
+        <div class="input-group">
+          <input
+            type="button"
+            value="Sign Up"
+            class="button purp-btn center-txt"
+            (click)="authService.SignUp(userEmail.value, userPass.value)"
+          />
+        </div>
+        <div class="input-group">
+          <button
+            type="button"
+            class="googleBtn"
+            (click)="authService.GoogleAuth()"
+          >
+            <i class="fab fa-google-plus-g"></i>
+            Sign up with Google
+          </button>
+        </div>
+      </div>
+      <div class="purp text-sm">Please make an account to continue</div>
+    </div>
+  </div>
+  <div class="login-right alg-cnt flex-cont">
+    <h2>
+      This is some text about Iron Therapy and it totally promotes it so you
+      will sign up!
+    </h2>
+  </div>
+</div>

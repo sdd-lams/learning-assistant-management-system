@@ -1,0 +1,161 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto&display=swap");
+:host {
+  --main-color: rgb(128, 128, 128);
+  --main-color-faded: rgb(151, 151, 151);
+  --seconday-color: #6b0801;
+  color: rgb(66, 69, 73);
+}
+
+body,
+p {
+  line-height: 1.5;
+}
+
+input {
+  border: 2px solid #f2f4f7;
+  border-radius: 3px;
+  color: #60656f;
+  font-size: 16px;
+  line-height: 1;
+  padding: 10px 16px;
+  width: 100%;
+  -webkit-appearance: none;
+}
+
+textarea:focus,
+input:focus,
+input[type]:focus,
+.uneditable-input:focus {
+  border-color: var(--seconday-color);
+  box-shadow: 0 1px 1px var(--seconday-color);
+  inset: 0 0 8px var(--seconday-color);
+  outline: 0 none !important;
+}
+
+:host {
+  font-family: "Roboto", sans-serif;
+}
+
+#login-wrapper {
+  min-height: 100vh;
+  flex-wrap: wrap;
+}
+
+.login-right {
+  min-height: 100vh;
+  width: 65%;
+  background-image: url(../../../assets/images/gym-deadlift.jpg);
+  background-repeat: no-repeat;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+
+.login-right h2 {
+  margin: 0 auto;
+  font-size: 4rem;
+  max-width: 55vw;
+  word-wrap: break-word;
+  color: white;
+  text-shadow: -2px 5px var(--seconday-color);
+}
+
+.login-left {
+  width: 35%;
+  min-height: 100vh;
+  background-color: rgb(245, 245, 245);
+}
+
+.inner-wrap {
+  margin: 0 auto;
+}
+
+.inner-wrap a {
+  text-decoration: none;
+}
+
+.inner-wrap form {
+  margin: 0 0 60px;
+  width: 100%;
+}
+
+.inner-wrap fieldset {
+  border: none;
+  margin: 0 8px;
+}
+
+.no-account {
+  margin: 20px 0;
+}
+
+.no-account a {
+  color: var(--seconday-color);
+}
+
+.input-group {
+  display: block;
+  margin-bottom: 20px;
+}
+
+.input-group label {
+  display: block;
+  font-weight: 600;
+}
+
+.input-group input {
+  position: relative;
+  width: 100%;
+}
+
+.purp-btn,
+.googleBtn {
+  background-color: var(--main-color);
+  border-color: var(--main-color);
+  border-radius: 10px;
+  color: white;
+  cursor: pointer;
+  font-size: 20px;
+  font-weight: 550;
+  text-decoration: none;
+  line-height: 1;
+  padding: 11px 16px;
+}
+
+.purp-btn:hover,
+.googleBtn:hover {
+  background-color: var(--main-color-faded);
+  border-color: var(--main-color-faded);
+}
+
+.input-desc {
+  font-size: 15px;
+  margin-top: 4px;
+  margin-left: 3px;
+  display: inline-block;
+  vertical-align: top;
+}
+
+@media only screen and (max-width: 1200px) {
+  .header {
+    font-size: 5rem;
+  }
+}
+
+@media only screen and (max-width: 992px) {
+  .header {
+    font-size: 4.25rem;
+  }
+}
+
+@media only screen and (max-width: 768px) {
+  .login-right {
+    display: none;
+  }
+  .login-left {
+    width: 100%;
+  }
+  .header {
+    font-size: 3.5rem;
+  }
+}

@@ -1,0 +1,43 @@
+<div id="login-wrapper" class="flex-cont">
+  <div class="login-left alg-cnt flex-cont">
+    <div class="inner-wrap">
+      <h2 class="center-txt header purp fnt-bold">Iron Therapy</h2>
+      <h2 class="purp center-txt">Thank You for Registering</h2>
+      <p class="no-account center-txt">
+        Go back?
+        <a (click)="visitLogin()">Login</a>
+      </p>
+      <div>
+        <div class="input-group" *ngIf="authService.userData as user">
+          <p class="center-txt">
+            We have sent a confirmation email to
+            <strong>{{ user.email }}</strong
+            >.
+          </p>
+          <p class="center-txt">
+            Please check your email and click on the link to verfiy your email
+            address.
+          </p>
+        </div>
+
+        <div class="input-group">
+          <input
+            type="button"
+            value="Resend Verification Email"
+            class="button purp-btn center-txt"
+            (click)="authService.SendVerificationMail()"
+          />
+        </div>
+      </div>
+      <div class="purp text-sm">
+        You cannot login until your email is verified
+      </div>
+    </div>
+  </div>
+  <div class="login-right alg-cnt flex-cont">
+    <h2>
+      This is some text about Iron Therapy and it totally promotes it so you
+      will sign up!
+    </h2>
+  </div>
+</div>
