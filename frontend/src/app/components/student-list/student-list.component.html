@@ -1,6 +1,28 @@
-<ul>
-  <li *ngFor="let student of students">{{student.lname + ' ' + student.fname}} | {{student.email}} | {{student.ewsdate}}
-    |
-    {{student.ewsreason}} | {{student.course}} | {{ student.room}}
-  </li>
-</ul>
+<table class="student-table">
+  <thead>
+    <tr>
+      <th class="color-tag"></th>
+      <th>Name</th>
+      <th>Email</th>
+      <th>Date</th>
+      <th>EWS Reason</th>
+      <th>Course</th>
+      <th>Room</th>
+      <th>Status</th>
+      <th>LA</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let student of students">
+      <td class="color-tag"></td>
+      <td>{{student.fname + ' ' + student.lname}}</td>
+      <td>{{student.email}}</td>
+      <td>{{student.ewsdate}}</td>
+      <td>{{student.ewsreason}}</td>
+      <td>{{student.course}}</td>
+      <td>{{ student.room}}</td>
+      <td>{{ student.status}}</td>
+      <td>{{ student.assignedla}}</td>
+    </tr>
+  </tbody>
+</table>

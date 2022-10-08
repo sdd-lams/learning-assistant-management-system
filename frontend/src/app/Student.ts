@@ -15,5 +15,5 @@ export interface Student {
   profname?: String;
   profcomment?: String;
   lacomment?: String;
-  laassigned?: String;
+  assignedla?: String;
 }
