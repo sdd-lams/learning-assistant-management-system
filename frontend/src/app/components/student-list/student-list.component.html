@@ -14,7 +14,10 @@
   </thead>
   <tbody>
     <tr *ngFor="let student of students">
-      <td class="color-tag"></td>
+      <td class="color-tag" [ngStyle]="student.numews === 1  ? { 'background-color':'#98F5DA' } 
+                                     : student.numews === 2 ? { 'background-color':'#FFD27A' } 
+                                     : { 'background-color':'#FF6D6D' }">
+      </td>
       <td>{{student.fname + ' ' + student.lname}}</td>
       <td>{{student.email}}</td>
       <td>{{student.ewsdate}}</td>

@@ -16,4 +16,5 @@ export interface Student {
   profcomment?: String;
   lacomment?: String;
   assignedla?: String;
+  numews: Number;
 }
