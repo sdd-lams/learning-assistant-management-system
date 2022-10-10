@@ -12,6 +12,7 @@ th {
 
 tbody tr {
   background-color: white;
+  transition: 0.3s;
 }
 
 tbody tr:hover {
