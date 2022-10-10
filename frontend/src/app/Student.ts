@@ -7,6 +7,7 @@ export interface Student {
   rin: Number;
   email: String;
   numemail: Number;
+  numews: Number;
   ewsreason: String;
   ewsdate: String;
   course: String;
@@ -16,5 +17,4 @@ export interface Student {
   profcomment?: String;
   lacomment?: String;
   assignedla?: String;
-  numews: Number;
 }
