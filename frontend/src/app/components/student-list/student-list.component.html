@@ -1,0 +1,31 @@
+<table class="student-table">
+  <thead>
+    <tr>
+      <th></th>
+      <th>Name</th>
+      <th>Email</th>
+      <th>Date</th>
+      <th>EWS Reason</th>
+      <th>Course</th>
+      <th>Room</th>
+      <th>Status</th>
+      <th>LA</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let student of students">
+      <td class="color-tag" [ngStyle]="student.numews === 1  ? { 'background-color':'#98F5DA' } 
+                                     : student.numews === 2 ? { 'background-color':'#FFD27A' } 
+                                     : { 'background-color':'#FF6D6D' }">
+      </td>
+      <td>{{student.fname + ' ' + student.lname}}</td>
+      <td>{{student.email}}</td>
+      <td>{{student.ewsdate}}</td>
+      <td>{{student.ewsreason}}</td>
+      <td>{{student.course}}</td>
+      <td>{{ student.room}}</td>
+      <td>{{ student.status}}</td>
+      <td>{{ student.assignedla}}</td>
+    </tr>
+  </tbody>
+</table>
