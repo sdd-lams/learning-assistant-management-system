@@ -2,9 +2,8 @@
   background-color: #f6f6f6;
   border-radius: 10px;
   margin-top: 10vh;
-  margin-left: calc(2vw + 13vw);
+  margin-left: 15vw;
   padding: 20px;
-  width: 85%;
-  width: calc(100vw - 15vw);
+  width: 85vw;
   min-height: 90vh;
 }
