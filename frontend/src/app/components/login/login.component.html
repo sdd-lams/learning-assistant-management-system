@@ -1,52 +1,31 @@
 <div id="login-wrapper" class="flex-cont">
   <div class="login-left alg-cnt flex-cont">
     <div class="inner-wrap">
-      <h2 class="center-txt header purp fnt-bold">LAMS</h2>
-      <h2 class="purp center-txt">Login</h2>
+      <h2 class="center-txt header fnt-bold">LAMS</h2>
+      <h2 class="center-txt">Login</h2>
       <p class="no-account center-txt">
         Don't have an account?
         <a routerLink="/signup">Create an account</a>
       </p>
       <div>
-        <div class="input-group">
+        <div class="input-div">
           <label for="email">Email Address</label>
-          <input
-            type="email"
-            name="email"
-            placeholder="Please enter a valid email"
-            #userEmail
-            required
-          />
+          <input type="email" name="email" placeholder="Please enter a valid email" #userEmail required />
         </div>
-        <div class="input-group">
+        <div class="input-div">
           <label for="password">Password</label>
-          <input
-            type="password"
-            name="password"
-            placeholder="Please enter your password"
-            #userPass
-            required
-          />
+          <input type="password" name="password" placeholder="Please enter your password" #userPass required />
           <span class="input-desc">
-            <a routerLink="/forgot-password" title="Forgot your password?"
-              >Forgot your password?</a
-            >
+            <a routerLink="/forgot-password" title="Forgot your password?">Forgot your password?</a>
           </span>
         </div>
-        <div class="input-group">
-          <input
-            type="button"
-            value="Log In"
-            class="button purp-btn center-txt"
-            (click)="authService.SignIn(userEmail.value, userPass.value)"
-          />
+        <div class="input-div">
+          <input type="button" value="Log In" class="button purp-btn center-txt"
+            (click)="authService.SignIn(userEmail.value, userPass.value)" />
         </div>
-        <div class="input-group">
-          <button
-            type="button"
-            class="googleBtn"
-            (click)="authService.GoogleAuth()"
-          >
+        <div class="input-div">
+
+          <button type="button" class="googleBtn" (click)="authService.GoogleAuth()">
             <i class="fab fa-google-plus-g"></i>
             Log in with Google
           </button>
@@ -54,11 +33,5 @@
       </div>
       <div class="purp text-sm">Please sign in to continue</div>
     </div>
-  </div>
-  <div class="login-right alg-cnt flex-cont">
-    <h2>
-      This is some text about Iron Therapy and it totally promotes it so you
-      will sign up!
-    </h2>
   </div>
 </div>

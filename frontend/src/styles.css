@@ -8,7 +8,6 @@
   padding: 0;
 }
 
-
 :root {
   --main-color: #613194;
   --main-color-faded: #8251b6;
@@ -31,11 +30,11 @@
 }
 
 .text-lg {
-  font-size: 4rem;
+  font-size: 2rem;
 }
 
 .header {
-  font-size: 6.5rem;
+  font-size: 3rem;
   margin: 0;
 }
 
