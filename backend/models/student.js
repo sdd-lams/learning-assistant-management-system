@@ -7,7 +7,18 @@ const studentSchema = new Schema({
   dorm: String,
   room: String,
   status: String,
-  rin: Number
+  rin: Number,
+  email: String,
+  cname: String,
+  ccode: String,
+  cprof: String,
+  concern: String,
+  la: String,
+  ewsdate: Date,
+  ewscount: Number,
+  profcomment: String,
+  lacomment: String,
+  emailcnt: Number,
 });
 
 module.exports = mongoose.model("Student", studentSchema, "students");

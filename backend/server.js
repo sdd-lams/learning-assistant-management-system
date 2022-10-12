@@ -1,11 +1,11 @@
 const express = require("express");
 const mongoose = require("mongoose");
 const bodyParser = require("body-parser");
-const studentRoutes = require("./routes/student-routes");
 const cors = require("cors");
 const path = require("path");
 const rateLimit = require("express-rate-limit");
 
+const studentRoutes = require("./routes/student-routes");
 const decode = require("./decode");
 
 // DB connection stuff
@@ -51,6 +51,6 @@ app.get("*", (req, res) => {
 });
 
 // start server
-app.listen(3000, function () {
+app.listen(3000, () => {
   console.log("Server up on *:3000");
 });
