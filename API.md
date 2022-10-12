@@ -95,7 +95,7 @@ Modify one Student’s data in the database
 
 **URL** : `/students/:rin/:course`
 
-**Method** : `POST`
+**Method** : `PUT`
 
 **Auth required** : YES
 
