@@ -39,9 +39,9 @@ app
   // Parse body on all requests
   .use(bodyParser.json())
   // Rate limit all requests
-  .use(limiter);
+  .use(limiter)
   // Endpoints
-  // .use("/students", decode.decodeToken, studentRoutes);
+  .use("/students", decode.decodeToken, studentRoutes);
 
 // This must be the last get statement, dont put any app.use below it
 app.get("*", (req, res) => {
