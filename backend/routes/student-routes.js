@@ -5,7 +5,7 @@ const router = express.Router();
 // Get all students
 router.get("/", async (req, res) => {
   try {
-    const data = await Student.find({  });
+    const data = await Student.find({ });
 
     console.log("Returned all the Students");
     res.status(200).json(data);
@@ -44,6 +44,26 @@ router.get("/:rin/:ccode", async (req, res) => {
     }
   } catch (error) {
     console.log("Could not check Student in GET: " + error.message);
+    res.status(500).json({ message: error.message });
+  }
+});
+
+router.put("/:rin/:ccode", async (req, res) => {
+  try {
+    await Student.findOneAndUpdate(
+      {
+        rin: req.params.rin,
+        ccode: req.params.ccode,
+      },
+      {
+        status: req.body.status,
+        cprof: req.body.cprof,
+      }
+    );
+    console.log("Updated a goal for " + req.user.name);
+    res.status(200).json({ message: "Goal updated" });
+  } catch (error) {
+    console.log("Error updating a goal: " + error.message);
     res.status(500).json({ message: error.message });
   }
 });

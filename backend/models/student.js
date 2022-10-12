@@ -11,14 +11,15 @@ const studentSchema = new Schema({
   email: String,
   cname: String,
   ccode: String,
+  csubject: String,
   cprof: String,
-  concern: String,
-  la: String,
+  ewsreason: String,
+  assignedla: String,
   ewsdate: Date,
   ewscount: Number,
   profcomment: String,
   lacomment: String,
-  emailcnt: Number,
+  emailcount: Number,
 });
 
 module.exports = mongoose.model("Student", studentSchema, "students");

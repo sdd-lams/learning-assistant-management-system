@@ -14,18 +14,24 @@
   </thead>
   <tbody>
     <tr *ngFor="let student of students">
-      <td class="color-tag" [ngStyle]="student.numews === 1  ? { 'background-color':'#98F5DA' } 
-                                     : student.numews === 2 ? { 'background-color':'#FFD27A' } 
-                                     : { 'background-color':'#FF6D6D' }">
-      </td>
-      <td>{{student.fname + ' ' + student.lname}}</td>
-      <td>{{student.email}}</td>
-      <td>{{student.ewsdate}}</td>
-      <td>{{student.ewsreason}}</td>
-      <td>{{student.course}}</td>
-      <td>{{ student.room}}</td>
-      <td>{{ student.status}}</td>
-      <td>{{ student.assignedla}}</td>
+      <td
+        class="color-tag"
+        [ngStyle]="
+          student.ewscount === 1
+            ? { 'background-color': '#98F5DA' }
+            : student.ewscount === 2
+            ? { 'background-color': '#FFD27A' }
+            : { 'background-color': '#FF6D6D' }
+        "
+      ></td>
+      <td>{{ student.fname + " " + student.lname }}</td>
+      <td>{{ student.email }}</td>
+      <td>{{ student.ewsdate }}</td>
+      <td>{{ student.ewsreason }}</td>
+      <td>{{ student.cname }}</td>
+      <td>{{ student.room }}</td>
+      <td>{{ student.status }}</td>
+      <td>{{ student.assignedla }}</td>
     </tr>
   </tbody>
 </table>
