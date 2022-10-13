@@ -9,8 +9,10 @@ import { RequestsService } from '../../services/requests.service';
   styleUrls: ['./student-list.component.css'],
 })
 export class StudentListComponent implements OnInit {
-  // @Input() students: Student[] = [];
-  @Input() students: Student[] = STUDENTS;
+  @Input() students: Student[] = [];
+
+  // Set student data to use Mock data instead
+  //@Input() students: Student[] = STUDENTS;
 
   constructor(private requestService: RequestsService) {}
 
