@@ -1,6 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Student } from '../../interfaces/student';
-import { STUDENTS } from '../../mock-students';
 import { RequestsService } from '../../services/requests.service';
 
 @Component({
@@ -9,8 +8,7 @@ import { RequestsService } from '../../services/requests.service';
   styleUrls: ['./student-list.component.css'],
 })
 export class StudentListComponent implements OnInit {
-  // @Input() students: Student[] = [];
-  @Input() students: Student[] = STUDENTS;
+  @Input() students: Student[] = [];
 
   constructor(private requestService: RequestsService) {}
 
