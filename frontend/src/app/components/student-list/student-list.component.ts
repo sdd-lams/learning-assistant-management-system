@@ -1,6 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Student } from '../../interfaces/student';
-import { STUDENTS } from '../../mock-students';
 import { RequestsService } from '../../services/requests.service';
 
 @Component({
@@ -10,9 +9,6 @@ import { RequestsService } from '../../services/requests.service';
 })
 export class StudentListComponent implements OnInit {
   @Input() students: Student[] = [];
-
-  // Set student data to use Mock data instead
-  //@Input() students: Student[] = STUDENTS;
 
   constructor(private requestService: RequestsService) {}
 
