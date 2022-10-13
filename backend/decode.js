@@ -11,7 +11,9 @@ class Decode {
       }
       return res.status(401).json({ message: "Unauthorized" });
     } catch (err) {
-      return res.status(500).json({ message: "Internal Error: " + err.message });
+      return res
+        .status(500)
+        .json({ message: "Internal Error: " + err.message });
     }
   }
 }
