@@ -1,13 +1,9 @@
 <div id="login-wrapper" class="flex-cont">
-  <div class="login-left alg-cnt flex-cont">
+  <div class="login-form alg-cnt">
     <div class="inner-wrap">
-      <h2 class="center-txt header fnt-bold">LAMS</h2>
-      <h2 class="center-txt">Login</h2>
-      <p class="no-account center-txt">
-        Don't have an account?
-        <a routerLink="/signup">Create an account</a>
-      </p>
-      <div>
+      <h2 class="sign-in-text">Sign into</h2>
+      <h2 class="header fnt-bold">LAMS</h2>
+      <div class="auth-div">
         <div class="input-div">
           <label for="email">Email Address</label>
           <input type="email" name="email" placeholder="Please enter a valid email" #userEmail required />
@@ -15,23 +11,25 @@
         <div class="input-div">
           <label for="password">Password</label>
           <input type="password" name="password" placeholder="Please enter your password" #userPass required />
-          <span class="input-desc">
-            <a routerLink="/forgot-password" title="Forgot your password?">Forgot your password?</a>
-          </span>
+          <div class="input-desc">
+            <a routerLink="/forgot-password" title="Forgot your password?" class="forgot-password">Forgot your
+              password?</a>
+          </div>
         </div>
-        <div class="input-div">
-          <input type="button" value="Log In" class="button purp-btn center-txt"
-            (click)="authService.SignIn(userEmail.value, userPass.value)" />
-        </div>
-        <div class="input-div">
+        <input type="button" value="Log In" class=" purp-btn center-txt"
+          (click)="authService.SignIn(userEmail.value, userPass.value)" />
+        <p class="no-account">
+          Don't have an account?
+          <a routerLink="/signup">Create an account</a>
+        </p>
 
-          <button type="button" class="googleBtn" (click)="authService.GoogleAuth()">
-            <i class="fab fa-google-plus-g"></i>
-            Log in with Google
-          </button>
-        </div>
+        <button type="button" class="googleBtn" (click)="authService.GoogleAuth()">
+          <i class="fab fa-google-plus-g"></i>
+          Log in with Google
+        </button>
+
       </div>
-      <div class="purp text-sm">Please sign in to continue</div>
+      <!-- <div class="purp text-sm">Please sign in to continue</div> -->
     </div>
   </div>
 </div>
