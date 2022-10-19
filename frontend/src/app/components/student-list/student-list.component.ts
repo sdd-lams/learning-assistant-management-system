@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, EventEmitter, Output } from '@angular/core';
 import { Student } from '../../interfaces/student';
 import { RequestsService } from '../../services/requests.service';
 
@@ -8,13 +8,13 @@ import { RequestsService } from '../../services/requests.service';
   styleUrls: ['./student-list.component.css'],
 })
 export class StudentListComponent implements OnInit {
-  @Input() students: Student[] = [];
+  @Input() students!: Student[];
+  @Output() onRowClickEvent: EventEmitter<Student> = new EventEmitter();
 
-  constructor(private requestService: RequestsService) {}
+  constructor() {}
+  ngOnInit(): void {}
 
-  ngOnInit(): void {
-    this.requestService.getStudents().subscribe((allStudents: Student[]) => {
-      this.students = allStudents;
-    });
+  onRowClick(student: Student) {
+    this.onRowClickEvent.emit(student);
   }
 }

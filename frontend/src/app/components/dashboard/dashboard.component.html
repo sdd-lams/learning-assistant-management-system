@@ -1,5 +1,5 @@
 <app-nav></app-nav>
 <div class="dshbrd">
-  <app-student-list> </app-student-list>
+  <app-student-list [students]="students" (onRowClickEvent)="printRow($event)"> </app-student-list>
 </div>
 <router-outlet></router-outlet>
