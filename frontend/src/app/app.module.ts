@@ -38,6 +38,7 @@ import { VerifyEmailComponent } from './components/verify-email/verify-email.com
 import { AuthService } from './services/auth.service';
 import { RequestsService } from './services/requests.service';
 import { StudentListComponent } from './components/student-list/student-list.component';
+import { EditStudentModalComponent } from './components/edit-student-modal/edit-student-modal.component';
 
 @NgModule({
   declarations: [
@@ -49,6 +50,7 @@ import { StudentListComponent } from './components/student-list/student-list.com
     ForgotPasswordComponent,
     VerifyEmailComponent,
     StudentListComponent,
+    EditStudentModalComponent,
   ],
   imports: [
     HttpClientModule,
