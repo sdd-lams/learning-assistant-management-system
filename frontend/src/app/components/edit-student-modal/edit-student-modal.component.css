@@ -1,7 +1,7 @@
 .modal {
   display: block;
   position: absolute;
-  width: 75vw;
+  width: 85vw;
   height: 400px;
   background-color: #e3f2ff;
   right: 0;
@@ -11,18 +11,27 @@
   padding: 20px;
   border-radius: 10px 10px 0 0;
   margin-top: calc(100vh - 400px);
+  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
 }
 
 h1 {
   text-align: center;
-  font-size: 1.5em;
+  font-size: 1.25em;
+}
+
+label {
+  font-size: 0.9em;
+}
+
+label[for="meeting"] {
+  display: block;
 }
 
 .left {
-  flex-grow: 0.3;
+  flex-grow: 0.5;
 }
 .right {
-  flex-grow: 0.7;
+  flex-grow: 0.5;
 }
 
 .wrapper {
@@ -33,19 +42,18 @@ h1 {
 }
 
 .two-col {
-  height: 270px;
   min-width: 300px;
-  padding: 10px;
+  padding: 20px;
   display: flex;
-  justify-content: space-between;
-  gap: 10px;
+  justify-content: space-evenly;
   background-color: #c8e4ff;
   border-radius: 10px;
   margin-bottom: 15px;
 }
 
 /* Student Data Table Styles */
-.student-table {
+.student-table,
+.student-status-table {
   width: 100%;
   height: auto;
   border-collapse: separate;
@@ -53,8 +61,14 @@ h1 {
   font-size: 13px;
 }
 
-td {
+.student-table td {
   min-width: 100px;
+  background-color: white;
+  transition: 0.1s;
+}
+
+.student-status-table td {
+  min-width: 200px;
   background-color: white;
   transition: 0.1s;
 }
@@ -74,4 +88,16 @@ td {
   padding: 0.8em;
   text-align: center;
   max-width: 9em;
+}
+
+/* Student Status Form */
+fieldset {
+  border: 1px solid rgb(74, 74, 74);
+  background-color: #ffffff;
+  padding: 15px;
+  border-radius: 5px;
+}
+
+legend {
+  font-size: 1em;
 }

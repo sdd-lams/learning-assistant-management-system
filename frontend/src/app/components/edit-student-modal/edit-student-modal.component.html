@@ -29,7 +29,62 @@
     <div class=" right">
       <h1>Student Status</h1>
       <div class="two-col">
-        <p>Something</p>
+        <div id="left-side">
+          <table class="student-status-table">
+            <tbody>
+              <tr>
+                <th>Assigned LA</th>
+              </tr>
+              <tr>
+                <td contenteditable='true'>Assigned LA</td>
+              </tr>
+              <tr>
+                <th>LA Comment</th>
+              </tr>
+              <tr>
+                <td contenteditable='true'>LA Comment</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <div id="right-side">
+          <div class="res-of-concern-check">
+            <input type="checkbox" id="res-concern">
+            <label for="res-concern">Resident of Concern</label>
+          </div>
+          <div class="meeting">
+            <label for="meeting">Meeting time: </label>
+            <input type="datetime-local" id="meeting">
+          </div>
+          <div class="met-student-check">
+            <input type="checkbox" id="met-student">
+            <label for="met-student">Met With Student</label>
+          </div>
+          <form>
+            <fieldset>
+              <legend>Email Status</legend>
+              <div>
+                <div>
+                  <input type="radio" id="statusChoice1" name="status" value="Emailed 1">
+                  <label for="statusChoice1">Emailed 1</label>
+                </div>
+                <div>
+                  <input type="radio" id="statusChoice2" name="status" value="Emailed 2">
+                  <label for="statusChoice2">Emailed 2</label>
+                </div>
+                <div>
+                  <input type="radio" id="statusChoice3" name="status" value="Emailed 3">
+                  <label for="statusChoice3">Emailed 3</label>
+                </div>
+              </div>
+              <div class="responded-check">
+                <input type="checkbox" id="responded">
+                <label for="responded">Responded to Email</label>
+              </div>
+            </fieldset>
+          </form>
+
+        </div>
       </div>
       <button>Submit</button>
     </div>
