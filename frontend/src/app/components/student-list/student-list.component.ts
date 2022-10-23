@@ -1,6 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Student } from '../../interfaces/student';
-import { STUDENTS } from '../../mock-students';
+import { RequestsService } from '../../services/requests.service';
 
 @Component({
   selector: 'app-student-list',
@@ -8,8 +8,13 @@ import { STUDENTS } from '../../mock-students';
   styleUrls: ['./student-list.component.css'],
 })
 export class StudentListComponent implements OnInit {
-  @Input() students: Student[] = STUDENTS;
-  constructor() {}
+  @Input() students: Student[] = [];
 
-  ngOnInit(): void {}
+  constructor(private requestService: RequestsService) {}
+
+  ngOnInit(): void {
+    this.requestService.getStudents().subscribe((allStudents: Student[]) => {
+      this.students = allStudents;
+    });
+  }
 }
