@@ -39,6 +39,7 @@ import { AuthService } from './services/auth.service';
 import { RequestsService } from './services/requests.service';
 import { StudentListComponent } from './components/student-list/student-list.component';
 import { EditStudentModalComponent } from './components/edit-student-modal/edit-student-modal.component';
+import { InputDataModalComponent } from './components/input-data-modal/input-data-modal.component';
 
 @NgModule({
   declarations: [
@@ -51,6 +52,7 @@ import { EditStudentModalComponent } from './components/edit-student-modal/edit-
     VerifyEmailComponent,
     StudentListComponent,
     EditStudentModalComponent,
+    InputDataModalComponent,
   ],
   imports: [
     HttpClientModule,
