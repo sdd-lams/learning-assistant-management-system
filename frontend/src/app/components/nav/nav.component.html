@@ -1,26 +1,26 @@
 <nav class="navbar">
   <ul class="navbar-nav">
     <li class="nav-item">
-      <a routerLink="history" class="nav-link">
+      <!-- <a routerLink="history" class="nav-link">
         <span class="link-text">History</span>
-      </a>
+      </a> -->
+      <button class = "nav-button">
+        Import Data
+      </button>
+    </li>
+    <hr class = "nav-line"/>
+    <li class="nav-item">
+      <h3 class = "nav-bar-header">Dashboard</h3>
+      <button class = "nav-button-dashboard active">
+        Active ews
+      </button>
     </li>
 
     <li class="nav-item">
-      <a routerLink="homepage" class="nav-link">
-        <span class="link-text">Home</span>
-      </a>
+      <button class = "nav-button-dashboard inactive">
+        Inactive ews
+      </button>
     </li>
-
-    <li class="nav-item">
-      <a routerLink="workouts" class="nav-link">
-        <span class="link-text">Start a Workout</span>
-      </a>
-    </li>
-    <li class="nav-item">
-      <a routerLink="analysis" class="nav-link">
-        <span class="link-text">Analysis</span>
-      </a>
-    </li>
+    <hr class = "nav-line"/>
   </ul>
 </nav>
