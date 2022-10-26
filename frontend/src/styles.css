@@ -8,7 +8,6 @@
   padding: 0;
 }
 
-
 :root {
   --main-color: #613194;
   --main-color-faded: #8251b6;
@@ -45,4 +44,25 @@
 
 .fnt-bold {
   font-weight: bold;
+}
+
+.button {
+  display: block;
+  width: 125px;
+  height: 30px;
+  border-radius: 18px;
+  background-color: #1c89ff;
+  border: solid 1px transparent;
+  color: #fff;
+  font-size: 16px;
+  font-weight: 300;
+  cursor: pointer;
+  transition: all 0.1s ease-in-out;
+}
+
+.button:hover {
+  background-color: transparent;
+  border-color: rgb(0, 0, 0);
+  color: black;
+  transition: all 0.1s ease-in-out;
 }

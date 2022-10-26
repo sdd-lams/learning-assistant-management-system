@@ -2,7 +2,7 @@
   display: block;
   position: absolute;
   width: 85vw;
-  height: 400px;
+  height: 425px;
   background-color: #e3f2ff;
   right: 0;
   left: 0;
@@ -10,7 +10,7 @@
   margin-right: auto;
   padding: 20px;
   border-radius: 10px 10px 0 0;
-  margin-top: calc(100vh - 400px);
+  margin-top: calc(100vh - 425px);
   box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
 }
 
@@ -100,4 +100,9 @@ fieldset {
 
 legend {
   font-size: 1em;
+}
+
+.button {
+  margin-left: auto;
+  margin-right: auto;
 }
