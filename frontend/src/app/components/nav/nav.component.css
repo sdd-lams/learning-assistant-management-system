@@ -2,9 +2,9 @@
   font-size: 16px;
   font-family: "Open Sans";
   --text-primary: black;
-  --text-secondary: darkgray;
-  --bg-primary: #c69ad6;
-  --bg-secondary: #8f669f;
+  --text-secondary: rgb(231, 231, 231);
+  --bg-primary: #ffffff;
+  --bg-secondary: #b4b4b4;
   --transition-speed: 600ms;
 }
 
@@ -24,7 +24,7 @@ body::-webkit-scrollbar-track {
 }
 
 body::-webkit-scrollbar-thumb {
-  background: #6649b8;
+  background: #e2e2e2;
 }
 
 .navbar {
@@ -46,6 +46,13 @@ body::-webkit-scrollbar-thumb {
   align-items: center;
   height: 100%;
   width: 100%;
+}
+
+.nav-bar-header {
+  align-items: center;
+  margin-left: 5%;
+  font-size: 100%;
+  color: rgb(92, 92, 92);
 }
 
 .nav-item {
@@ -71,7 +78,7 @@ body::-webkit-scrollbar-thumb {
 .link-text {
   display: inline;
   margin-left: 1rem;
-  width: 75px;
+  width: fit-content;
 }
 
 .nav-link svg {
@@ -94,8 +101,66 @@ body::-webkit-scrollbar-thumb {
   transition: var(--transition-speed);
 }
 
-/* Small screens */
+.nav-line {
+  width: 85%;
+  margin-left: auto;
+  margin-right: auto;
+  height: .2vh;
+  border-radius: 100%;
+}
 
+.nav-button {
+  display: flex;
+  width: fit-content;
+  border-radius: 5px;
+  border: 0;
+  margin-left: 10%;
+  margin-top: 20%;
+  margin-bottom: 5%;
+  padding: 1% 10%;
+  background-color: #CBE6FF;
+  transition: var(--transition-speed);
+}
+
+.nav-button:hover {
+  filter: grayscale(0%) opacity(1);
+  transition: var(--transition-speed);
+  background-color: #85c4ff;
+}
+.nav-button-dashboard {
+  display: flex;
+  width: 60%;
+  border-radius: 5px;
+  border: 0;
+  margin-left: 10%;
+  margin-top: 2%;
+  padding: 1% 10%;
+  transition: var(--transition-speed);
+}
+
+.active {
+  background-color: #F2F2F2;
+  transition: var(--transition-speed);
+}
+
+.active:hover {
+  filter: grayscale(0%) opacity(1);
+  transition: var(--transition-speed);
+  background-color: #c7c7c7;
+}
+
+.inactive {
+  background-color: #ffffff;
+  transition: var(--transition-speed);
+}
+
+.inactive:hover {
+  filter: grayscale(0%) opacity(1);
+  transition: var(--transition-speed);
+  background-color: #c7c7c7;
+}
+
+/* Small screens */
 @media only screen and (max-width: 800px) {
   .navbar {
     bottom: 0;
