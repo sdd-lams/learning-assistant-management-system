@@ -1,12 +1,13 @@
 .modal {
   display: block;
-  position: absolute;
-  width: 85vw;
+  position: fixed;
+  width: 75vw;
   height: 400px;
   background-color: #e3f2ff;
   right: 0;
   left: 0;
-  margin-left: auto;
+  top: 0;
+  margin-left: 15vw;
   margin-right: auto;
   padding: 20px 40px 20px 40px;
   border-radius: 10px 10px 0 0;

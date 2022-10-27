@@ -6,7 +6,13 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./nav.component.css'],
 })
 export class NavComponent implements OnInit {
+  inputData: boolean = false;
   constructor() {}
 
   ngOnInit(): void {}
+
+  closeModal() {
+    this.inputData = false;
+    console.log(this.inputData);
+  }
 }

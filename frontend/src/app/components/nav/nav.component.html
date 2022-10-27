@@ -4,23 +4,24 @@
       <!-- <a routerLink="history" class="nav-link">
         <span class="link-text">History</span>
       </a> -->
-      <button class = "nav-button">
+      <button class="nav-button" (click)="inputData = true">
         Import Data
       </button>
     </li>
-    <hr class = "nav-line"/>
+    <hr class="nav-line" />
     <li class="nav-item">
-      <h3 class = "nav-bar-header">Dashboard</h3>
-      <button class = "nav-button-dashboard active">
+      <h3 class="nav-bar-header">Dashboard</h3>
+      <button class="nav-button-dashboard active">
         Active ews
       </button>
     </li>
 
     <li class="nav-item">
-      <button class = "nav-button-dashboard inactive">
+      <button class="nav-button-dashboard inactive">
         Inactive ews
       </button>
     </li>
-    <hr class = "nav-line"/>
+    <hr class="nav-line" />
   </ul>
 </nav>
+<app-input-data-modal *ngIf="inputData" (onSubmitEvent)="closeModal()"></app-input-data-modal>

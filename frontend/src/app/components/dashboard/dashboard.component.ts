@@ -10,7 +10,7 @@ import { RequestsService } from '../../services/requests.service';
 export class DashboardComponent implements OnInit {
   students: Student[] = [];
   constructor(private requestService: RequestsService) {}
-  selectedStudent!: Student;
+  selectedStudent?: Student = undefined;
 
   ngOnInit(): void {
     this.requestService.getStudents().subscribe((allStudents: Student[]) => {
