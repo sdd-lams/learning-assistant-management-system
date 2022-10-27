@@ -1,0 +1,108 @@
+.modal {
+  display: block;
+  position: absolute;
+  width: 85vw;
+  height: 425px;
+  background-color: #e3f2ff;
+  right: 0;
+  left: 0;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 20px;
+  border-radius: 10px 10px 0 0;
+  margin-top: calc(100vh - 425px);
+  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+}
+
+h1 {
+  text-align: center;
+  font-size: 1.25em;
+}
+
+label {
+  font-size: 0.9em;
+}
+
+label[for="meeting"] {
+  display: block;
+}
+
+.left {
+  flex-grow: 0.5;
+}
+.right {
+  flex-grow: 0.5;
+}
+
+.wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 30px;
+}
+
+.two-col {
+  min-width: 300px;
+  padding: 20px;
+  display: flex;
+  justify-content: space-evenly;
+  background-color: #c8e4ff;
+  border-radius: 10px;
+  margin-bottom: 15px;
+}
+
+/* Student Data Table Styles */
+.student-table,
+.student-status-table {
+  width: 100%;
+  height: auto;
+  border-collapse: separate;
+  border-spacing: 0.5rem;
+  font-size: 13px;
+}
+
+.student-table td {
+  min-width: 100px;
+  background-color: white;
+  transition: 0.1s;
+}
+
+.student-status-table td {
+  min-width: 200px;
+  background-color: white;
+  transition: 0.1s;
+}
+
+td[contenteditable]:hover {
+  background-color: #ffffff;
+  outline: 2px solid rgba(43, 105, 84, 0.3);
+}
+
+td[contenteditable]:focus {
+  background-color: rgb(255, 255, 255);
+  outline: 2px solid rgba(43, 105, 84, 0.6);
+}
+
+td {
+  border-radius: 5px;
+  padding: 0.8em;
+  text-align: center;
+  max-width: 9em;
+}
+
+/* Student Status Form */
+fieldset {
+  border: 1px solid rgb(74, 74, 74);
+  background-color: #ffffff;
+  padding: 15px;
+  border-radius: 5px;
+}
+
+legend {
+  font-size: 1em;
+}
+
+.button {
+  margin-left: auto;
+  margin-right: auto;
+}
