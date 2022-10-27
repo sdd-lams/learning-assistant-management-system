@@ -6,7 +6,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "Iron-Therapy": {
+    "LAMS": {
       "projectType": "application",
       "schematics": {
         "@schematics/angular:application": {
@@ -20,21 +20,14 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/iron-therapy",
+            "outputPath": "dist/lams",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
             "tsConfig": "tsconfig.app.json",
             "assets": ["src/favicon.ico", "src/assets"],
-            "styles": [
-              "./node_modules/ngx-bootstrap/datepicker/bs-datepicker.css",
-              "./node_modules/bootstrap/dist/css/bootstrap.min.css",
-              "src/styles.css"
-            ],
-            "scripts": [
-              "node_modules/jquery/dist/jquery.min.js",
-              "node_modules/bootstrap/dist/js/bootstrap.min.js"
-            ]
+            "styles": ["src/styles.css"],
+            "scripts": []
           },
           "configurations": {
             "production": {
@@ -73,10 +66,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "browserTarget": "Iron-Therapy:build:production"
+              "browserTarget": "LAMS:build:production"
             },
             "development": {
-              "browserTarget": "Iron-Therapy:build:development"
+              "browserTarget": "LAMS:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -84,7 +77,7 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "Iron-Therapy:build"
+            "browserTarget": "LAMS:build"
           }
         },
         "test": {
@@ -101,6 +94,5 @@
         }
       }
     }
-  },
-  "defaultProject": "Iron-Therapy"
+  }
 }

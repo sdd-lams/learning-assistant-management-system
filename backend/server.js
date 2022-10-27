@@ -35,7 +35,7 @@ const app = express();
 app
   .use(cors())
   // Add the static dir from frontend
-  .use(express.static(path.join(__dirname, "../frontend/dist/iron-therapy")))
+  .use(express.static(path.join(__dirname, "../frontend/dist/lams")))
   // Parse body on all requests
   .use(bodyParser.json())
   // Rate limit all requests

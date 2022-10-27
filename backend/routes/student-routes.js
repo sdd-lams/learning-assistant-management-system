@@ -5,7 +5,7 @@ const router = express.Router();
 // Get all students
 router.get("/", async (req, res) => {
   try {
-    const data = await Student.find({  });
+    const data = await Student.find({});
 
     console.log("Returned all the Students");
     res.status(200).json(data);
@@ -22,7 +22,7 @@ router.get("/:rin", async (req, res) => {
       rin: req.params.rin,
       ccode: req.query.ccode,
       csubject: req.query.csubject,
-      ewsdate: req.query.ewsdate
+      ewsdate: req.query.ewsdate,
     });
 
     // If it exists, attempt to return it
@@ -57,10 +57,14 @@ router.get("/:rin", async (req, res) => {
 
 router.post("/", async (req, res) => {
   try {
+    //logic to parse req.body.data
+
     const docs = await Student.insertMany(req.body);
 
     console.log(`Inserted ${docs.length} new EWS entries`);
-    res.status(200).json({ message: `Successfully inserted ${docs.length} EWS entries` });
+    res
+      .status(200)
+      .json({ message: `Successfully inserted ${docs.length} EWS entries` });
   } catch (error) {
     console.log("Error inserting new EWS data: " + error.message);
     res.status(500).json({ message: error.message });
@@ -93,7 +97,7 @@ router.put("/:rin", async (req, res) => {
 
 router.delete("/", async (req, res) => {
   try {
-    await Student.deleteMany({ });
+    await Student.deleteMany({});
     console.log(`All EWS entries have been deleted`);
     res.status(200).json({ message: "All EWS entries deleted" });
   } catch (error) {

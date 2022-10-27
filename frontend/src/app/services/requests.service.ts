@@ -28,4 +28,26 @@ export class RequestsService {
       })
     );
   }
+
+  insertStudents(students: String): Observable<String> {
+    let url: string = 'http://localhost:3000/students';
+
+    return from(this.authService.getToken()).pipe(
+      switchMap((token) => {
+        const reqHeader = new HttpHeaders({
+          'Content-Type': 'application/json',
+          Authorization: 'Bearer ' + token,
+        });
+        return this.http.post<String>(
+          url,
+          {
+            data: students,
+          },
+          {
+            headers: reqHeader,
+          }
+        );
+      })
+    );
+  }
 }

@@ -15,11 +15,6 @@ import { AngularFireDatabaseModule } from '@angular/fire/compat/database';
 // Env
 import { environment } from '../environments/environment';
 
-// Misc
-import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
-import { NgxEchartsModule } from 'ngx-echarts';
-import * as echarts from 'echarts';
-
 // App Component
 import { AppComponent } from './app.component';
 
@@ -62,11 +57,6 @@ import { StudentListComponent } from './components/student-list/student-list.com
     AppRoutingModule,
     FormsModule,
     BrowserAnimationsModule,
-    NgxEchartsModule.forRoot({
-      echarts,
-    }),
-    BrowserAnimationsModule,
-    BsDropdownModule.forRoot(),
   ],
   providers: [AuthService, RequestsService],
   bootstrap: [AppComponent],
