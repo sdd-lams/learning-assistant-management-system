@@ -110,7 +110,7 @@ router.delete("/:rin", async (req, res) => {
       csubject: req.query.csubject,
       ewsdate: req.query.ewsdate,
     });
-    console.log(`EWS entrty for rin:${req.params.rin}\
+    console.log(`EWS entry for rin:${req.params.rin}\
     course:${req.query.csubject}${req.query.ccode} date:${req.query.ewsdate} was deleted`);
     res.status(200).json({ message: "EWS entry deleted" });
   } catch (error) {

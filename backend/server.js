@@ -6,6 +6,9 @@ const path = require("path");
 const rateLimit = require("express-rate-limit");
 
 const studentRoutes = require("./routes/student-routes");
+const userRoutes = require("./routes/user-routes");
+const usersRoutes = require("./routes/users-routes");
+
 const decode = require("./decode");
 
 // DB connection stuff
@@ -41,7 +44,18 @@ app
   // Rate limit all requests
   .use(limiter)
   // Endpoints
-  .use("/students", decode.decodeToken, studentRoutes);
+  // .use("/students", decode.decodeToken, studentRoutes)
+
+  // .use("/user", decode.decodeToken, userRoutes)
+
+  // .use("/users", decode.decodeToken, usersRoutes);
+
+  // removed decodeToken for API endpoint testing
+  .use("/students", studentRoutes)
+
+  .use("/user", userRoutes)
+
+  .use("/users", usersRoutes);
 
 // This must be the last get statement, dont put any app.use below it
 app.get("*", (req, res) => {

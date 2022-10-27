@@ -38,7 +38,10 @@ router.get("/", async (req, res) => {
 // Create new User
 router.post("/", async (req, res) => {
   try {
-    const newUser = await User.create(req.body.email);
+    const newUser = await User.create({
+        email: req.body.email,
+        role: req.body.role ? req.body.role : null
+    });
 
     res.status(200).json({ message: `Successfully created new User with email ${newUser.email}` });
   } catch (error) {
@@ -52,7 +55,7 @@ router.put("/", async (req, res) => {
   try {
     await User.findOneAndUpdate(
       {
-        email: req.query.email
+        email: req.body.email
       },
       {
         role: req.body.role
