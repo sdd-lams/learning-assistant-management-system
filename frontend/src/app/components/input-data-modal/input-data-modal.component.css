@@ -7,21 +7,19 @@
   right: 0;
   left: 0;
   top: 0;
-  margin-left: 15vw;
+  margin-left: 20vw;
   margin-right: auto;
   padding: 20px 40px 20px 40px;
   border-radius: 10px 10px 0 0;
   margin-top: calc(100vh - 400px);
   box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+  min-width: 700px;
 }
 
 textarea {
   font-size: 0.8rem;
   letter-spacing: 1px;
   padding: 10px;
-  min-width: 60%;
-  min-height: 75%;
-  max-width: 100%;
   line-height: 1.5;
   border-radius: 5px;
   border: 1px solid #ccc;

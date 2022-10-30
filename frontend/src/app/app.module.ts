@@ -4,6 +4,7 @@ import { FormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule } from '@angular/common/http';
+import { ReactiveFormsModule } from '@angular/forms';
 
 // Firebase Imports for Auth
 import { AngularFireModule } from '@angular/fire/compat';
@@ -59,6 +60,7 @@ import { StudentListComponent } from './components/student-list/student-list.com
     AppRoutingModule,
     FormsModule,
     BrowserAnimationsModule,
+    ReactiveFormsModule,
   ],
   providers: [AuthService, RequestsService],
   bootstrap: [AppComponent],

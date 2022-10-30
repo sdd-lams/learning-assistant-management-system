@@ -1,4 +1,5 @@
 import { Component, OnInit, EventEmitter, Output } from '@angular/core';
+import { RequestsService } from '../../services/requests.service';
 
 @Component({
   selector: 'app-input-data-modal',
@@ -6,12 +7,13 @@ import { Component, OnInit, EventEmitter, Output } from '@angular/core';
   styleUrls: ['./input-data-modal.component.css'],
 })
 export class InputDataModalComponent implements OnInit {
+  ewsData?: string;
   @Output() onSubmitEvent: EventEmitter<boolean> = new EventEmitter();
-  constructor() {}
-
+  constructor(private requestService: RequestsService) {}
   ngOnInit(): void {}
 
   onSubmitClose() {
+    console.log(this.ewsData);
     this.onSubmitEvent.emit();
   }
 }
