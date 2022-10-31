@@ -16,10 +16,15 @@ export class InputDataModalComponent implements OnInit {
   ngOnInit(): void {}
 
   onSubmitClose() {
+    this.onSubmitEvent.emit();
+  }
+  onSubmitSendDataClose() {
     // console.log(this.ewsData);
     this.allStudents = this.parseData(this.ewsData);
     console.log(this.allStudents);
-    this.onSubmitEvent.emit();
+    if (this.allStudents.length > 0) {
+      this.onSubmitEvent.emit();
+    }
   }
 
   parseData(data?: string): Student[] {
