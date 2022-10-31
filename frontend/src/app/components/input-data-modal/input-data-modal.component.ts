@@ -10,19 +10,21 @@ import { Student } from '../../interfaces/student';
 })
 export class InputDataModalComponent implements OnInit {
   ewsData?: string;
+  allStudents?: Student[];
   @Output() onSubmitEvent: EventEmitter<boolean> = new EventEmitter();
   constructor(private requestService: RequestsService) {}
   ngOnInit(): void {}
 
   onSubmitClose() {
     // console.log(this.ewsData);
-    this.parseData(this.ewsData);
+    this.allStudents = this.parseData(this.ewsData);
+    console.log(this.allStudents);
     this.onSubmitEvent.emit();
   }
 
-  parseData(data?: string) {
+  parseData(data?: string): Student[] {
     if (data == undefined) {
-      return;
+      return [];
     }
     let dataArr: string[] = data.split('\n');
     let allStudents: Student[] = [];
@@ -63,6 +65,6 @@ export class InputDataModalComponent implements OnInit {
       };
       allStudents.push(studentObj);
     }
-    console.log(allStudents);
+    return allStudents;
   }
 }
