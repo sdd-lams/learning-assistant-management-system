@@ -30,6 +30,10 @@ export class InputDataModalComponent implements OnInit {
     let allStudents: Student[] = [];
     let i: number = 0;
 
+    if (dataArr[i].substring(0, 2) != '66') {
+      return [];
+    }
+
     let allStudentData: Array<string[]> = [];
     while (i < dataArr.length) {
       let student: string[] = [];
