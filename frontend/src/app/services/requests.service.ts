@@ -29,7 +29,7 @@ export class RequestsService {
     );
   }
 
-  insertStudents(students: String): Observable<String> {
+  insertStudents(students: Student[]): Observable<String> {
     let url: string = 'http://localhost:3000/students';
 
     return from(this.authService.getToken()).pipe(

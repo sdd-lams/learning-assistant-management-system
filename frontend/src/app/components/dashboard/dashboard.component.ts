@@ -10,13 +10,20 @@ import { RequestsService } from '../../services/requests.service';
 export class DashboardComponent implements OnInit {
   students: Student[] = [];
   constructor(private requestService: RequestsService) {}
-  selectedStudent!: Student;
+  selectedStudent?: Student = undefined;
 
   ngOnInit(): void {
     this.requestService.getStudents().subscribe((allStudents: Student[]) => {
       this.students = allStudents;
     });
   }
+
+  updateDashboard() {
+    this.requestService.getStudents().subscribe((allStudents: Student[]) => {
+      this.students = allStudents;
+    });
+  }
+
   printRow(student: Student) {
     this.selectedStudent = student;
     console.log(

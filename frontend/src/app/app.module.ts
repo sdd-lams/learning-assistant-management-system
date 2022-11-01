@@ -4,6 +4,7 @@ import { FormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule } from '@angular/common/http';
+import { ReactiveFormsModule } from '@angular/forms';
 
 // Firebase Imports for Auth
 import { AngularFireModule } from '@angular/fire/compat';
@@ -28,6 +29,7 @@ import { SignupComponent } from './components/signup/signup.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { ForgotPasswordComponent } from './components/forgot-password/forgot-password.component';
 import { VerifyEmailComponent } from './components/verify-email/verify-email.component';
+import { InputDataModalComponent } from './components/input-data-modal/input-data-modal.component';
 
 // Services
 import { AuthService } from './services/auth.service';
@@ -44,6 +46,7 @@ import { StudentListComponent } from './components/student-list/student-list.com
     ForgotPasswordComponent,
     VerifyEmailComponent,
     StudentListComponent,
+    InputDataModalComponent,
   ],
   imports: [
     HttpClientModule,
@@ -57,6 +60,7 @@ import { StudentListComponent } from './components/student-list/student-list.com
     AppRoutingModule,
     FormsModule,
     BrowserAnimationsModule,
+    ReactiveFormsModule,
   ],
   providers: [AuthService, RequestsService],
   bootstrap: [AppComponent],
