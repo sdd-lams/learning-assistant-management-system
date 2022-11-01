@@ -1,6 +1,8 @@
 <div class="dshbrd">
   <app-student-list [students]="students" (onRowClickEvent)="printRow($event)"> </app-student-list>
-  <!-- <app-edit-student-modal></app-edit-student-modal> -->
+  <app-edit-student-modal *ngIf="selectedStudent" [student]="selectedStudent"
+    (onSubmitEvent)="selectedStudent = undefined">
+  </app-edit-student-modal>
 </div>
 <app-nav (onCloseModal)="updateDashboard()"></app-nav>
 <router-outlet></router-outlet>

@@ -5,23 +5,23 @@
       <table class="student-table">
         <tbody>
           <tr>
-            <td contenteditable='true'>RIN</td>
-            <td contenteditable='true'>`Name</td>
-            <td contenteditable='true'>Email</td>
+            <td contenteditable='true'>{{student.rin}}</td>
+            <td contenteditable='true'>{{student.rin}}</td>
+            <td contenteditable='true'>{{student.email}}</td>
           </tr>
           <tr>
-            <td contenteditable='true'>EWS Reason</td>
-            <td contenteditable='true'>Course Name</td>
-            <td contenteditable='true'>Course Code</td>
+            <td contenteditable='true'>{{student.ewsreason}}</td>
+            <td contenteditable='true'>{{student.cname}}</td>
+            <td contenteditable='true'>{{student.csubject}},{{student.ccode}}</td>
           </tr>
           <tr>
-            <td contenteditable='true'>Dorm</td>
-            <td contenteditable='true'>Room</td>
-            <td contenteditable='true'>Date</td>
+            <td contenteditable='true'>{{student.dorm}}</td>
+            <td contenteditable='true'>{{student.room}}</td>
+            <td contenteditable='true'>{{student.ewsdate}}</td>
           </tr>
           <tr>
-            <td contenteditable='true' colspan="2">Prof Comment</td>
-            <td contenteditable='true'> Num EWS</td>
+            <td contenteditable='true' colspan="2">{{student.profcomment}}</td>
+            <td contenteditable='true'>{{student.ewscount}}</td>
           </tr>
         </tbody>
       </table>
@@ -36,13 +36,13 @@
                 <th>Assigned LA</th>
               </tr>
               <tr>
-                <td contenteditable='true'>Assigned LA</td>
+                <td contenteditable='true'>{{student.assignedla}}</td>
               </tr>
               <tr>
                 <th>LA Comment</th>
               </tr>
               <tr>
-                <td contenteditable='true'>LA Comment</td>
+                <td contenteditable='true'>{{student.lacomment}}</td>
               </tr>
             </tbody>
           </table>
@@ -83,10 +83,10 @@
               </div>
             </fieldset>
           </form>
-
         </div>
       </div>
     </div>
   </div>
   <button class="button">Submit</button>
+  <button class="button" (click)="onSubmitClose()">Close</button>
 </div>

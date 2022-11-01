@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { Student } from '../../interfaces/student';
 
 @Component({
@@ -8,6 +8,10 @@ import { Student } from '../../interfaces/student';
 })
 export class EditStudentModalComponent implements OnInit {
   @Input() student!: Student;
+  @Output() onSubmitEvent: EventEmitter<boolean> = new EventEmitter();
+  onSubmitClose() {
+    this.onSubmitEvent.emit();
+  }
   constructor() {}
 
   ngOnInit(): void {}
