@@ -73,7 +73,7 @@ export class InputDataModalComponent implements OnInit {
         dorm: student[10],
         room: student[11],
         emailcount: 0,
-        ewscount: 0,
+        ewscount: 1,
       };
       allStudents.push(studentObj);
     }
