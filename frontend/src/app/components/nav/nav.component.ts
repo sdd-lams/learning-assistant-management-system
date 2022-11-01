@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'app-nav',
@@ -7,12 +7,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class NavComponent implements OnInit {
   inputData: boolean = false;
+  @Output() onCloseModal: EventEmitter<any> = new EventEmitter();
   constructor() {}
 
   ngOnInit(): void {}
 
   closeModal() {
     this.inputData = false;
-    console.log(this.inputData);
+    this.onCloseModal.emit();
   }
 }

@@ -19,10 +19,13 @@ export class InputDataModalComponent implements OnInit {
     this.onSubmitEvent.emit();
   }
   onSubmitSendDataClose() {
-    // console.log(this.ewsData);
     this.allStudents = this.parseData(this.ewsData);
-    console.log(this.allStudents);
     if (this.allStudents.length > 0) {
+      this.requestService
+        .insertStudents(this.allStudents)
+        .subscribe((str: String) => {
+          console.log(str);
+        });
       this.onSubmitEvent.emit();
     }
   }

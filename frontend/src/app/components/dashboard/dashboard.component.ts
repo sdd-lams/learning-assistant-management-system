@@ -17,6 +17,13 @@ export class DashboardComponent implements OnInit {
       this.students = allStudents;
     });
   }
+
+  updateDashboard() {
+    this.requestService.getStudents().subscribe((allStudents: Student[]) => {
+      this.students = allStudents;
+    });
+  }
+
   printRow(student: Student) {
     this.selectedStudent = student;
     console.log(
