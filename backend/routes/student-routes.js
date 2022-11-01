@@ -57,11 +57,9 @@ router.get("/:rin", async (req, res) => {
 
 router.post("/", async (req, res) => {
   try {
-    //logic to parse req.body.data
-
-    const docs = await Student.insertMany(req.body);
-
+    const docs = await Student.insertMany(req.body.data);
     console.log(`Inserted ${docs.length} new EWS entries`);
+
     res
       .status(200)
       .json({ message: `Successfully inserted ${docs.length} EWS entries` });
