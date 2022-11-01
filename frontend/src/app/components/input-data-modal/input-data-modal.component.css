@@ -33,7 +33,7 @@ label {
 }
 
 .button {
-  display: block;
+  display: inline;
   width: 125px;
   height: 30px;
   border-radius: 18px;
@@ -45,6 +45,7 @@ label {
   cursor: pointer;
   transition: all 0.1s ease-in-out;
   margin-bottom: 5px;
+  margin-left: 5px;
 }
 
 .button:hover {
