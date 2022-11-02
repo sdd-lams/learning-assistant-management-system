@@ -26,10 +26,6 @@
               <button class="button small-btn" (click)="incrementEWS(-1)">-</button>
             </td>
           </tr>
-          <tr>
-            <td>{{student.status}}</td>
-            <td>{{student.assignedla}}</td>
-          </tr>
         </tbody>
       </table>
     </div>
@@ -43,7 +39,13 @@
                 <th>Assigned LA</th>
               </tr>
               <tr>
-                <td contenteditable='true'>{{student.assignedla}}</td>
+                <td>{{student.assignedla}}</td>
+              </tr>
+              <tr>
+                <th>Student Status</th>
+              </tr>
+              <tr>
+                <td>{{student.status}}</td>
               </tr>
               <tr>
                 <th>LA Comment</th>
@@ -61,7 +63,7 @@
               <input type="datetime-local" id="meeting">
             </div>
             <div class="form-group">
-              <label for="student-status">Student Status</label>
+              <label for="student-status">Choose Student Status:</label>
               <select name="selectStatus" id="student-status" class="form-control" [(ngModel)]="studentStatus"
                 (change)="updateStudentStatus()">
                 <option value="">Select a student status..</option>
@@ -72,6 +74,19 @@
                 <option value="Scheduled Meeting">Scheduled Meeting</option>
                 <option value="Met with Student">Met with Student</option>
                 <option value="Resident of Concern">Resident of Concern</option>
+              </select>
+              <!-- <div>
+                {{studentStatus | json}}
+              </div> -->
+            </div>
+            <div class="form-group">
+              <label for="assign-la">Assign LA:</label>
+              <select name="selectLA" id="assign-la" class="form-control" [(ngModel)]="assignedLA"
+                (change)="updateAssignedLA()">
+                <option value="">Select a LA..</option>
+                <option value="Huy">Huy</option>
+                <option value="Madeline">Madeline</option>
+                <option value="James">James</option>
               </select>
               <!-- <div>
                 {{studentStatus | json}}

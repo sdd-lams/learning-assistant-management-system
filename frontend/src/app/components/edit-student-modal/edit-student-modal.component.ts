@@ -11,10 +11,12 @@ export class EditStudentModalComponent implements OnInit {
   @Output() onSubmitEvent: EventEmitter<boolean> = new EventEmitter();
 
   studentStatus?: String;
+  assignedLA?: String;
 
   constructor() {}
 
   ngOnInit(): void {
+    this.assignedLA = this.student.assignedla;
     this.studentStatus = this.student.status;
   }
 
@@ -25,6 +27,10 @@ export class EditStudentModalComponent implements OnInit {
 
   updateStudentStatus() {
     this.student.status = this.studentStatus;
+  }
+
+  updateAssignedLA() {
+    this.student.assignedla = this.assignedLA;
   }
 
   printStudent() {
