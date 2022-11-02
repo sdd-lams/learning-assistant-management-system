@@ -9,10 +9,30 @@ import { Student } from '../../interfaces/student';
 export class EditStudentModalComponent implements OnInit {
   @Input() student!: Student;
   @Output() onSubmitEvent: EventEmitter<boolean> = new EventEmitter();
+
+  studentStatus?: String;
+
+  constructor() {}
+
+  ngOnInit(): void {
+    this.studentStatus = this.student.status;
+  }
+
+  incrementEWS(n: number) {
+    let ewsNum: number = this.student.ewscount;
+    this.student.ewscount = ewsNum + n;
+  }
+
+  updateStudentStatus() {
+    this.student.status = this.studentStatus;
+  }
+
+  printStudent() {
+    console.log(this.studentStatus);
+    console.log(this.student);
+  }
+
   onSubmitClose() {
     this.onSubmitEvent.emit();
   }
-  constructor() {}
-
-  ngOnInit(): void {}
 }

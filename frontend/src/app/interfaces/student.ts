@@ -15,7 +15,7 @@ export interface Student {
   profcomment?: String;
   // Data that is computed or set by the LA
   emailcount: Number; // Should init to 0
-  ewscount: Number; // Should be computed automatically when an entry is added to DB
+  ewscount: number; // Should be computed automatically when an entry is added to DB
   status?: String;
   lacomment?: String;
   assignedla?: String;

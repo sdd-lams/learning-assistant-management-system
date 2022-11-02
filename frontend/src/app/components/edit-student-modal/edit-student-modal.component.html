@@ -5,23 +5,30 @@
       <table class="student-table">
         <tbody>
           <tr>
-            <td contenteditable='true'>{{student.rin}}</td>
-            <td contenteditable='true'>{{student.rin}}</td>
-            <td contenteditable='true'>{{student.email}}</td>
+            <td>{{student.rin}}</td>
+            <td>{{student.fname}} {{student.lname}}</td>
+            <td>{{student.email}}</td>
           </tr>
           <tr>
-            <td contenteditable='true'>{{student.ewsreason}}</td>
-            <td contenteditable='true'>{{student.cname}}</td>
-            <td contenteditable='true'>{{student.csubject}},{{student.ccode}}</td>
+            <td>{{student.ewsreason}}</td>
+            <td>{{student.cname}}</td>
+            <td>{{student.csubject}}-{{student.ccode}}</td>
           </tr>
           <tr>
-            <td contenteditable='true'>{{student.dorm}}</td>
-            <td contenteditable='true'>{{student.room}}</td>
-            <td contenteditable='true'>{{student.ewsdate}}</td>
+            <td>{{student.dorm}}</td>
+            <td>{{student.room}}</td>
+            <td>{{student.ewsdate}}</td>
           </tr>
           <tr>
-            <td contenteditable='true' colspan="2">{{student.profcomment}}</td>
-            <td contenteditable='true'>{{student.ewscount}}</td>
+            <td colspan="2">{{student.profcomment}}</td>
+            <td>{{student.ewscount}}
+              <button class="button small-btn" (click)="incrementEWS(1)">+</button>
+              <button class="button small-btn" (click)="incrementEWS(-1)">-</button>
+            </td>
+          </tr>
+          <tr>
+            <td>{{student.status}}</td>
+            <td>{{student.assignedla}}</td>
           </tr>
         </tbody>
       </table>
@@ -48,45 +55,34 @@
           </table>
         </div>
         <div id="right-side">
-          <div class="res-of-concern-check">
-            <input type="checkbox" id="res-concern">
-            <label for="res-concern">Resident of Concern</label>
-          </div>
-          <div class="meeting">
-            <label for="meeting">Meeting time: </label>
-            <input type="datetime-local" id="meeting">
-          </div>
-          <div class="met-student-check">
-            <input type="checkbox" id="met-student">
-            <label for="met-student">Met With Student</label>
-          </div>
           <form>
-            <fieldset>
-              <legend>Email Status</legend>
-              <div>
-                <div>
-                  <input type="radio" id="statusChoice1" name="status" value="Emailed 1">
-                  <label for="statusChoice1">Emailed 1</label>
-                </div>
-                <div>
-                  <input type="radio" id="statusChoice2" name="status" value="Emailed 2">
-                  <label for="statusChoice2">Emailed 2</label>
-                </div>
-                <div>
-                  <input type="radio" id="statusChoice3" name="status" value="Emailed 3">
-                  <label for="statusChoice3">Emailed 3</label>
-                </div>
-              </div>
-              <div class="responded-check">
-                <input type="checkbox" id="responded">
-                <label for="responded">Responded to Email</label>
-              </div>
-            </fieldset>
+            <div class="form-group">
+              <label for="meeting">Meeting time: </label>
+              <input type="datetime-local" id="meeting">
+            </div>
+            <div class="form-group">
+              <label for="student-status">Student Status</label>
+              <select name="selectStatus" id="student-status" class="form-control" [(ngModel)]="studentStatus"
+                (change)="updateStudentStatus()">
+                <option value="">Select a student status..</option>
+                <option value="Emailed 1">Emailed 1</option>
+                <option value="Emailed 2">Emailed 2</option>
+                <option value="Emailed 3">Emailed 3</option>
+                <option value="Responded to Email">Responded to Email</option>
+                <option value="Scheduled Meeting">Scheduled Meeting</option>
+                <option value="Met with Student">Met with Student</option>
+                <option value="Resident of Concern">Resident of Concern</option>
+              </select>
+              <!-- <div>
+                {{studentStatus | json}}
+              </div> -->
+            </div>
           </form>
         </div>
       </div>
     </div>
   </div>
-  <button class="button">Submit</button>
+  <button class="button" (click)="printStudent()">Submit</button>
+
   <button class="button" (click)="onSubmitClose()">Close</button>
 </div>
