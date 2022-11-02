@@ -21,6 +21,7 @@ h1 {
 }
 
 label {
+  margin-top: 10px;
   display: block;
   font-size: 0.9em;
 }

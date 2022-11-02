@@ -21,7 +21,13 @@
           </tr>
           <tr>
             <td colspan="2">{{student.profcomment}}</td>
-            <td>{{student.ewscount}}
+            <td [ngStyle]="
+            student.ewscount === 1
+              ? { 'background-color': '#98F5DA' }
+              : student.ewscount === 2
+              ? { 'background-color': '#FFD27A' }
+              : { 'background-color': '#FF6D6D' }
+          ">{{student.ewscount}} EWS
               <button class="button small-btn" (click)="incrementEWS(1)">+</button>
               <button class="button small-btn" (click)="incrementEWS(-1)">-</button>
             </td>
