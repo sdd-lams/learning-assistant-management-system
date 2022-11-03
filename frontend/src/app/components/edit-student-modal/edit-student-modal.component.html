@@ -65,8 +65,14 @@
         <div id="right-side">
           <form>
             <div class="form-group">
-              <label for="meeting">Meeting time: </label>
-              <input type="datetime-local" id="meeting">
+              <label for="assign-la">Assign LA:</label>
+              <select name="selectLA" id="assign-la" class="form-control" [(ngModel)]="assignedLA"
+                (change)="updateAssignedLA()">
+                <option value="">Select a LA..</option>
+                <option value="Huy">Huy</option>
+                <option value="Madeline">Madeline</option>
+                <option value="James">James</option>
+              </select>
             </div>
             <div class="form-group">
               <label for="student-status">Choose Student Status:</label>
@@ -84,19 +90,10 @@
               <!-- <div>
                 {{studentStatus | json}}
               </div> -->
-            </div>
-            <div class="form-group">
-              <label for="assign-la">Assign LA:</label>
-              <select name="selectLA" id="assign-la" class="form-control" [(ngModel)]="assignedLA"
-                (change)="updateAssignedLA()">
-                <option value="">Select a LA..</option>
-                <option value="Huy">Huy</option>
-                <option value="Madeline">Madeline</option>
-                <option value="James">James</option>
-              </select>
-              <!-- <div>
-                {{studentStatus | json}}
-              </div> -->
+              <div class="form-group">
+                <label for="meeting">Meeting time: </label>
+                <input type="datetime-local" id="meeting">
+              </div>
             </div>
           </form>
         </div>
