@@ -1,3 +1,4 @@
+import { StudentListComponent } from './components/student-list/student-list.component';
 import { ForgotPasswordComponent } from './components/forgot-password/forgot-password.component';
 import { VerifyEmailComponent } from './components/verify-email/verify-email.component';
 import { AuthGuard } from './guards/auth.guard';
@@ -13,7 +14,10 @@ const routes: Routes = [
     path: 'dashboard',
     component: DashboardComponent,
     canActivate: [AuthGuard],
-    children: [{ path: '', redirectTo: '', pathMatch: 'full' }],
+    children: [
+      { path: '/students', component: StudentListComponent, pathMatch: 'full' },
+      //{ path: '/users', component: UserListComponent, pathMatch: 'full' },
+    ],
   },
   { path: 'login', component: LoginComponent },
   { path: 'signup', component: SignupComponent },
