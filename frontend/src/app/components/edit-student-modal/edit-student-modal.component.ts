@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { Student } from '../../interfaces/student';
 
 @Component({
@@ -8,7 +8,37 @@ import { Student } from '../../interfaces/student';
 })
 export class EditStudentModalComponent implements OnInit {
   @Input() student!: Student;
+  @Output() onSubmitEvent: EventEmitter<boolean> = new EventEmitter();
+
+  studentStatus?: String;
+  assignedLA?: String;
+
   constructor() {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.assignedLA = this.student.assignedla;
+    this.studentStatus = this.student.status;
+  }
+
+  incrementEWS(n: number) {
+    let ewsNum: number = this.student.ewscount;
+    this.student.ewscount = ewsNum + n;
+  }
+
+  updateStudentStatus() {
+    this.student.status = this.studentStatus;
+  }
+
+  updateAssignedLA() {
+    this.student.assignedla = this.assignedLA;
+  }
+
+  printStudent() {
+    console.log(this.studentStatus);
+    console.log(this.student);
+  }
+
+  onSubmitClose() {
+    this.onSubmitEvent.emit();
+  }
 }

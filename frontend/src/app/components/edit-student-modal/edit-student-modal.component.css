@@ -1,11 +1,12 @@
 .modal {
   display: block;
   position: absolute;
-  width: 85vw;
+  width: 75vw;
   height: 425px;
   background-color: #e3f2ff;
   right: 0;
-  left: 0;
+  left: 15vw;
+  bottom: 0;
   margin-left: auto;
   margin-right: auto;
   padding: 20px;
@@ -20,11 +21,9 @@ h1 {
 }
 
 label {
-  font-size: 0.9em;
-}
-
-label[for="meeting"] {
+  margin-top: 10px;
   display: block;
+  font-size: 0.9em;
 }
 
 .left {
@@ -73,12 +72,12 @@ label[for="meeting"] {
   transition: 0.1s;
 }
 
-td[contenteditable]:hover {
+td:hover {
   background-color: #ffffff;
   outline: 2px solid rgba(43, 105, 84, 0.3);
 }
 
-td[contenteditable]:focus {
+td:focus {
   background-color: rgb(255, 255, 255);
   outline: 2px solid rgba(43, 105, 84, 0.6);
 }
@@ -105,4 +104,11 @@ legend {
 .button {
   margin-left: auto;
   margin-right: auto;
+  display: inline;
+  margin-left: 5px;
+}
+
+.small-btn {
+  width: 20px;
+  height: 20px;
 }

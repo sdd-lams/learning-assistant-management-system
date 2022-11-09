@@ -30,6 +30,8 @@ import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { ForgotPasswordComponent } from './components/forgot-password/forgot-password.component';
 import { VerifyEmailComponent } from './components/verify-email/verify-email.component';
 import { InputDataModalComponent } from './components/input-data-modal/input-data-modal.component';
+import { EditStudentModalComponent } from './components/edit-student-modal/edit-student-modal.component';
+import { DropDownComponent } from './components/drop-down/drop-down.component';
 
 // Services
 import { AuthService } from './services/auth.service';
@@ -47,6 +49,8 @@ import { StudentListComponent } from './components/student-list/student-list.com
     VerifyEmailComponent,
     StudentListComponent,
     InputDataModalComponent,
+    EditStudentModalComponent,
+    DropDownComponent,
   ],
   imports: [
     HttpClientModule,
