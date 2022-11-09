@@ -2,10 +2,18 @@
   <form>
     <div class="form-group">
       <label for="data-input">Import EWS Data:</label>
-      <textarea id="data-input" name="data-input" placeholder="Copy and paste EWS data here..." class="form-control"
-        ngModel rows="10" cols="65" [(ngModel)]="ewsData"></textarea>
+      <textarea
+        id="data-input"
+        name="data-input"
+        placeholder="Copy and paste EWS data here..."
+        class="form-control"
+        ngModel
+        rows="10"
+        cols="65"
+        [(ngModel)]="ewsData"
+      ></textarea>
     </div>
     <button class="button" (click)="onSubmitSendDataClose()">Submit</button>
-    <button class="button" (click)="onSubmitClose()">Close</button>
+    <button class="button" (click)="onClose()">Close</button>
   </form>
 </div>

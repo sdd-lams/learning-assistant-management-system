@@ -8,28 +8,17 @@ import { RequestsService } from '../../services/requests.service';
   styleUrls: ['./dashboard.component.css'],
 })
 export class DashboardComponent implements OnInit {
-  students: Student[] = [];
+  displayImportModal: boolean = false;
+
   constructor(private requestService: RequestsService) {}
-  selectedStudent?: Student = undefined;
 
-  sortOptions: string[] = ['Date', 'LA Assigned', 'EWS Num'];
+  ngOnInit(): void {}
 
-  ngOnInit(): void {
-    this.requestService.getStudents().subscribe((allStudents: Student[]) => {
-      this.students = allStudents;
-    });
+  showInputModal() {
+    this.displayImportModal = true;
   }
 
-  updateDashboard() {
-    this.requestService.getStudents().subscribe((allStudents: Student[]) => {
-      this.students = allStudents;
-    });
-  }
-
-  printRow(student: Student) {
-    this.selectedStudent = student;
-    console.log(
-      `${this.selectedStudent.ewscount} - ${this.selectedStudent.fname} ${this.selectedStudent.lname}`
-    );
+  closeInputModal() {
+    this.displayImportModal = false;
   }
 }

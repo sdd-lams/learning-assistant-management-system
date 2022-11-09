@@ -67,7 +67,7 @@ export class AuthService {
       localStorage.setItem('user', JSON.stringify(result.user));
 
       this.SetUserData(result.user);
-      this.router.navigate(['dashboard']);
+      this.router.navigate(['dashboard/students']);
     } catch (e) {
       console.error(e);
     }
@@ -118,7 +118,7 @@ export class AuthService {
   async GoogleAuth() {
     try {
       await this.AuthLogin(new auth.GoogleAuthProvider());
-      this.router.navigate(['dashboard']);
+      this.router.navigate(['dashboard/students']);
     } catch (e) {
       console.error(e);
     }
