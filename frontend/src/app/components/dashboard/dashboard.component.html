@@ -1,16 +1,10 @@
 <div class="dshbrd">
-  <app-drop-down
-    [options]="sortOptions"
-    [default]="'Date'"
-    [labelText]="'Sort EWS By:'"
-  ></app-drop-down>
-  <app-student-list [students]="students" (onRowClickEvent)="printRow($event)">
-  </app-student-list>
-  <app-edit-student-modal
-    *ngIf="selectedStudent"
-    [student]="selectedStudent"
-    (onSubmitEvent)="selectedStudent = undefined"
-  >
-  </app-edit-student-modal>
+  <router-outlet></router-outlet>
 </div>
-<app-nav (onCloseModal)="updateDashboard()"></app-nav>
+
+<app-nav (displayImportModal)="showInputModal()"></app-nav>
+
+<app-input-data-modal
+  *ngIf="displayImportModal"
+  (onSubmitEvent)="closeInputModal()"
+></app-input-data-modal>

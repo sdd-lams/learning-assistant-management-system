@@ -6,14 +6,14 @@ import { Component, OnInit, Output, EventEmitter } from '@angular/core';
   styleUrls: ['./nav.component.css'],
 })
 export class NavComponent implements OnInit {
-  inputData: boolean = false;
-  @Output() onCloseModal: EventEmitter<any> = new EventEmitter();
+  @Output()
+  displayImportModal: EventEmitter<boolean> = new EventEmitter<boolean>();
+
   constructor() {}
 
   ngOnInit(): void {}
 
-  closeModal() {
-    this.inputData = false;
-    this.onCloseModal.emit();
+  importModalClick() {
+    this.displayImportModal.emit();
   }
 }

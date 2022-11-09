@@ -12,12 +12,14 @@ export class InputDataModalComponent implements OnInit {
   ewsData?: string;
   allStudents?: Student[];
   @Output() onSubmitEvent: EventEmitter<boolean> = new EventEmitter();
+
   constructor(private requestService: RequestsService) {}
   ngOnInit(): void {}
 
-  onSubmitClose() {
+  onClose() {
     this.onSubmitEvent.emit();
   }
+
   onSubmitSendDataClose() {
     this.allStudents = this.parseData(this.ewsData);
     if (this.allStudents.length > 0) {
