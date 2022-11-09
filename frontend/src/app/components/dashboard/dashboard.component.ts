@@ -12,6 +12,8 @@ export class DashboardComponent implements OnInit {
   constructor(private requestService: RequestsService) {}
   selectedStudent?: Student = undefined;
 
+  sortOptions: string[] = ['Date', 'LA Assigned', 'EWS Num'];
+
   ngOnInit(): void {
     this.requestService.getStudents().subscribe((allStudents: Student[]) => {
       this.students = allStudents;

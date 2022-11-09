@@ -1,4 +1,5 @@
 <div class="dshbrd">
+  <app-drop-down [options]="sortOptions" [default]="'Date'" [labelText]="'Filter By:'"></app-drop-down>
   <app-student-list [students]="students" (onRowClickEvent)="printRow($event)"> </app-student-list>
   <app-edit-student-modal *ngIf="selectedStudent" [student]="selectedStudent"
     (onSubmitEvent)="selectedStudent = undefined">
