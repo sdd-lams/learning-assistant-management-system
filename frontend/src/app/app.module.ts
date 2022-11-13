@@ -37,6 +37,7 @@ import { DropDownComponent } from './components/drop-down/drop-down.component';
 import { AuthService } from './services/auth.service';
 import { RequestsService } from './services/requests.service';
 import { StudentListComponent } from './components/student-list/student-list.component';
+import { UserListComponent } from './components/user-list/user-list.component';
 
 @NgModule({
   declarations: [
@@ -51,6 +52,7 @@ import { StudentListComponent } from './components/student-list/student-list.com
     InputDataModalComponent,
     EditStudentModalComponent,
     DropDownComponent,
+    UserListComponent,
   ],
   imports: [
     HttpClientModule,
