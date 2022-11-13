@@ -13,17 +13,14 @@
     </tr>
   </thead>
   <tbody>
-    <tr *ngFor="let student of students" (click)="onRowClick(student)">
-      <td
-        class="color-tag"
-        [ngStyle]="
+    <tr *ngFor="let student of students" (click)="selectedStudent = student">
+      <td class="color-tag" [ngStyle]="
           student.ewscount === 1
             ? { 'background-color': '#98F5DA' }
             : student.ewscount === 2
             ? { 'background-color': '#FFD27A' }
             : { 'background-color': '#FF6D6D' }
-        "
-      ></td>
+        "></td>
       <td>{{ student.fname + " " + student.lname }}</td>
       <td>{{ student.email }}</td>
       <td>{{ student.ewsdate }}</td>
@@ -36,9 +33,6 @@
   </tbody>
 </table>
 
-<app-edit-student-modal
-  *ngIf="selectedStudent"
-  [student]="selectedStudent"
-  (onSubmitEvent)="selectedStudent = undefined"
->
+<app-edit-student-modal *ngIf="selectedStudent" [student]="selectedStudent"
+  (onSubmitEvent)="selectedStudent = undefined">
 </app-edit-student-modal>

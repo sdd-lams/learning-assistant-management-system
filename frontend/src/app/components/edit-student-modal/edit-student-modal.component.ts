@@ -1,5 +1,6 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { Student } from '../../interfaces/student';
+import { RequestsService } from '../../services/requests.service';
 
 @Component({
   selector: 'app-edit-student-modal',
@@ -13,7 +14,7 @@ export class EditStudentModalComponent implements OnInit {
   studentStatus?: String;
   assignedLA?: String;
 
-  constructor() {}
+  constructor(private requestService: RequestsService) {}
 
   ngOnInit(): void {
     this.assignedLA = this.student.assignedla;
@@ -34,8 +35,10 @@ export class EditStudentModalComponent implements OnInit {
   }
 
   printStudent() {
-    console.log(this.studentStatus);
-    console.log(this.student);
+    this.requestService.editStudent(this.student).subscribe((str: String) => {
+      console.log(str);
+    });
+    this.onSubmitEvent.emit();
   }
 
   onSubmitClose() {

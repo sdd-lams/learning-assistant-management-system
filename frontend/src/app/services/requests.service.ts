@@ -50,4 +50,25 @@ export class RequestsService {
       })
     );
   }
+
+  editStudent(student: Student): Observable<String> {
+    let url: string = `http://localhost:3000/students/${student.rin}`;
+    return from(this.authService.getToken()).pipe(
+      switchMap((token) => {
+        const reqHeader = new HttpHeaders({
+          'Content-Type': 'application/json',
+          Authorization: 'Bearer ' + token,
+        });
+        return this.http.put<String>(
+          url,
+          {
+            data: student,
+          },
+          {
+            headers: reqHeader,
+          }
+        );
+      })
+    );
+  }
 }
