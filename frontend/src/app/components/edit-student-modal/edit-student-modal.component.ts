@@ -34,14 +34,12 @@ export class EditStudentModalComponent implements OnInit {
     this.student.assignedla = this.assignedLA;
   }
 
-  printStudent() {
-    this.requestService.editStudent(this.student).subscribe((str: String) => {
-      console.log(str);
-    });
-    this.onSubmitEvent.emit();
-  }
-
-  onSubmitClose() {
+  onSubmitClose(updateStudent: boolean) {
+    if (updateStudent) {
+      this.requestService.editStudent(this.student).subscribe((str: String) => {
+        console.log(str);
+      });
+    }
     this.onSubmitEvent.emit();
   }
 }
