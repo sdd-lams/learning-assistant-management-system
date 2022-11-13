@@ -9,7 +9,12 @@ import { User } from '../../interfaces/user';
 })
 export class UserListComponent implements OnInit {
   users!: User[];
+  showbtn: boolean = true;
   constructor(private requestService: RequestsService) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.requestService.getUsers().subscribe((_users: User[]) => {
+      this.users = _users;
+    });
+  }
 }

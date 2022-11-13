@@ -4,7 +4,4 @@
 
 <app-nav (displayImportModal)="showInputModal()"></app-nav>
 
-<app-input-data-modal
-  *ngIf="displayImportModal"
-  (onSubmitEvent)="closeInputModal()"
-></app-input-data-modal>
+<app-input-data-modal *ngIf="displayImportModal" (onSubmitEvent)="closeInputModal()"></app-input-data-modal>
