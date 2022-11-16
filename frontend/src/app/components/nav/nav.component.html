@@ -8,12 +8,15 @@
     <hr class="nav-line" />
     <li class="nav-item">
       <h3 class="nav-bar-header">Dashboard</h3>
-      <button class="nav-button-dashboard active">Active ews</button>
+      <button class="nav-button-dashboard active" (click)="redirectToStudentList()">Active ews</button>
     </li>
 
-    <li class="nav-item">
+    <li class=" nav-item">
       <button class="nav-button-dashboard inactive">Inactive ews</button>
     </li>
     <hr class="nav-line" />
+    <li class="nav-item">
+      <button class="nav-button-dashboard inactive" (click)="routeUserList()">User List</button>
+    </li>
   </ul>
 </nav>
