@@ -59,6 +59,7 @@ export class StudentListComponent implements OnInit {
     }
   }
 
+  // Sort by ews date, most recent first
   sortByEWSDate() {
     this.students.sort((s1: Student, s2: Student) => {
       if (s1.ewsdate < s2.ewsdate) {
@@ -69,6 +70,7 @@ export class StudentListComponent implements OnInit {
     });
   }
 
+  // Sort by student first name alphabetically
   sortByName() {
     this.students.sort((s1: Student, s2: Student) => {
       if (s1.fname == s2.fname) {
@@ -79,6 +81,7 @@ export class StudentListComponent implements OnInit {
     });
   }
 
+  // Sort by student status, no status first then alphabetically
   sortByStatus() {
     this.students.sort((s1: Student, s2: Student) => {
       if (!s1.status) {
@@ -93,6 +96,7 @@ export class StudentListComponent implements OnInit {
     });
   }
 
+  // Sort by course name alphabetically
   sortByCourse() {
     this.students.sort((s1: Student, s2: Student) => {
       if (s1.cname == s2.cname) {
@@ -103,16 +107,18 @@ export class StudentListComponent implements OnInit {
     });
   }
 
+  // Sort by number of EWS (descending - most number of ews first)
   sortByEwsNum() {
     this.students.sort((s1: Student, s2: Student) => {
       if (s1.ewscount == s2.ewscount) {
         return 0;
       } else {
-        return s1.ewscount < s2.ewscount ? -1 : 1;
+        return s1.ewscount < s2.ewscount ? 1 : -1;
       }
     });
   }
 
+  // Sort by la assigned, no la assigned first then alphabetically
   sortByLA() {
     this.students.sort((s1: Student, s2: Student) => {
       if (!s1.assignedla) {
