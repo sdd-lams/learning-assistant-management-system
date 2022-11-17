@@ -11,10 +11,14 @@ export class StudentListComponent implements OnInit {
   students: Student[] = [];
   selectedStudent?: Student = undefined;
   sortOptions: any[] = [
+    // Default option at index 0
     { option: 'ewsdate', text: 'Date' },
+    // Other options
     { option: 'fname', text: 'Name' },
     { option: 'course', text: 'Course' },
     { option: 'status', text: 'Student Status' },
+    { option: 'la', text: 'LA Assigned' },
+    { option: 'ewsnum', text: 'Number of EWS' },
   ];
   selectedSortOption?: any;
 
@@ -22,8 +26,10 @@ export class StudentListComponent implements OnInit {
 
   constructor(private requestService: RequestsService) {}
   ngOnInit(): void {
+    // Get student data from database
     this.requestService.getStudents().subscribe((_students: Student[]) => {
       this.students = _students;
+      // Sort student data by defaut sort option
       this.sortEWS(this.sortOptions[0]);
     });
   }
@@ -46,6 +52,10 @@ export class StudentListComponent implements OnInit {
       this.sortByStatus();
     } else if (e.option == 'course') {
       this.sortByCourse();
+    } else if (e.option == 'la') {
+      this.sortByLA();
+    } else if (e.option == 'ewsnum') {
+      this.sortByEwsNum();
     }
   }
 
@@ -89,6 +99,30 @@ export class StudentListComponent implements OnInit {
         return 0;
       } else {
         return s1.cname < s2.cname ? -1 : 1;
+      }
+    });
+  }
+
+  sortByEwsNum() {
+    this.students.sort((s1: Student, s2: Student) => {
+      if (s1.ewscount == s2.ewscount) {
+        return 0;
+      } else {
+        return s1.ewscount < s2.ewscount ? -1 : 1;
+      }
+    });
+  }
+
+  sortByLA() {
+    this.students.sort((s1: Student, s2: Student) => {
+      if (!s1.assignedla) {
+        return -1;
+      } else if (!s2.assignedla) {
+        return 1;
+      } else if (s1.assignedla == s2.assignedla) {
+        return 0;
+      } else {
+        return s1.assignedla < s2.assignedla ? -1 : 1;
       }
     });
   }
