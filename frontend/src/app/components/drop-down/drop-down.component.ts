@@ -6,11 +6,11 @@ import { Component, Input, OnInit, Output, EventEmitter } from '@angular/core';
   styleUrls: ['./drop-down.component.css'],
 })
 export class DropDownComponent implements OnInit {
-  @Input() options!: string[];
-  @Input() default!: string;
+  @Input() options!: any[];
+  @Input() default!: any;
   @Input() labelText?: string;
 
-  selectedVal?: string;
+  selectedVal?: any;
   @Output() onSelectEvent: EventEmitter<any> = new EventEmitter();
 
   constructor() {}
