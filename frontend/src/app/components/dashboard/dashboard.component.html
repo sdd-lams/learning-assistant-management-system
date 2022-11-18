@@ -2,9 +2,14 @@
   <router-outlet></router-outlet>
 </div>
 
-<app-nav (displayImportModal)="showInputModal()"></app-nav>
+<app-nav (displayImportModal)="showInputModal()" (displayLaInfoModal)="showLaContactModal()" ></app-nav>
 
 <app-input-data-modal
   *ngIf="displayImportModal"
   (onSubmitEvent)="closeInputModal()"
 ></app-input-data-modal>
+
+<app-la-contact-modal
+  *ngIf="displayLaContactModal"
+  (onSubmitEvent)="closeLaContactModal()"
+></app-la-contact-modal>

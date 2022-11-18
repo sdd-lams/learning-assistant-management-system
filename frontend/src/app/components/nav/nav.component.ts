@@ -8,6 +8,8 @@ import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 export class NavComponent implements OnInit {
   @Output()
   displayImportModal: EventEmitter<boolean> = new EventEmitter<boolean>();
+  @Output()
+  displayLaInfoModal: EventEmitter<boolean> = new EventEmitter<boolean>();
 
   constructor() {}
 
@@ -16,4 +18,9 @@ export class NavComponent implements OnInit {
   importModalClick() {
     this.displayImportModal.emit();
   }
+
+  displayLaInfoModalClick() {
+    console.log("the LaInfo Modal has been clicked");
+    this.displayLaInfoModal.emit();
+  } 
 }
