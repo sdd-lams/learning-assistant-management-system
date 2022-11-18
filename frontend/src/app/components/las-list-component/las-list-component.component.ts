@@ -1,14 +1,14 @@
 import { La } from './../../interfaces/la';
 import { RequestsService } from '../../services/requests.service';
-import { Component, OnInit, EventEmitter, Output } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'app-la-contact-modal',
-  templateUrl: './la-contact-modal.component.html',
-  styleUrls: ['./la-contact-modal.component.css']
+  selector: 'app-las-list-component',
+  templateUrl: './las-list-component.component.html',
+  styleUrls: ['./las-list-component.component.css']
 })
-export class LaContactModalComponent implements OnInit {
-  @Output() onSubmitEvent: EventEmitter<boolean> = new EventEmitter();
+export class LasListComponentComponent implements OnInit {
+
   constructor(private requestService: RequestsService) { }
   allLas?: La[];
 
@@ -20,7 +20,4 @@ export class LaContactModalComponent implements OnInit {
     }); 
   }
 
-  onClose() {
-    this.onSubmitEvent.emit();
-  }
 }

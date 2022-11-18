@@ -30,4 +30,9 @@ export class NavComponent implements OnInit {
   redirectToStudentList() {
     this.router.navigate(['dashboard/students']);
   }
+
+  redirectToLasList() {
+    this.router.navigate(['dashboard/las']);
+
+  }
 }
