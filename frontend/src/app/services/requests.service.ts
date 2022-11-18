@@ -4,6 +4,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { from, Observable } from 'rxjs';
 import { switchMap } from 'rxjs/operators';
 import { Student } from '../interfaces/student';
+import { User } from '../interfaces/user';
 
 @Injectable({
   providedIn: 'root',
@@ -47,6 +48,21 @@ export class RequestsService {
             headers: reqHeader,
           }
         );
+      })
+    );
+  }
+
+  getUsers(): Observable<User[]> {
+    let url: string = 'http://localhost:3000/users';
+    return from(this.authService.getToken()).pipe(
+      switchMap((token) => {
+        const reqHeader = new HttpHeaders({
+          'Content-Type': 'application/json',
+          Authorization: 'Bearer ' + token,
+        });
+        return this.http.get<User[]>(url, {
+          headers: reqHeader,
+        });
       })
     );
   }
