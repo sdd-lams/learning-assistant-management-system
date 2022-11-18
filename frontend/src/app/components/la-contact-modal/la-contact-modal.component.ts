@@ -1,3 +1,5 @@
+import { La } from './../../interfaces/la';
+import { RequestsService } from '../../services/requests.service';
 import { Component, OnInit, EventEmitter, Output } from '@angular/core';
 
 @Component({
@@ -7,9 +9,16 @@ import { Component, OnInit, EventEmitter, Output } from '@angular/core';
 })
 export class LaContactModalComponent implements OnInit {
   @Output() onSubmitEvent: EventEmitter<boolean> = new EventEmitter();
-  constructor() { }
+  constructor(private requestService: RequestsService) { }
+  allLas?: La[];
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    // console.log(this.requestService.getLas());
+    this.requestService.getLas().subscribe((las: La[]) => {
+      console.log(las);
+      this.allLas = las;
+    }); 
+  }
 
   onClose() {
     this.onSubmitEvent.emit();

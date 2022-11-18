@@ -24,7 +24,6 @@ export class DashboardComponent implements OnInit {
   }
 
   showLaContactModal() {
-    console.log("will now display the La Contact modal");
     this.displayLaContactModal = true;
   }
 

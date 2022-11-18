@@ -21,7 +21,6 @@ export class NavComponent implements OnInit {
   }
 
   displayLaInfoModalClick() {
-    console.log("the LaInfo Modal has been clicked");
     this.displayLaInfoModal.emit();
   } 
   routeUserList() {
