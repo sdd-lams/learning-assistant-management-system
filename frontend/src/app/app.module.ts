@@ -38,6 +38,7 @@ import { AuthService } from './services/auth.service';
 import { RequestsService } from './services/requests.service';
 import { StudentListComponent } from './components/student-list/student-list.component';
 import { LaContactModalComponent } from './components/la-contact-modal/la-contact-modal.component';
+import { UserListComponent } from './components/user-list/user-list.component';
 
 @NgModule({
   declarations: [
@@ -53,6 +54,7 @@ import { LaContactModalComponent } from './components/la-contact-modal/la-contac
     EditStudentModalComponent,
     DropDownComponent,
     LaContactModalComponent,
+    UserListComponent,
   ],
   imports: [
     HttpClientModule,
