@@ -8,6 +8,7 @@ const rateLimit = require("express-rate-limit");
 const studentRoutes = require("./routes/student-routes");
 const userRoutes = require("./routes/user-routes");
 const usersRoutes = require("./routes/users-routes");
+const LasRoutes = require("./routes/las-routes")
 
 const decode = require("./decode");
 
@@ -55,7 +56,9 @@ app
 
   .use("/user", userRoutes)
 
-  .use("/users", usersRoutes);
+  .use("/users", usersRoutes)
+
+  .use("/Las", LasRoutes);
 
 // This must be the last get statement, dont put any app.use below it
 app.get("*", (req, res) => {

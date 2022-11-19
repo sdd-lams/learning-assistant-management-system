@@ -9,6 +9,8 @@ import { Router, ActivatedRoute } from '@angular/router';
 export class NavComponent implements OnInit {
   @Output()
   displayImportModal: EventEmitter<boolean> = new EventEmitter<boolean>();
+  @Output()
+  displayLaInfoModal: EventEmitter<boolean> = new EventEmitter<boolean>();
 
   constructor(private router: Router, private route: ActivatedRoute) {}
 
@@ -18,11 +20,19 @@ export class NavComponent implements OnInit {
     this.displayImportModal.emit();
   }
 
+  displayLaInfoModalClick() {
+    this.displayLaInfoModal.emit();
+  } 
   routeUserList() {
     this.router.navigate(['dashboard/users']);
   }
 
   redirectToStudentList() {
     this.router.navigate(['dashboard/students']);
+  }
+
+  redirectToLasList() {
+    this.router.navigate(['dashboard/las']);
+
   }
 }

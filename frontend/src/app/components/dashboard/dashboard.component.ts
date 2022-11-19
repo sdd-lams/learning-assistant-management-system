@@ -9,6 +9,7 @@ import { RequestsService } from '../../services/requests.service';
 })
 export class DashboardComponent implements OnInit {
   displayImportModal: boolean = false;
+  displayLaContactModal: boolean = false;
 
   constructor(private requestService: RequestsService) {}
 
@@ -20,5 +21,13 @@ export class DashboardComponent implements OnInit {
 
   closeInputModal() {
     this.displayImportModal = false;
+  }
+
+  showLaContactModal() {
+    this.displayLaContactModal = true;
+  }
+
+  closeLaContactModal() {
+    this.displayLaContactModal = false;
   }
 }

@@ -1,3 +1,4 @@
+import { LasListComponentComponent } from './components/las-list-component/las-list-component.component';
 import { InputDataModalComponent } from './components/input-data-modal/input-data-modal.component';
 import { StudentListComponent } from './components/student-list/student-list.component';
 import { ForgotPasswordComponent } from './components/forgot-password/forgot-password.component';
@@ -19,6 +20,7 @@ const routes: Routes = [
     children: [
       { path: 'students', component: StudentListComponent },
       { path: 'users', component: UserListComponent },
+      { path: 'las', component: LasListComponentComponent },
     ],
   },
   { path: 'login', component: LoginComponent },

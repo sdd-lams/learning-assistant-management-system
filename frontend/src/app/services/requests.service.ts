@@ -5,12 +5,29 @@ import { from, Observable } from 'rxjs';
 import { switchMap } from 'rxjs/operators';
 import { Student } from '../interfaces/student';
 import { User } from '../interfaces/user';
+import { La } from './../interfaces/la';
 
 @Injectable({
   providedIn: 'root',
 })
 export class RequestsService {
   constructor(private http: HttpClient, private authService: AuthService) {}
+
+  getLas(): Observable<La[]> {
+    let url: string = 'http://localhost:3000/las';
+
+    return from(this.authService.getToken()).pipe(
+      switchMap((token) => {
+        const reqHeader = new HttpHeaders({
+          'Content-Type': 'application/json',
+          Authorization: 'Bearer ' + token,
+        });
+        return this.http.get<La[]>(url, {
+          headers: reqHeader,
+        });
+      })
+    );
+  }
 
   // Subscribe to the return of this method to access the values in the observable
   // Get all exercises

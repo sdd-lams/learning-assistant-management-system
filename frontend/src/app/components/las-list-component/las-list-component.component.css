@@ -1,0 +1,31 @@
+.la-table {
+  width: 100%;
+  height: auto;
+  border-collapse: separate;
+  border-spacing: 0.5rem;
+  font-size: 13px;
+}
+
+.la-card {
+  background-color: #ffffff;
+  padding: 20px;
+  border-radius: 5px;
+}
+
+.flex {
+  display: flex;
+  justify-content: flex-start;
+  gap: 30px;
+}
+
+h3 {
+  padding-bottom: 5px;
+}
+
+h1 {
+  padding-bottom: 20px;
+}
+
+ul {
+  list-style: none;
+}
