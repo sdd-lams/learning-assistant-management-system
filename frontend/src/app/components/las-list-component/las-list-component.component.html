@@ -1,20 +1,11 @@
-<table class="la-table">
-    <thead>
-      <tr>
-        <th>Name</th>
-        <th>Dorm</th>
-        <th>Room</th>
-        <th>Email</th>
-        <th>Office Hours</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr *ngFor="let la of allLas">
-        <td>{{ la.name }}</td>
-        <td>{{ la.dorm }}</td>
-        <td>{{ la.room }}</td>
-        <td>{{ la.email }}</td>
-        <td>{{ la.officeHours }}</td>
-      </tr>
-    </tbody>
-  </table>
+<h1>LA Contact Info</h1>
+<div class="flex">
+  <div class="la-card" *ngFor="let la of allLas">
+    <h2>LA {{ la.name }}</h2>
+    <h3>{{ la.dorm }}, {{la.room}}</h3>
+    <ul>
+      <li>Email: {{ la.email }}</li>
+      <li>Office Hours: {{ la.officeHours }}</li>
+    </ul>
+  </div>
+</div>
