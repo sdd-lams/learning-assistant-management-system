@@ -16,13 +16,6 @@ export class NavComponent implements OnInit {
 
   ngOnInit(): void {}
 
-  importModalClick() {
-    this.displayImportModal.emit();
-  }
-
-  displayLaInfoModalClick() {
-    this.displayLaInfoModal.emit();
-  } 
   routeUserList() {
     this.router.navigate(['dashboard/users']);
   }
@@ -33,6 +26,5 @@ export class NavComponent implements OnInit {
 
   redirectToLasList() {
     this.router.navigate(['dashboard/las']);
-
   }
 }
