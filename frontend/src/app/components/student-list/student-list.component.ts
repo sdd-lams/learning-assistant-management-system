@@ -51,6 +51,7 @@ export class StudentListComponent implements OnInit {
         );
       });
       console.log(res);
+      this.selectedStudent = undefined;
     });
   }
 
