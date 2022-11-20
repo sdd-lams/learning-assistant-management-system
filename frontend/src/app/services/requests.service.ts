@@ -69,6 +69,22 @@ export class RequestsService {
     );
   }
 
+  deleteStudent(student: Student): Observable<String> {
+    let url: string = `http://localhost:3000/students/${student.rin}`;
+    return from(this.authService.getToken()).pipe(
+      switchMap((token) => {
+        const reqHeader = new HttpHeaders({
+          'Content-Type': 'application/json',
+          Authorization: 'Bearer ' + token,
+        });
+        return this.http.request<String>('delete', url, {
+          headers: reqHeader,
+          body: student,
+        });
+      })
+    );
+  }
+
   getUsers(): Observable<User[]> {
     let url: string = 'http://localhost:3000/users';
     return from(this.authService.getToken()).pipe(

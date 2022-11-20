@@ -112,3 +112,8 @@ legend {
   width: 20px;
   height: 20px;
 }
+
+#delete-btn {
+  background-color: rgb(180, 58, 58);
+  color: white;
+}

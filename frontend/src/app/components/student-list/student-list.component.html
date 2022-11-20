@@ -41,7 +41,7 @@
 </table>
 
 <app-edit-student-modal *ngIf="selectedStudent" [student]="selectedStudent"
-  (onSubmitEvent)="selectedStudent = undefined">
+  (onSubmitEvent)="selectedStudent = undefined" (onDeleteEvent)="deleteStudent($event)">
 </app-edit-student-modal>
 
 <app-input-data-modal *ngIf="displayImportModal" (onSubmitEvent)="closeInputModal($event)"
