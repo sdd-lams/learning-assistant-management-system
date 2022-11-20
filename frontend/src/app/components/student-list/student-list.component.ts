@@ -43,12 +43,13 @@ export class StudentListComponent implements OnInit {
     this.displayImportModal = true;
   }
 
-  closeInputModal() {
+  closeInputModal(importedStudent: Student[]) {
+    this.students.push(...importedStudent);
+    this.sortEWS(this.selectedSortOption);
     this.displayImportModal = false;
   }
 
   sortEWS(e: any) {
-    console.log(e);
     if (e == undefined) {
       return;
     }

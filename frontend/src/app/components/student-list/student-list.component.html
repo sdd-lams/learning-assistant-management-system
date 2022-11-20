@@ -44,4 +44,6 @@
   (onSubmitEvent)="selectedStudent = undefined">
 </app-edit-student-modal>
 
-<app-input-data-modal *ngIf="displayImportModal" (onSubmitEvent)="closeInputModal()"></app-input-data-modal>
+<app-input-data-modal *ngIf="displayImportModal" (onSubmitEvent)="closeInputModal($event)"
+  (onCloseEvent)="displayImportModal = false">
+</app-input-data-modal>
