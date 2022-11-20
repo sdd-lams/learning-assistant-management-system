@@ -106,7 +106,11 @@ body::-webkit-scrollbar-thumb {
   margin-left: auto;
   margin-right: auto;
   height: 0.2vh;
-  border-radius: 100%;
+  background-color: rgb(200, 200, 200);
+  border: 0.5px solid rgb(200, 200, 200);
+  border-radius: 1px;
+  margin-top: 5px;
+  margin-bottom: 5px;
 }
 
 .nav-button {
@@ -129,7 +133,6 @@ body::-webkit-scrollbar-thumb {
 }
 .nav-button-dashboard {
   display: flex;
-  width: 60%;
   border-radius: 5px;
   border: 0;
   margin-left: 10%;

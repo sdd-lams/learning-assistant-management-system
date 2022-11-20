@@ -10,6 +10,7 @@ import { RequestsService } from '../../services/requests.service';
 export class StudentListComponent implements OnInit {
   students: Student[] = [];
   selectedStudent?: Student = undefined;
+  displayImportModal: boolean = false;
   sortOptions: any[] = [
     // Default option at index 0
     { option: 'ewsdate', text: 'Date' },
@@ -36,6 +37,14 @@ export class StudentListComponent implements OnInit {
 
   onRowClick(student: Student) {
     this.selectedStudent = student;
+  }
+
+  showInputModal() {
+    this.displayImportModal = true;
+  }
+
+  closeInputModal() {
+    this.displayImportModal = false;
   }
 
   sortEWS(e: any) {

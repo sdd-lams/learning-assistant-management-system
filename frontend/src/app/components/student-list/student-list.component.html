@@ -1,6 +1,10 @@
+<button class="button" (click)="showInputModal()">
+  Import Student Data
+</button>
 <app-drop-down [labelText]="'Sort EWS by:'" [options]="sortOptions" [default]="sortOptions[0]"
   (onSelectEvent)="sortEWS($event)">
 </app-drop-down>
+<hr>
 <table class="student-table">
   <thead>
     <tr>
@@ -39,3 +43,5 @@
 <app-edit-student-modal *ngIf="selectedStudent" [student]="selectedStudent"
   (onSubmitEvent)="selectedStudent = undefined">
 </app-edit-student-modal>
+
+<app-input-data-modal *ngIf="displayImportModal" (onSubmitEvent)="closeInputModal()"></app-input-data-modal>
