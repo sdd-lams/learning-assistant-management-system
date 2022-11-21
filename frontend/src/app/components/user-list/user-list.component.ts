@@ -1,8 +1,6 @@
 import { AuthService } from 'src/app/services/auth.service';
 import { Component, OnInit } from '@angular/core';
-import { RequestsService } from '../../services/requests.service';
 import { User } from '../../interfaces/user';
-import { allowedNodeEnvironmentFlags } from 'process';
 
 @Component({
   selector: 'app-user-list',
