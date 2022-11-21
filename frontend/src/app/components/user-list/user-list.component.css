@@ -2,6 +2,7 @@
   height: auto;
   border-collapse: collapse;
   font-size: 13px;
+  width: 400px;
 }
 
 .button {
@@ -15,8 +16,13 @@
   display: flex;
   justify-content: space-evenly;
   align-items: flex-start;
+  flex-wrap: wrap;
 }
 
+.container {
+  background-color: rgb(233, 233, 233);
+  min-height: 4em;
+}
 h3 {
   font-size: 1em;
   font-weight: 400;
@@ -40,6 +46,11 @@ h1 {
 
 th {
   text-align: center;
+  padding: 0.25em;
+}
+
+thead tr {
+  background-color: rgb(214, 214, 214);
 }
 
 tbody tr {
@@ -52,7 +63,7 @@ tbody tr:hover {
 }
 
 td {
-  padding: 0.8em;
+  padding: 1em;
   text-align: center;
 }
 
