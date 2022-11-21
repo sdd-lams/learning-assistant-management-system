@@ -8,14 +8,21 @@
   </thead>
   <tbody>
     <tr *ngFor="let user of users" (hover)="showbtn = false">
-      <td> {{user.email}}</td>
-      <td> {{user.role}} </td>
+      <td>{{ user.email }}</td>
+      <td>{{ user.role }}</td>
       <td id="btn-td">
-        <button *ngIf="user.role !== 'LA' ; else removeLAbtn" class="button">Give LA Role</button>
+        <button
+          *ngIf="user.role!.toLowerCase() !== 'la'; else removeLAbtn"
+          class="button"
+          (click)="addRole()"
+        >
+          Give LA Role
+        </button>
         <ng-template #removeLAbtn>
-          <button class="button red">Remove LA Role</button>
+          <button class="button red" (click)="removeRole()">
+            Remove LA Role
+          </button>
         </ng-template>
-
       </td>
     </tr>
   </tbody>

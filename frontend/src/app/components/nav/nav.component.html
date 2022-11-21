@@ -4,19 +4,43 @@
     <hr class="nav-line" />
     <li class="nav-item">
       <h3 class="nav-bar-header">Dashboard</h3>
-      <button class="nav-button-dashboard active" (click)="redirectToStudentList()">Active ews</button>
+      <button
+        class="nav-button-dashboard active"
+        (click)="redirectToStudentList()"
+      >
+        Active ews
+      </button>
     </li>
     <br />
     <hr class="nav-line" />
     <li class="nav-item">
       <h3 class="nav-bar-header">LA Info</h3>
-      <button class="nav-button-dashboard inactive" (click)="redirectToLasList()">LA Contact</button>
-      <button class="nav-button-dashboard inactive" (click)="redirectToLaResource()">LA Materials</button>
+      <button
+        class="nav-button-dashboard inactive"
+        (click)="redirectToLasList()"
+      >
+        LA Contact
+      </button>
+      <button
+        class="nav-button-dashboard inactive"
+        (click)="redirectToLaResource()"
+      >
+        LA Materials
+      </button>
     </li>
-    <hr class=" nav-line" />
+    <hr class="nav-line" />
     <li class="nav-item">
       <h3 class="nav-bar-header">Admin</h3>
-      <button class="nav-button-dashboard inactive" (click)="routeUserList()">User List</button>
+      <button class="nav-button-dashboard inactive" (click)="routeUserList()">
+        User List
+      </button>
+    </li>
+    <hr class="nav-line" />
+    <li class="nav-item">
+      <h3 class="nav-bar-header">Logout</h3>
+      <button class="nav-button-dashboard inactive" (click)="logout()">
+        Logout
+      </button>
     </li>
   </ul>
 </nav>

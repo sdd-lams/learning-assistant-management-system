@@ -1,3 +1,4 @@
+import { switchMap } from 'rxjs/operators';
 import { AuthService } from './../services/auth.service';
 import { Injectable } from '@angular/core';
 import {
@@ -27,5 +28,30 @@ export class AuthGuard implements CanActivate {
       this.router.navigate(['login']);
     }
     return true;
+  }
+}
+
+@Injectable({
+  providedIn: 'root',
+})
+export class RoleGuard implements CanActivate {
+  constructor(private authService: AuthService, private router: Router) {}
+
+  canActivate(
+    route: ActivatedRouteSnapshot,
+    state: RouterStateSnapshot
+  ): Promise<boolean> {
+    return new Promise((resolve) => {
+      this.authService.isLa.then((la) => {
+        console.log(la);
+        console.log('tests');
+        if (la) {
+          resolve(true);
+        } else {
+          this.router.navigate(['/dashboard/la-resource']);
+          resolve(false);
+        }
+      });
+    });
   }
 }

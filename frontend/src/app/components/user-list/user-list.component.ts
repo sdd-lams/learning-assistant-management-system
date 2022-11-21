@@ -1,6 +1,8 @@
+import { AuthService } from 'src/app/services/auth.service';
 import { Component, OnInit } from '@angular/core';
 import { RequestsService } from '../../services/requests.service';
 import { User } from '../../interfaces/user';
+import { allowedNodeEnvironmentFlags } from 'process';
 
 @Component({
   selector: 'app-user-list',
@@ -10,11 +12,19 @@ import { User } from '../../interfaces/user';
 export class UserListComponent implements OnInit {
   users!: User[];
   showbtn: boolean = true;
-  constructor(private requestService: RequestsService) {}
+  constructor(private authService: AuthService) {}
 
   ngOnInit(): void {
-    this.requestService.getUsers().subscribe((_users: User[]) => {
+    this.authService.GetUsers().subscribe((_users: User[]) => {
+      console.log(_users);
       this.users = _users;
     });
+  }
+  addRole() {
+    this.authService.AddRole();
+  }
+
+  removeRole() {
+    this.authService.RemoveRole();
   }
 }

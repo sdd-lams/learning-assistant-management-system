@@ -7,6 +7,8 @@ import {
   AngularFirestoreDocument,
 } from '@angular/fire/compat/firestore';
 import { Router } from '@angular/router';
+import { Observable } from 'rxjs';
+import { HttpClient } from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root',
@@ -114,6 +116,18 @@ export class AuthService {
     return user !== null && user.emailVerified !== false ? true : false;
   }
 
+  get isLa(): Promise<boolean> {
+    const user = JSON.parse(localStorage.getItem('user')!);
+
+    return this.afs
+      .doc<User>(`users/${user.uid}`)
+      .ref.get()
+      .then((doc) => {
+        var data = doc.data();
+        return data!.role == 'la';
+      });
+  }
+
   // Sign in with Google
   async GoogleAuth() {
     try {
@@ -133,26 +147,66 @@ export class AuthService {
       console.error(e);
     }
   }
+
   /* Setting up user data when sign in with username/password,
   sign up with username/password and sign in with social auth
   provider in Firestore database using AngularFirestore + AngularFirestoreDocument service */
   SetUserData(user: any) {
+    console.log(user);
     const userRef: AngularFirestoreDocument<any> = this.afs.doc(
       `users/${user.uid}`
     );
 
-    const userData: User = {
+    this.afs
+      .doc(`users/${user.uid}`)
+      .ref.get()
+      .then((doc) => {
+        console.log(doc.data());
+      });
+
+    this.isLa.then((la) => console.log(la));
+
+    const userData = {
       uid: user.uid,
       email: user.email,
       displayName: user.displayName,
       photoURL: user.photoURL,
       emailVerified: user.emailVerified,
-      role: user.role,
     };
 
     return userRef.set(userData, {
       merge: true,
     });
+  }
+
+  GetUsers(): Observable<User[]> {
+    return this.afs.collection<User>('users').valueChanges();
+  }
+
+  AddRole() {
+    const user = JSON.parse(localStorage.getItem('user')!);
+    const userRef: AngularFirestoreDocument<any> = this.afs.doc(
+      `users/${user.uid}`
+    );
+
+    const data = {
+      role: 'la',
+    };
+
+    return userRef.update(data);
+  }
+
+  RemoveRole() {
+    const user = JSON.parse(localStorage.getItem('user')!);
+    const userRef: AngularFirestoreDocument<any> = this.afs.doc(
+      `users/${user.uid}`
+    );
+
+    const data = {
+      role: 'none',
+    };
+
+    return userRef.update(data);
   }
 
   // Sign out
