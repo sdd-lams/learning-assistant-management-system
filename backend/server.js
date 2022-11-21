@@ -58,7 +58,7 @@ app
 
   .use("/users", decode.decodeToken, usersRoutes)
 
-  .use("/las", decode.decodeToken, LasRoutes);
+  .use("/las", LasRoutes);
 
 // This must be the last get statement, dont put any app.use below it
 app.get("*", (req, res) => {

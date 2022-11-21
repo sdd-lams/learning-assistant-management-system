@@ -8,7 +8,6 @@ import {
 } from '@angular/fire/compat/firestore';
 import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
-import { HttpClient } from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root',
@@ -124,6 +123,9 @@ export class AuthService {
       .ref.get()
       .then((doc) => {
         var data = doc.data();
+        if (data?.role === undefined) {
+          return false;
+        }
         return data!.role == 'la';
       });
   }
@@ -151,20 +153,24 @@ export class AuthService {
   /* Setting up user data when sign in with username/password,
   sign up with username/password and sign in with social auth
   provider in Firestore database using AngularFirestore + AngularFirestoreDocument service */
-  SetUserData(user: any) {
+  async SetUserData(user: any) {
     console.log(user);
     const userRef: AngularFirestoreDocument<any> = this.afs.doc(
       `users/${user.uid}`
     );
 
-    this.afs
-      .doc(`users/${user.uid}`)
-      .ref.get()
-      .then((doc) => {
-        console.log(doc.data());
-      });
+    var role: string | undefined = 'none';
+    const docRef = this.afs.collection('users').doc<User>(user.uid);
+    await docRef.ref.get().then((userDoc) => {
+      if (userDoc.exists) {
+        var data = userDoc.data();
+        if (data?.role !== undefined) {
+          role = data?.role;
+        }
+      }
+    });
 
-    this.isLa.then((la) => console.log(la));
+    console.log(role);
 
     const userData = {
       uid: user.uid,
@@ -172,6 +178,7 @@ export class AuthService {
       displayName: user.displayName,
       photoURL: user.photoURL,
       emailVerified: user.emailVerified,
+      role: role,
     };
 
     return userRef.set(userData, {
