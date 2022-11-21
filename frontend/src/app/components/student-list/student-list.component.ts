@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, EventEmitter, Output } from '@angular/core';
+import { Component, OnInit, EventEmitter, Output } from '@angular/core';
 import { Student } from '../../interfaces/student';
 import { RequestsService } from '../../services/requests.service';
 

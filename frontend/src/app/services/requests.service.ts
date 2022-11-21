@@ -1,6 +1,6 @@
 import { AuthService } from './auth.service';
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { from, Observable } from 'rxjs';
 import { switchMap } from 'rxjs/operators';
 import { Student } from '../interfaces/student';
@@ -18,35 +18,60 @@ export class RequestsService {
 
     return from(this.authService.getToken()).pipe(
       switchMap((token) => {
-        const reqHeader = new HttpHeaders({
+        const headers = new HttpHeaders({
           'Content-Type': 'application/json',
           Authorization: 'Bearer ' + token,
         });
+
         return this.http.get<Student[]>(url, {
-          headers: reqHeader,
+          headers: headers,
         });
       })
     );
   }
 
-  insertStudents(students: Student[]): Observable<String> {
+  postStudents(students: Student[]): Observable<String> {
     let url: string = 'http://localhost:3000/students';
 
     return from(this.authService.getToken()).pipe(
       switchMap((token) => {
-        const reqHeader = new HttpHeaders({
+        const headers = new HttpHeaders({
           'Content-Type': 'application/json',
           Authorization: 'Bearer ' + token,
         });
+
         return this.http.post<String>(
           url,
           {
             data: students,
           },
           {
-            headers: reqHeader,
+            headers: headers,
           }
         );
+      })
+    );
+  }
+
+  // Send student update data to the backend to update a single student entry
+  putStudent(student: Student): Observable<String> {
+    let url: string = `http://localhost:3000/students/${student.rin}`;
+
+    return from(this.authService.getToken()).pipe(
+      switchMap((token) => {
+        const headers = new HttpHeaders({
+          'Content-Type': 'application/json',
+          Authorization: 'Bearer ' + token,
+        });
+
+        const params = new HttpParams()
+          .set('ccode', student.ccode)
+          .set('csubject', student.csubject);
+
+        return this.http.put<String>(url, student, {
+          headers: headers,
+          params: params,
+        });
       })
     );
   }

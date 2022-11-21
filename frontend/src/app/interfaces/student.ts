@@ -1,22 +1,22 @@
 export interface Student {
   // Data that is parsed directly
-  fname: String;
-  lname: String;
-  rin: Number;
-  email: String;
-  dorm: String;
-  room: String;
-  ewsdate: String;
-  ewsreason: String;
-  cname: String;
-  csubject: String;
-  ccode: String;
-  cprof?: String;
-  profcomment?: String;
+  fname: string;
+  lname: string;
+  rin: number;
+  email: string;
+  dorm: string;
+  room: string;
+  ewsdate: Date;
+  ewsreason: string;
+  cname: string;
+  csubject: string;
+  ccode: string;
+  cprof?: string;
+  profcomment?: string;
   // Data that is computed or set by the LA
-  emailcount: Number; // Should init to 0
+  emailcount: number; // Should init to 0
   ewscount: number; // Should be computed automatically when an entry is added to DB
-  status?: String;
-  lacomment?: String;
-  assignedla?: String;
+  status?: string;
+  lacomment?: string;
+  assignedla?: string;
 }

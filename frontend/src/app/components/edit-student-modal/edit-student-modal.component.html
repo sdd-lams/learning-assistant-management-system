@@ -5,102 +5,95 @@
       <table class="student-table">
         <tbody>
           <tr>
-            <td>{{student.rin}}</td>
-            <td>{{student.fname}} {{student.lname}}</td>
-            <td>{{student.email}}</td>
+            <td>{{ student.rin }}</td>
+            <td>{{ student.fname }} {{ student.lname }}</td>
+            <td>{{ student.email }}</td>
           </tr>
+
           <tr>
-            <td>{{student.ewsreason}}</td>
-            <td>{{student.cname}}</td>
-            <td>{{student.csubject}}-{{student.ccode}}</td>
+            <td>{{ student.ewsreason }}</td>
+            <td>{{ student.cname }}</td>
+            <td>{{ student.csubject }}-{{ student.ccode }}</td>
           </tr>
+
           <tr>
-            <td>{{student.dorm}}</td>
-            <td>{{student.room}}</td>
-            <td>{{student.ewsdate}}</td>
+            <td>{{ student.dorm }}</td>
+            <td>{{ student.room }}</td>
+            <td>{{ student.ewsdate }}</td>
           </tr>
+
           <tr>
-            <td colspan="2">{{student.profcomment}}</td>
-            <td [ngStyle]="
-            student.ewscount === 1
-              ? { 'background-color': '#98F5DA' }
-              : student.ewscount === 2
-              ? { 'background-color': '#FFD27A' }
-              : { 'background-color': '#FF6D6D' }
-          ">{{student.ewscount}} EWS
-              <button class="button small-btn" (click)="incrementEWS(1)">+</button>
-              <button class="button small-btn" (click)="incrementEWS(-1)">-</button>
+            <td colspan="2">
+              {{ student.profcomment || "No Professor Comment" }}
+            </td>
+            <td
+              [ngStyle]="
+                student.ewscount === 1
+                  ? { 'background-color': '#98F5DA' }
+                  : student.ewscount === 2
+                  ? { 'background-color': '#FFD27A' }
+                  : { 'background-color': '#FF6D6D' }
+              "
+            >
+              {{ student.ewscount }} EWS
             </td>
           </tr>
         </tbody>
       </table>
     </div>
-    <div class=" right">
+
+    <div class="right">
       <h1>Student Status</h1>
-      <div class="two-col">
-        <div id="left-side">
-          <table class="student-status-table">
-            <tbody>
-              <tr>
-                <th>Assigned LA</th>
-              </tr>
-              <tr>
-                <td>{{student.assignedla}}</td>
-              </tr>
-              <tr>
-                <th>Student Status</th>
-              </tr>
-              <tr>
-                <td>{{student.status}}</td>
-              </tr>
-              <tr>
-                <th>LA Comment</th>
-              </tr>
-              <tr>
-                <td contenteditable='true'>{{student.lacomment}}</td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-        <div id="right-side">
-          <form>
-            <div class="form-group">
-              <label for="assign-la">Assign LA:</label>
-              <select name="selectLA" id="assign-la" class="form-control" [(ngModel)]="assignedLA"
-                (change)="updateAssignedLA()">
-                <option value="">Select a LA..</option>
-                <option value="Huy">Huy</option>
-                <option value="Madeline">Madeline</option>
-                <option value="James">James</option>
-              </select>
-            </div>
-            <div class="form-group">
-              <label for="student-status">Choose Student Status:</label>
-              <select name="selectStatus" id="student-status" class="form-control" [(ngModel)]="studentStatus"
-                (change)="updateStudentStatus()">
-                <option value="">Select a student status..</option>
-                <option value="Emailed 1">Emailed 1</option>
-                <option value="Emailed 2">Emailed 2</option>
-                <option value="Emailed 3">Emailed 3</option>
-                <option value="Responded to Email">Responded to Email</option>
-                <option value="Scheduled Meeting">Scheduled Meeting</option>
-                <option value="Met with Student">Met with Student</option>
-                <option value="Resident of Concern">Resident of Concern</option>
-              </select>
-              <!-- <div>
-                {{studentStatus | json}}
-              </div> -->
-              <div class="form-group">
-                <label for="meeting">Meeting time: </label>
-                <input type="datetime-local" id="meeting">
-              </div>
-            </div>
-          </form>
-        </div>
+      <div>
+        <form
+          id="edit-student-form"
+          [formGroup]="editStudentForm"
+          (ngSubmit)="onSubmit()"
+        >
+          <label for="assigned-la">Assigned LA: </label>
+          <select
+            name="assigned-la"
+            id="assigned-la"
+            formControlName="assignedla"
+          >
+            <option value="undefined">None</option>
+            <option value="Huy">Huy</option>
+            <option value="Madeline">Madeline</option>
+            <option value="James">James</option>
+          </select>
+
+          <label for="student-status">Choose Student Status:</label>
+          <select
+            name="student-status"
+            id="student-status"
+            formControlName="status"
+          >
+            <option
+              *ngFor="let status of statuses"
+              value="{{ status == 'None' ? 'undefined' : status }}"
+            >
+              {{ status }}
+            </option>
+          </select>
+
+          <label for="la-comment">LA Comment</label>
+          <input
+            type="text"
+            id="la-comment"
+            formControlName="lacomment"
+            placeholder="No comment"
+          />
+
+          <div class="btn-cnt">
+            <button type="submit" form="edit-student-form" class="button">
+              Submit
+            </button>
+            <button type="button" class="button" (click)="onSubmitClose()">
+              Close
+            </button>
+          </div>
+        </form>
       </div>
     </div>
   </div>
-  <button class="button" (click)="printStudent()">Submit</button>
-
-  <button class="button" (click)="onSubmitClose()">Close</button>
 </div>
