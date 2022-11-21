@@ -32,11 +32,14 @@ import { VerifyEmailComponent } from './components/verify-email/verify-email.com
 import { InputDataModalComponent } from './components/input-data-modal/input-data-modal.component';
 import { EditStudentModalComponent } from './components/edit-student-modal/edit-student-modal.component';
 import { DropDownComponent } from './components/drop-down/drop-down.component';
+import { LasListComponentComponent } from './components/las-list-component/las-list-component.component';
+import { UserListComponent } from './components/user-list/user-list.component';
+import { StudentListComponent } from './components/student-list/student-list.component';
 
 // Services
 import { AuthService } from './services/auth.service';
 import { RequestsService } from './services/requests.service';
-import { StudentListComponent } from './components/student-list/student-list.component';
+import { LaResourceComponent } from './components/la-resource/la-resource.component';
 
 @NgModule({
   declarations: [
@@ -51,6 +54,9 @@ import { StudentListComponent } from './components/student-list/student-list.com
     InputDataModalComponent,
     EditStudentModalComponent,
     DropDownComponent,
+    UserListComponent,
+    LasListComponentComponent,
+    LaResourceComponent,
   ],
   imports: [
     HttpClientModule,

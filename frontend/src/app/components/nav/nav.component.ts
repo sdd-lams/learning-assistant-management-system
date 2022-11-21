@@ -1,4 +1,5 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { Router, ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-nav',
@@ -8,12 +9,26 @@ import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 export class NavComponent implements OnInit {
   @Output()
   displayImportModal: EventEmitter<boolean> = new EventEmitter<boolean>();
+  @Output()
+  displayLaInfoModal: EventEmitter<boolean> = new EventEmitter<boolean>();
 
-  constructor() {}
+  constructor(private router: Router, private route: ActivatedRoute) {}
 
   ngOnInit(): void {}
 
-  importModalClick() {
-    this.displayImportModal.emit();
+  routeUserList() {
+    this.router.navigate(['dashboard/users']);
+  }
+
+  redirectToStudentList() {
+    this.router.navigate(['dashboard/students']);
+  }
+
+  redirectToLasList() {
+    this.router.navigate(['dashboard/las']);
+  }
+
+  redirectToLaResource() {
+    this.router.navigate(['dashboard/la-resource']);
   }
 }

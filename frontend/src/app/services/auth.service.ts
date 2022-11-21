@@ -147,6 +147,7 @@ export class AuthService {
       displayName: user.displayName,
       photoURL: user.photoURL,
       emailVerified: user.emailVerified,
+      role: user.role,
     };
 
     return userRef.set(userData, {

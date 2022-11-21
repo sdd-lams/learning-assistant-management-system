@@ -1,0 +1,87 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+h4 {
+  font-size: 0.85em;
+  font-weight: 400;
+  margin-bottom: 5px;
+  color: rgb(58, 58, 58);
+}
+h3 {
+  font-size: 1em;
+  font-weight: 600;
+}
+
+h2 {
+  font-size: 1.25em;
+  font-weight: 600;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+h1 {
+  text-align: center;
+  font-size: 1.7em;
+  font-weight: 500;
+  margin-bottom: 20px;
+  margin-top: 20px;
+}
+
+.flex {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  gap: 30px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 20px;
+  max-width: 890px;
+}
+
+.rsc-card {
+  background-color: white;
+  width: 200px;
+  text-align: center;
+  padding-bottom: 20px;
+  transition: 0.15s;
+}
+
+.rsc-card:hover {
+  box-shadow: rgba(0, 0, 0, 0.148) 0px 3px 8px;
+}
+
+.rsc-card img {
+  display: block;
+  width: 200px;
+  margin-bottom: 20px;
+}
+
+.rsc-card p {
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
+.adtnl-rsc {
+  background-color: white;
+  width: 90%;
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 890px;
+  padding: 20px;
+  border-radius: 20px 20px 0 0;
+}
+
+.adtnl-rsc p {
+  margin-bottom: 20px;
+}
+
+.adtnl-rsc h3 {
+  font-size: 1.2em;
+}
+
+.adtnl-rsc h2 {
+  font-size: 1.7em;
+  font-weight: 500;
+}

@@ -4,12 +4,30 @@ import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { from, Observable } from 'rxjs';
 import { switchMap } from 'rxjs/operators';
 import { Student } from '../interfaces/student';
+import { User } from '../interfaces/user';
+import { La } from './../interfaces/la';
 
 @Injectable({
   providedIn: 'root',
 })
 export class RequestsService {
   constructor(private http: HttpClient, private authService: AuthService) {}
+
+  getLas(): Observable<La[]> {
+    let url: string = 'http://localhost:3000/las';
+
+    return from(this.authService.getToken()).pipe(
+      switchMap((token) => {
+        const reqHeader = new HttpHeaders({
+          'Content-Type': 'application/json',
+          Authorization: 'Bearer ' + token,
+        });
+        return this.http.get<La[]>(url, {
+          headers: reqHeader,
+        });
+      })
+    );
+  }
 
   // Subscribe to the return of this method to access the values in the observable
   // Get all exercises
@@ -71,6 +89,37 @@ export class RequestsService {
         return this.http.put<String>(url, student, {
           headers: headers,
           params: params,
+        });
+      })
+    );
+  }
+
+  deleteStudent(student: Student): Observable<String> {
+    let url: string = `http://localhost:3000/students/${student.rin}`;
+    return from(this.authService.getToken()).pipe(
+      switchMap((token) => {
+        const reqHeader = new HttpHeaders({
+          'Content-Type': 'application/json',
+          Authorization: 'Bearer ' + token,
+        });
+        return this.http.request<String>('delete', url, {
+          headers: reqHeader,
+          body: student,
+        });
+      })
+    );
+  }
+
+  getUsers(): Observable<User[]> {
+    let url: string = 'http://localhost:3000/users';
+    return from(this.authService.getToken()).pipe(
+      switchMap((token) => {
+        const reqHeader = new HttpHeaders({
+          'Content-Type': 'application/json',
+          Authorization: 'Bearer ' + token,
+        });
+        return this.http.get<User[]>(url, {
+          headers: reqHeader,
         });
       })
     );

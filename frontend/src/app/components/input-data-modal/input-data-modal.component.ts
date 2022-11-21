@@ -11,13 +11,14 @@ import { Student } from '../../interfaces/student';
 export class InputDataModalComponent implements OnInit {
   ewsData?: string;
   allStudents?: Student[];
-  @Output() onSubmitEvent: EventEmitter<boolean> = new EventEmitter();
+  @Output() onCloseEvent: EventEmitter<any> = new EventEmitter();
+  @Output() onSubmitEvent: EventEmitter<Student[]> = new EventEmitter();
 
   constructor(private requestService: RequestsService) {}
   ngOnInit(): void {}
 
   onClose() {
-    this.onSubmitEvent.emit();
+    this.onCloseEvent.emit();
   }
 
   onSubmitSendDataClose() {
@@ -27,8 +28,8 @@ export class InputDataModalComponent implements OnInit {
         .postStudents(this.allStudents)
         .subscribe((str: String) => {
           console.log(str);
+          this.onSubmitEvent.emit(this.allStudents);
         });
-      this.onSubmitEvent.emit();
     }
   }
 
@@ -64,8 +65,8 @@ export class InputDataModalComponent implements OnInit {
       console.log(student[4]);
       const studentObj: Student = {
         rin: parseInt(student[0]),
-        fname: student[1].split(', ')[0],
-        lname: student[1].split(', ')[1],
+        fname: student[1].split(', ')[1],
+        lname: student[1].split(', ')[0],
         email: student[2],
         ewsreason: student[3],
         ewsdate: new Date(student[4]),

@@ -22,6 +22,7 @@ export class EditStudentModalComponent implements OnInit {
 
   @Input() student!: Student;
   @Output() onSubmitEvent: EventEmitter<boolean> = new EventEmitter();
+  @Output() onDeleteEvent: EventEmitter<Student> = new EventEmitter();
 
   editStudentForm = new FormGroup({
     assignedla: new FormControl(''),
@@ -73,5 +74,9 @@ export class EditStudentModalComponent implements OnInit {
       console.log(res);
     });
     this.onSubmitEvent.emit();
+  }
+
+  onDeleteEWS() {
+    this.onDeleteEvent.emit(this.student);
   }
 }
