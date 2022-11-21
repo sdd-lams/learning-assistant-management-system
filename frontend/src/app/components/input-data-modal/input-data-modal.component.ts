@@ -64,8 +64,8 @@ export class InputDataModalComponent implements OnInit {
     for (let student of allStudentData) {
       const studentObj: Student = {
         rin: parseInt(student[0]),
-        fname: student[1].split(', ')[0],
-        lname: student[1].split(', ')[1],
+        fname: student[1].split(', ')[1],
+        lname: student[1].split(', ')[0],
         email: student[2],
         ewsreason: student[3],
         ewsdate: student[4],
