@@ -8,13 +8,23 @@ import { User } from '../../interfaces/user';
   styleUrls: ['./user-list.component.css'],
 })
 export class UserListComponent implements OnInit {
-  users!: User[];
-  showbtn: boolean = true;
+  allUsers!: User[];
   constructor(private requestService: RequestsService) {}
+
+  laUsers: User[] = [];
+  regUsers: User[] = [];
 
   ngOnInit(): void {
     this.requestService.getUsers().subscribe((_users: User[]) => {
-      this.users = _users;
+      this.allUsers = _users;
+      console.log(this.allUsers);
+      for (let usr of this.allUsers) {
+        if (usr.role == 'LA') {
+          this.laUsers.push(usr);
+        } else {
+          this.regUsers.push(usr);
+        }
+      }
     });
   }
 }
