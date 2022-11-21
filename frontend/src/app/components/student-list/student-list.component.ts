@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, EventEmitter, Output } from '@angular/core';
+import { Component, OnInit, EventEmitter, Output } from '@angular/core';
 import { Student } from '../../interfaces/student';
 import { RequestsService } from '../../services/requests.service';
 
@@ -32,6 +32,11 @@ export class StudentListComponent implements OnInit {
       this.students = _students;
       // Sort student data by defaut sort option
       this.sortEWS(this.sortOptions[0]);
+
+      // handle dates better
+      for (var student of this.students) {
+        student.ewsdate = new Date(student.ewsdate.toString());
+      }
     });
   }
 

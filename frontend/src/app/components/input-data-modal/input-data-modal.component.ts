@@ -25,7 +25,7 @@ export class InputDataModalComponent implements OnInit {
     this.allStudents = this.parseData(this.ewsData);
     if (this.allStudents.length > 0) {
       this.requestService
-        .insertStudents(this.allStudents)
+        .postStudents(this.allStudents)
         .subscribe((str: String) => {
           console.log(str);
           this.onSubmitEvent.emit(this.allStudents);
@@ -62,13 +62,14 @@ export class InputDataModalComponent implements OnInit {
       }
     }
     for (let student of allStudentData) {
+      console.log(student[4]);
       const studentObj: Student = {
         rin: parseInt(student[0]),
         fname: student[1].split(', ')[1],
         lname: student[1].split(', ')[0],
         email: student[2],
         ewsreason: student[3],
-        ewsdate: student[4],
+        ewsdate: new Date(student[4]),
         csubject: student[5],
         ccode: student[6],
         cname: student[7],

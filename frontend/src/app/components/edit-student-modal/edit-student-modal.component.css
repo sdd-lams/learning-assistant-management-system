@@ -1,8 +1,56 @@
+td {
+  border-radius: 5px;
+  padding: 0.8em;
+  text-align: center;
+  max-width: 9em;
+}
+
+/* Student Status Form */
+fieldset {
+  border: 1px solid rgb(74, 74, 74);
+  background-color: #ffffff;
+  padding: 15px;
+  border-radius: 5px;
+}
+
+legend {
+  font-size: 1em;
+}
+
+h1 {
+  text-align: center;
+  font-size: 1.25em;
+}
+
+label {
+  margin-top: 10px;
+  display: block;
+  font-size: 0.8em;
+  font-weight: 600;
+}
+
+td:hover {
+  background-color: #ffffff;
+  outline: 2px solid rgba(43, 105, 84, 0.3);
+  cursor: pointer;
+}
+
+td:focus {
+  background-color: rgb(255, 255, 255);
+  outline: 2px solid rgba(43, 105, 84, 0.6);
+}
+
+form {
+  display: flex;
+  flex-flow: column;
+  align-items: center;
+  min-width: 15vw;
+}
+
 .modal {
   display: block;
-  position: fixed;
-  width: 75vw;
-  height: 425px;
+  position: absolute;
+  width: max-content;
   background-color: #e3f2ff;
   right: 0;
   left: 15vw;
@@ -15,20 +63,10 @@
   box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
 }
 
-h1 {
-  text-align: center;
-  font-size: 1.25em;
-}
-
-label {
-  margin-top: 10px;
-  display: block;
-  font-size: 0.9em;
-}
-
 .left {
   flex-grow: 0.5;
 }
+
 .right {
   flex-grow: 0.5;
 }
@@ -53,7 +91,7 @@ label {
 /* Student Data Table Styles */
 .student-table,
 .student-status-table {
-  width: 100%;
+  min-width: 35vw;
   height: auto;
   border-collapse: separate;
   border-spacing: 0.5rem;
@@ -66,39 +104,14 @@ label {
   transition: 0.1s;
 }
 
+.student-table td:hover {
+  cursor: default;
+}
+
 .student-status-table td {
   min-width: 200px;
   background-color: white;
   transition: 0.1s;
-}
-
-td:hover {
-  background-color: #ffffff;
-  outline: 2px solid rgba(43, 105, 84, 0.3);
-}
-
-td:focus {
-  background-color: rgb(255, 255, 255);
-  outline: 2px solid rgba(43, 105, 84, 0.6);
-}
-
-td {
-  border-radius: 5px;
-  padding: 0.8em;
-  text-align: center;
-  max-width: 9em;
-}
-
-/* Student Status Form */
-fieldset {
-  border: 1px solid rgb(74, 74, 74);
-  background-color: #ffffff;
-  padding: 15px;
-  border-radius: 5px;
-}
-
-legend {
-  font-size: 1em;
 }
 
 .button {
@@ -111,6 +124,10 @@ legend {
 .small-btn {
   width: 20px;
   height: 20px;
+}
+
+.btn-cnt {
+  margin-top: 10px;
 }
 
 #delete-btn {

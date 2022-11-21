@@ -1,5 +1,16 @@
-import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import {
+  Component,
+  OnInit,
+  Input,
+  Output,
+  EventEmitter,
+  SimpleChanges,
+} from '@angular/core';
+import { FormGroup, FormControl } from '@angular/forms';
 import { Student } from '../../interfaces/student';
+import { EditFormPatch } from '../../interfaces/edit-form-patch';
+import { GlobalVariable } from 'src/app/globals';
+import { RequestsService } from '../../services/requests.service';
 
 @Component({
   selector: 'app-edit-student-modal',
@@ -7,40 +18,73 @@ import { Student } from '../../interfaces/student';
   styleUrls: ['./edit-student-modal.component.css'],
 })
 export class EditStudentModalComponent implements OnInit {
+  statuses: string[] = GlobalVariable.statuses;
+
   @Input() student!: Student;
   @Output() onSubmitEvent: EventEmitter<boolean> = new EventEmitter();
   @Output() onDeleteEvent: EventEmitter<Student> = new EventEmitter();
 
-  studentStatus?: String;
-  assignedLA?: String;
+  errors: null | string[] = null;
 
-  constructor() {}
+  editStudentForm = new FormGroup({
+    assignedla: new FormControl(''),
+    status: new FormControl(''),
+    lacomment: new FormControl(''),
+    // meetingTime: new FormControl(''),
+  });
+
+  constructor(private requestService: RequestsService) {}
 
   ngOnInit(): void {
-    this.assignedLA = this.student.assignedla;
-    this.studentStatus = this.student.status;
+    this.editStudentForm.patchValue({
+      assignedla: this.student.assignedla,
+      status: this.student.status,
+      laComment: this.student.lacomment,
+    });
   }
 
-  incrementEWS(n: number) {
-    let ewsNum: number = this.student.ewscount;
-    this.student.ewscount = ewsNum + n;
-  }
+  ngOnChanges(changes: SimpleChanges) {
+    if (changes['student']) {
+      var update = changes['student']['currentValue'];
 
-  updateStudentStatus() {
-    this.student.status = this.studentStatus;
-  }
+      var patch: EditFormPatch = {
+        status: update['status'] ? update['status'] : undefined,
+        lacomment: update['lacomment'],
+        assignedla: update['assignedla'] ? update['assignedla'] : undefined,
+      };
 
-  updateAssignedLA() {
-    this.student.assignedla = this.assignedLA;
-  }
-
-  printStudent() {
-    console.log(this.studentStatus);
-    console.log(this.student);
+      this.editStudentForm.patchValue(patch);
+    }
   }
 
   onSubmitClose() {
     this.onSubmitEvent.emit();
+  }
+
+  onSubmit<Key extends keyof Student>() {
+    for (var field in this.editStudentForm.value) {
+      const value: Student[Key] = this.editStudentForm.value[field];
+
+      if (this.editStudentForm.value[field] == 'undefined') {
+        delete this.student[field as Key];
+      } else {
+        this.student[field as Key] = value;
+      }
+    }
+
+    this.requestService.putStudent(this.student).subscribe({
+      next: (res: String) => {
+        this.errors = null;
+        console.log(res);
+        this.requestService.getStudents();
+        this.onSubmitEvent.emit();
+      },
+      error: (err) => {
+        console.log(err.error.message);
+        this.errors = [err.error.message];
+      },
+      complete: () => console.info('Updated logic finished'),
+    });
   }
 
   onDeleteEWS() {
