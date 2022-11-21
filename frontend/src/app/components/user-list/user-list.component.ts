@@ -27,4 +27,15 @@ export class UserListComponent implements OnInit {
       }
     });
   }
+  giveLaRole(user: User) {
+    user.role = 'LA';
+    this.regUsers = this.regUsers.filter((u) => u != user);
+    this.laUsers.push(user);
+  }
+
+  removeLARole(user: User) {
+    user.role = 'Student';
+    this.laUsers = this.laUsers.filter((u) => u != user);
+    this.regUsers.push(user);
+  }
 }
