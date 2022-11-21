@@ -1,45 +1,49 @@
 <div class="flex">
   <div>
     <h2>Regular User</h2>
-    <table class="user-table">
-      <thead>
-        <tr>
-          <th>User Email</th>
-          <th>Role</th>
-          <th></th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr *ngFor="let user of regUsers">
-          <td> {{user.email}}</td>
-          <td> {{user.role}} </td>
-          <td id="btn-td">
-            <button class="button" (click)="giveLaRole(user)">Give LA Role</button>
-          </td>
-        </tr>
-      </tbody>
-    </table>
+    <div class="container">
+      <table class="user-table">
+        <thead>
+          <tr>
+            <th>User Email</th>
+            <th>Role</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let user of regUsers">
+            <td> {{user.email}}</td>
+            <td> {{user.role}} </td>
+            <td id="btn-td">
+              <button class="button" (click)="giveLaRole(user)">Give LA Role</button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
   </div>
 
   <div>
     <h2>LA Users</h2>
-    <table class="user-table">
-      <thead>
-        <tr>
-          <th>User Email</th>
-          <th>Role</th>
-          <th></th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr *ngFor="let user of laUsers">
-          <td> {{user.email}}</td>
-          <td> {{user.role}} </td>
-          <td id="btn-td">
-            <button class="button" (click)="removeLARole(user)">Remove LA Role</button>
-          </td>
-        </tr>
-      </tbody>
-    </table>
+    <div class="container">
+      <table class="user-table">
+        <thead>
+          <tr>
+            <th>User Email</th>
+            <th>Role</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let user of laUsers">
+            <td> {{user.email}}</td>
+            <td> {{user.role}} </td>
+            <td id="btn-td">
+              <button class="button" (click)="removeLARole(user)">Remove LA Role</button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
   </div>
 </div>
