@@ -43,6 +43,9 @@
     </div>
 
     <div class="right">
+      <div class="errors" *ngIf="errors">
+        <div class="error" *ngFor="let error of errors">{{ error }}</div>
+      </div>
       <h1>Student Status</h1>
       <div>
         <form

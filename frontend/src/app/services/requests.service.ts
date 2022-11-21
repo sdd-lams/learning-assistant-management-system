@@ -82,13 +82,8 @@ export class RequestsService {
           Authorization: 'Bearer ' + token,
         });
 
-        const params = new HttpParams()
-          .set('ccode', student.ccode)
-          .set('csubject', student.csubject);
-
         return this.http.put<String>(url, student, {
           headers: headers,
-          params: params,
         });
       })
     );

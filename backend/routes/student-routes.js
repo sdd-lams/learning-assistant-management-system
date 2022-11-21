@@ -77,9 +77,10 @@ router.put("/:rin", async (req, res) => {
     var ret = await Student.findOneAndUpdate(
       {
         rin: req.params.rin,
-        ccode: req.query.ccode,
-        csubject: req.query.csubject,
-        ewsdate: req.query.ewsdate,
+        ccode: req.body.ccode,
+        csubject: req.body.csubject,
+        ewsdate: req.body.ewsdate,
+        ewsreason: req.body.ewsreason
       },
       {
         status: req.body.status,
@@ -89,7 +90,7 @@ router.put("/:rin", async (req, res) => {
     );
     console.log(ret);
     console.log(`EWS entrty for rin:${req.params.rin} \
-course:${req.query.csubject}${req.query.ccode} date:${req.query.ewsdate} was updated`);
+course:${req.body.csubject}${req.body.ccode} date:${req.body.ewsdate} was updated`);
     res.status(200).json({ message: "EWS entry updated" });
   } catch (error) {
     console.log("Error updating EWS entry: " + error.message);

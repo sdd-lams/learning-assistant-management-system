@@ -1,10 +1,12 @@
-<button class="button" (click)="showInputModal()">
-  Import Student Data
-</button>
-<app-drop-down [labelText]="'Sort EWS by:'" [options]="sortOptions" [default]="sortOptions[0]"
-  (onSelectEvent)="sortEWS($event)">
+<button class="button" (click)="showInputModal()">Import Student Data</button>
+<app-drop-down
+  [labelText]="'Sort EWS by:'"
+  [options]="sortOptions"
+  [default]="sortOptions[0]"
+  (onSelectEvent)="sortEWS($event)"
+>
 </app-drop-down>
-<hr>
+<hr />
 <table class="student-table">
   <thead>
     <tr>
@@ -21,16 +23,19 @@
   </thead>
   <tbody>
     <tr *ngFor="let student of students" (click)="onRowClick(student)">
-      <td class="color-tag" [ngStyle]="
+      <td
+        class="color-tag"
+        [ngStyle]="
           student.ewscount === 1
             ? { 'background-color': '#98F5DA' }
             : student.ewscount === 2
             ? { 'background-color': '#FFD27A' }
             : { 'background-color': '#FF6D6D' }
-        "></td>
+        "
+      ></td>
       <td>{{ student.fname + " " + student.lname }}</td>
       <td>{{ student.email }}</td>
-      <td>{{ student.ewsdate.split('T')[0] }}</td>
+      <td>{{ student.ewsdate.toDateString() }}</td>
       <td>{{ student.ewsreason }}</td>
       <td>{{ student.cname }}</td>
       <td>{{ student.room }}</td>
@@ -40,10 +45,17 @@
   </tbody>
 </table>
 
-<app-edit-student-modal *ngIf="selectedStudent" [student]="selectedStudent"
-  (onSubmitEvent)="selectedStudent = undefined" (onDeleteEvent)="deleteStudent($event)">
+<app-edit-student-modal
+  *ngIf="selectedStudent"
+  [student]="selectedStudent"
+  (onSubmitEvent)="selectedStudent = undefined"
+  (onDeleteEvent)="deleteStudent($event)"
+>
 </app-edit-student-modal>
 
-<app-input-data-modal *ngIf="displayImportModal" (onSubmitEvent)="closeInputModal($event)"
-  (onCloseEvent)="displayImportModal = false">
+<app-input-data-modal
+  *ngIf="displayImportModal"
+  (onSubmitEvent)="closeInputModal($event)"
+  (onCloseEvent)="displayImportModal = false"
+>
 </app-input-data-modal>

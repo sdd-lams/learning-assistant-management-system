@@ -24,6 +24,8 @@ export class EditStudentModalComponent implements OnInit {
   @Output() onSubmitEvent: EventEmitter<boolean> = new EventEmitter();
   @Output() onDeleteEvent: EventEmitter<Student> = new EventEmitter();
 
+  errors: null | string[] = null;
+
   editStudentForm = new FormGroup({
     assignedla: new FormControl(''),
     status: new FormControl(''),
@@ -70,10 +72,19 @@ export class EditStudentModalComponent implements OnInit {
       }
     }
 
-    this.requestService.putStudent(this.student).subscribe((res: String) => {
-      console.log(res);
+    this.requestService.putStudent(this.student).subscribe({
+      next: (res: String) => {
+        this.errors = null;
+        console.log(res);
+        this.requestService.getStudents();
+        this.onSubmitEvent.emit();
+      },
+      error: (err) => {
+        console.log(err.error.message);
+        this.errors = [err.error.message];
+      },
+      complete: () => console.info('Updated logic finished'),
     });
-    this.onSubmitEvent.emit();
   }
 
   onDeleteEWS() {
