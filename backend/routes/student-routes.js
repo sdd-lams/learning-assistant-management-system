@@ -106,11 +106,14 @@ router.delete("/", async (req, res) => {
 
 router.delete("/:rin", async (req, res) => {
   try {
+    console.log(req.params.rin);
+    console.log(req.body);
     await Student.deleteOne({
       rin: req.params.rin,
-      ccode: req.query.ccode,
-      csubject: req.query.csubject,
-      ewsdate: req.query.ewsdate,
+      ccode: req.body.ccode,
+      csubject: req.body.csubject,
+      ewsdate: req.body.ewsdate,
+      ewsreason: req.body.ewsreason,
     });
     console.log(`EWS entry for rin:${req.params.rin}\
     course:${req.query.csubject}${req.query.ccode} date:${req.query.ewsdate} was deleted`);

@@ -9,6 +9,7 @@ import { Student } from '../../interfaces/student';
 export class EditStudentModalComponent implements OnInit {
   @Input() student!: Student;
   @Output() onSubmitEvent: EventEmitter<boolean> = new EventEmitter();
+  @Output() onDeleteEvent: EventEmitter<Student> = new EventEmitter();
 
   studentStatus?: String;
   assignedLA?: String;
@@ -40,5 +41,9 @@ export class EditStudentModalComponent implements OnInit {
 
   onSubmitClose() {
     this.onSubmitEvent.emit();
+  }
+
+  onDeleteEWS() {
+    this.onDeleteEvent.emit(this.student);
   }
 }

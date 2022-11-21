@@ -39,6 +39,22 @@ export class StudentListComponent implements OnInit {
     this.selectedStudent = student;
   }
 
+  deleteStudent(student: Student) {
+    this.requestService.deleteStudent(student).subscribe((res: String) => {
+      this.students = this.students.filter((s) => {
+        return (
+          s.rin != student.rin ||
+          s.ccode != student.ccode ||
+          s.cname != s.cname ||
+          s.ewsdate != student.ewsdate ||
+          s.ewsreason != student.ewsreason
+        );
+      });
+      console.log(res);
+      this.selectedStudent = undefined;
+    });
+  }
+
   showInputModal() {
     this.displayImportModal = true;
   }

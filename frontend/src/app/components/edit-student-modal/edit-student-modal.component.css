@@ -112,3 +112,14 @@ legend {
   width: 20px;
   height: 20px;
 }
+
+#delete-btn {
+  float: right;
+  background-color: rgb(180, 58, 58);
+  color: white;
+}
+
+#delete-btn:hover {
+  background-color: transparent;
+  color: black;
+}
