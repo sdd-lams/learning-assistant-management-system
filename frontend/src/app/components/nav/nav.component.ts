@@ -27,4 +27,8 @@ export class NavComponent implements OnInit {
   redirectToLasList() {
     this.router.navigate(['dashboard/las']);
   }
+
+  redirectToLaResource() {
+    this.router.navigate(['dashboard/la-resource']);
+  }
 }

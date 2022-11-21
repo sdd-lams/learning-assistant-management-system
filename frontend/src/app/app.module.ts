@@ -39,6 +39,7 @@ import { StudentListComponent } from './components/student-list/student-list.com
 // Services
 import { AuthService } from './services/auth.service';
 import { RequestsService } from './services/requests.service';
+import { LaResourceComponent } from './components/la-resource/la-resource.component';
 
 @NgModule({
   declarations: [
@@ -55,6 +56,7 @@ import { RequestsService } from './services/requests.service';
     DropDownComponent,
     UserListComponent,
     LasListComponentComponent,
+    LaResourceComponent,
   ],
   imports: [
     HttpClientModule,

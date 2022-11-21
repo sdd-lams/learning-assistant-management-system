@@ -1,5 +1,5 @@
 import { LasListComponentComponent } from './components/las-list-component/las-list-component.component';
-import { InputDataModalComponent } from './components/input-data-modal/input-data-modal.component';
+import { LaResourceComponent } from './components/la-resource/la-resource.component';
 import { StudentListComponent } from './components/student-list/student-list.component';
 import { ForgotPasswordComponent } from './components/forgot-password/forgot-password.component';
 import { VerifyEmailComponent } from './components/verify-email/verify-email.component';
@@ -21,6 +21,7 @@ const routes: Routes = [
       { path: 'students', component: StudentListComponent },
       { path: 'users', component: UserListComponent },
       { path: 'las', component: LasListComponentComponent },
+      { path: 'la-resource', component: LaResourceComponent },
     ],
   },
   { path: 'login', component: LoginComponent },
