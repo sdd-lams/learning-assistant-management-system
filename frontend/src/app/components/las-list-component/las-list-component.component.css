@@ -1,11 +1,3 @@
-.la-table {
-  width: 100%;
-  height: auto;
-  border-collapse: separate;
-  border-spacing: 0.5rem;
-  font-size: 13px;
-}
-
 .la-card {
   background-color: #ffffff;
   padding: 20px;
@@ -19,8 +11,9 @@
 
 .flex {
   display: flex;
-  justify-content: space-evenly;
+  justify-content: flex-start;
   gap: 30px;
+  flex-wrap: wrap;
 }
 
 h3 {

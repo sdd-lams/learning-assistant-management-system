@@ -12,19 +12,35 @@ import { allowedNodeEnvironmentFlags } from 'process';
 export class UserListComponent implements OnInit {
   users!: User[];
   showbtn: boolean = true;
+  laUsers: User[] = [];
+  regUsers: User[] = [];
+
   constructor(private authService: AuthService) {}
 
   ngOnInit(): void {
     this.authService.GetUsers().subscribe((_users: User[]) => {
       console.log(_users);
       this.users = _users;
+
+      for (let user of this.users) {
+        if (user.role?.toLowerCase() == 'la') {
+          this.laUsers.push(user);
+        } else {
+          this.regUsers.push(user);
+        }
+      }
     });
   }
-  addRole() {
+
+  addRole(user: User) {
     this.authService.AddRole();
+    this.regUsers = this.regUsers.filter((u) => u != user);
+    user.role = 'la';
   }
 
-  removeRole() {
+  removeRole(user: User) {
     this.authService.RemoveRole();
+    this.laUsers = this.laUsers.filter((u) => u != user);
+    user.role = 'none';
   }
 }
