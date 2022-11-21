@@ -1,3 +1,4 @@
+import { switchMap } from 'rxjs/operators';
 import { Injectable } from '@angular/core';
 import { User } from '../interfaces/user';
 import * as auth from 'firebase/auth';
@@ -186,15 +187,17 @@ export class AuthService {
     });
   }
 
-  GetUsers(): Observable<User[]> {
-    return this.afs.collection<User>('users').valueChanges();
+  async GetUsers(): Promise<any> {
+    return this.afs
+      .collection<User>('users')
+      .ref.get()
+      .then((ref) => {
+        return ref;
+      });
   }
 
-  AddRole() {
-    const user = JSON.parse(localStorage.getItem('user')!);
-    const userRef: AngularFirestoreDocument<any> = this.afs.doc(
-      `users/${user.uid}`
-    );
+  AddRole(uid: string) {
+    const userRef: AngularFirestoreDocument<any> = this.afs.doc(`users/${uid}`);
 
     const data = {
       role: 'la',
@@ -203,11 +206,8 @@ export class AuthService {
     return userRef.update(data);
   }
 
-  RemoveRole() {
-    const user = JSON.parse(localStorage.getItem('user')!);
-    const userRef: AngularFirestoreDocument<any> = this.afs.doc(
-      `users/${user.uid}`
-    );
+  RemoveRole(uid: string) {
+    const userRef: AngularFirestoreDocument<any> = this.afs.doc(`users/${uid}`);
 
     const data = {
       role: 'none',
