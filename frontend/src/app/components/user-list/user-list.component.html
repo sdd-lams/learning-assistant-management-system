@@ -12,10 +12,12 @@
         </thead>
         <tbody>
           <tr *ngFor="let user of regUsers">
-            <td> {{user.email}}</td>
-            <td> {{user.role}} </td>
+            <td>{{ user.email }}</td>
+            <td>{{ user.role }}</td>
             <td id="btn-td">
-              <button class="button" (click)="giveLaRole(user)">Give LA Role</button>
+              <button class="button" (click)="addRole(user)">
+                Give LA Role
+              </button>
             </td>
           </tr>
         </tbody>
@@ -36,10 +38,12 @@
         </thead>
         <tbody>
           <tr *ngFor="let user of laUsers">
-            <td> {{user.email}}</td>
-            <td> {{user.role}} </td>
+            <td>{{ user.email }}</td>
+            <td>{{ user.role }}</td>
             <td id="btn-td">
-              <button class="button" (click)="removeLARole(user)">Remove LA Role</button>
+              <button class="button" (click)="removeRole(user)">
+                Remove LA Role
+              </button>
             </td>
           </tr>
         </tbody>

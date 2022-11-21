@@ -7,6 +7,8 @@ router.get("/", async (req, res) => {
   try {
     const data = await Student.find({});
 
+    // console.log(req.user);
+
     console.log("Returned all the Students");
     res.status(200).json(data);
   } catch (error) {

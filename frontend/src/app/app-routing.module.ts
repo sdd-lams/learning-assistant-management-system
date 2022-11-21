@@ -4,6 +4,7 @@ import { StudentListComponent } from './components/student-list/student-list.com
 import { ForgotPasswordComponent } from './components/forgot-password/forgot-password.component';
 import { VerifyEmailComponent } from './components/verify-email/verify-email.component';
 import { AuthGuard } from './guards/auth.guard';
+import { RoleGuard } from './guards/auth.guard';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { SignupComponent } from './components/signup/signup.component';
 import { LoginComponent } from './components/login/login.component';
@@ -18,8 +19,12 @@ const routes: Routes = [
     component: DashboardComponent,
     canActivate: [AuthGuard],
     children: [
-      { path: 'students', component: StudentListComponent },
-      { path: 'users', component: UserListComponent },
+      {
+        path: 'students',
+        component: StudentListComponent,
+        canActivate: [RoleGuard],
+      },
+      { path: 'users', component: UserListComponent, canActivate: [RoleGuard] },
       { path: 'las', component: LasListComponentComponent },
       { path: 'la-resource', component: LaResourceComponent },
     ],

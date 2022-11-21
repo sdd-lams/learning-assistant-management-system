@@ -52,13 +52,13 @@ app
   // .use("/users", decode.decodeToken, usersRoutes);
 
   // removed decodeToken for API endpoint testing
-  .use("/students", studentRoutes)
+  .use("/students", decode.decodeToken, studentRoutes)
 
-  .use("/user", userRoutes)
+  .use("/user", decode.decodeToken, userRoutes)
 
-  .use("/users", usersRoutes)
+  .use("/users", decode.decodeToken, usersRoutes)
 
-  .use("/Las", LasRoutes);
+  .use("/las", decode.decodeToken, LasRoutes);
 
 // This must be the last get statement, dont put any app.use below it
 app.get("*", (req, res) => {

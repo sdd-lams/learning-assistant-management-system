@@ -1,5 +1,5 @@
+import { AuthService } from 'src/app/services/auth.service';
 import { Component, OnInit } from '@angular/core';
-import { RequestsService } from '../../services/requests.service';
 import { User } from '../../interfaces/user';
 
 @Component({
@@ -8,34 +8,37 @@ import { User } from '../../interfaces/user';
   styleUrls: ['./user-list.component.css'],
 })
 export class UserListComponent implements OnInit {
-  allUsers!: User[];
-  constructor(private requestService: RequestsService) {}
-
+  users!: User[];
+  showbtn: boolean = true;
   laUsers: User[] = [];
   regUsers: User[] = [];
 
+  constructor(private authService: AuthService) {}
+
   ngOnInit(): void {
-    this.requestService.getUsers().subscribe((_users: User[]) => {
-      this.allUsers = _users;
-      console.log(this.allUsers);
-      for (let usr of this.allUsers) {
-        if (usr.role == 'LA') {
-          this.laUsers.push(usr);
+    this.authService.GetUsers().subscribe((_users: User[]) => {
+      console.log(_users);
+      this.users = _users;
+
+      for (let user of this.users) {
+        if (user.role?.toLowerCase() == 'la') {
+          this.laUsers.push(user);
         } else {
-          this.regUsers.push(usr);
+          this.regUsers.push(user);
         }
       }
     });
   }
-  giveLaRole(user: User) {
-    user.role = 'LA';
+
+  addRole(user: User) {
+    this.authService.AddRole();
     this.regUsers = this.regUsers.filter((u) => u != user);
-    this.laUsers.push(user);
+    user.role = 'la';
   }
 
-  removeLARole(user: User) {
-    user.role = 'Student';
+  removeRole(user: User) {
+    this.authService.RemoveRole();
     this.laUsers = this.laUsers.filter((u) => u != user);
-    this.regUsers.push(user);
+    user.role = 'none';
   }
 }

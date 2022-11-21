@@ -1,5 +1,6 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
+import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
   selector: 'app-nav',
@@ -12,7 +13,11 @@ export class NavComponent implements OnInit {
   @Output()
   displayLaInfoModal: EventEmitter<boolean> = new EventEmitter<boolean>();
 
-  constructor(private router: Router, private route: ActivatedRoute) {}
+  constructor(
+    private auth: AuthService,
+    private router: Router,
+    private route: ActivatedRoute
+  ) {}
 
   ngOnInit(): void {}
 
@@ -30,5 +35,9 @@ export class NavComponent implements OnInit {
 
   redirectToLaResource() {
     this.router.navigate(['dashboard/la-resource']);
+  }
+
+  logout() {
+    this.auth.SignOut();
   }
 }
