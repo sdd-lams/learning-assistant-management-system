@@ -39,7 +39,7 @@ export class EditStudentModalComponent implements OnInit {
     this.editStudentForm.patchValue({
       assignedla: this.student.assignedla,
       status: this.student.status,
-      laComment: this.student.lacomment,
+      lacomment: this.student.lacomment,
     });
   }
 
@@ -63,9 +63,16 @@ export class EditStudentModalComponent implements OnInit {
 
   onSubmit<Key extends keyof Student>() {
     for (var field in this.editStudentForm.value) {
-      const value: Student[Key] = this.editStudentForm.value[field];
+      let value: any =
+        this.editStudentForm.value[
+          field as keyof typeof this.editStudentForm.value
+        ];
 
-      if (this.editStudentForm.value[field] == 'undefined') {
+      if (
+        this.editStudentForm.value[
+          field as keyof typeof this.editStudentForm.value
+        ] == 'undefined'
+      ) {
         delete this.student[field as Key];
       } else {
         this.student[field as Key] = value;
