@@ -43,3 +43,8 @@ hr {
   height: 30px;
   margin-bottom: 20px;
 }
+
+.EWS-Counter {
+  text-align: right;
+  margin-left: auto;
+}
