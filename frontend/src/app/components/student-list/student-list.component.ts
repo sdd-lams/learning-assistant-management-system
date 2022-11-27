@@ -61,6 +61,7 @@ export class StudentListComponent implements OnInit {
         for (var student of this.students) {
           student.ewsdate = new Date(student.ewsdate.toString());
         }
+        this.numStudents = this.students.length;
       });
     });
   }
@@ -73,6 +74,7 @@ export class StudentListComponent implements OnInit {
   closeInputModal(_students: Student[]) {
     this.students = _students;
     this.sortEWS(this.selectedSortOption);
+    this.numStudents = this.students.length;
 
     // handle dates better
     for (var student of this.students) {
