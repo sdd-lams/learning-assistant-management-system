@@ -1,9 +1,9 @@
 @import url("https://fonts.googleapis.com/css2?family=Roboto&display=swap");
 :host {
-  --main-color: #613194;
-  --main-color-faded: #8251b6;
-  --seconday-color: #ed5101;
-  color: rgb(95, 95, 95);
+  --main-color: rgb(65, 125, 111);
+  --main-color-faded: rgb(80, 167, 147);
+  --seconday-color: #688ef6;
+  color: rgb(66, 69, 73);
 }
 
 body,
@@ -11,10 +11,17 @@ p {
   line-height: 1.5;
 }
 
+.sign-in-text {
+  font-size: 1rem;
+}
+.header {
+  font-size: 2rem;
+  margin-bottom: 10px;
+}
+
 input {
   border: 2px solid #f2f4f7;
-  border-radius: 3px;
-  color: #60656f;
+  border-radius: 10px 10px 10px 10px;
   font-size: 16px;
   line-height: 1;
   padding: 10px 16px;
@@ -22,12 +29,22 @@ input {
   -webkit-appearance: none;
 }
 
+input[type="email"],
+input[type="password"] {
+  background-color: white;
+  transition: 0.25s;
+}
+
+input[type="email"]:hover,
+input[type="password"]:hover {
+  border-color: rgba(65, 125, 111, 0.25);
+}
+
 textarea:focus,
 input:focus,
 input[type]:focus,
 .uneditable-input:focus {
-  border-color: var(--seconday-color);
-  box-shadow: 0 1px 1px var(--seconday-color);
+  border-color: rgb(65, 125, 111);
   inset: 0 0 8px var(--seconday-color);
   outline: 0 none !important;
 }
@@ -37,37 +54,26 @@ input[type]:focus,
 }
 
 #login-wrapper {
+  display: flex;
   min-height: 100vh;
-  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
 }
 
-.login-right {
-  min-height: 100vh;
-  width: 65%;
-  background-repeat: no-repeat;
-  -webkit-background-size: cover;
-  -moz-background-size: cover;
-  -o-background-size: cover;
-  background-size: cover;
-}
-
-.login-right h2 {
-  margin: 0 auto;
-  font-size: 4rem;
-  max-width: 55vw;
-  word-wrap: break-word;
-  color: white;
-  text-shadow: -2px 5px var(--seconday-color);
-}
-
-.login-left {
+.login-form {
   width: 35%;
-  min-height: 100vh;
+  min-width: 370px;
   background-color: rgb(245, 245, 245);
+  padding: 40px 20px;
+  border-radius: 10px;
+  box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
 }
 
 .inner-wrap {
   margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .inner-wrap a {
@@ -92,35 +98,49 @@ input[type]:focus,
   color: var(--seconday-color);
 }
 
-.input-group {
-  display: block;
-  margin-bottom: 20px;
+.forgot-password {
+  font-size: 0.75rem;
 }
 
-.input-group label {
-  display: block;
-  font-weight: 600;
-}
-
-.input-group input {
-  position: relative;
+.auth-div {
   width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
-.purp-btn {
+.input-div {
+  margin-bottom: 20px;
+  width: 80%;
+}
+
+.input-div label {
+  display: block;
+  font-weight: 400;
+}
+
+input[type="button"] {
+  width: 40%;
+}
+
+.purp-btn,
+.googleBtn {
+  border: solid 1px;
   background-color: var(--main-color);
   border-color: var(--main-color);
   border-radius: 10px;
   color: white;
   cursor: pointer;
-  font-size: 20px;
+  font-size: 15px;
   font-weight: 550;
   text-decoration: none;
   line-height: 1;
-  padding: 11px 16px;
+  padding: 8px 12px;
+  transition: 0.25s;
 }
 
-.purp-btn:hover {
+.purp-btn:hover,
+.googleBtn:hover {
   background-color: var(--main-color-faded);
   border-color: var(--main-color-faded);
 }
@@ -135,24 +155,22 @@ input[type]:focus,
 
 @media only screen and (max-width: 1200px) {
   .header {
-    font-size: 5rem;
+    font-size: 2rem;
   }
 }
 
 @media only screen and (max-width: 992px) {
   .header {
-    font-size: 4.25rem;
+    font-size: 2rem;
   }
 }
 
 @media only screen and (max-width: 768px) {
-  .login-right {
-    display: none;
-  }
-  .login-left {
+  .login-form {
     width: 100%;
+    height: 100vh;
   }
   .header {
-    font-size: 3.5rem;
+    font-size: 1.5rem;
   }
 }
