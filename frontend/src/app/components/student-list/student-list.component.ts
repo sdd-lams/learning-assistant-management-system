@@ -1,5 +1,4 @@
 import { Component, OnInit, EventEmitter, Output } from '@angular/core';
-import * as internal from 'stream';
 import { Student } from '../../interfaces/student';
 import { RequestsService } from '../../services/requests.service';
 
