@@ -11,6 +11,7 @@ export class StudentListComponent implements OnInit {
   students: Student[] = [];
   selectedStudent?: Student = undefined;
   displayImportModal: boolean = false;
+  numStudents: number = 0;
   sortOptions: any[] = [
     // Default option at index 0
     { option: 'ewsdate', text: 'Date' },
@@ -37,6 +38,7 @@ export class StudentListComponent implements OnInit {
       for (var student of this.students) {
         student.ewsdate = new Date(student.ewsdate.toString());
       }
+      this.numStudents = this.students.length;
     });
   }
 
