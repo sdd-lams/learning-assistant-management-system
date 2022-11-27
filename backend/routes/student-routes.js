@@ -1,6 +1,7 @@
 const Student = require("../models/student");
 const express = require("express");
 const router = express.Router();
+const database = require("../db");
 
 // Get all students
 router.get("/", async (req, res) => {
@@ -58,17 +59,52 @@ router.get("/:rin", async (req, res) => {
 });
 
 router.post("/", async (req, res) => {
-  try {
-    const docs = await Student.insertMany(req.body.data);
-    console.log(`Inserted ${docs.length} new EWS entries`);
+    var inserted = 0;
+
+    for (let student of req.body.students) {
+      try {
+        const exists = await Student.exists({
+          rin: student.rin,
+        });
+
+        // If it exists, attempt to return it
+        if (exists) {
+          try {
+            const data = await Student.findOne({
+              rin: student.rin,
+            });
+
+            var newewscount = data.ewscount + 1;
+            student.ewscount = newewscount;
+
+            await Student.updateMany(
+              {
+                rin: student.rin
+              },
+              {
+                ewscount: newewscount
+              }
+            );
+          } catch (error) {
+            console.log(`Error updating EWS Count for RIN: ${student.rin}` + error.message);
+            res.status(500).json({ message: error.message });
+          }
+        }
+
+        await Student.create(student);
+        inserted++;
+      } catch (error) {
+        console.log("Error inserting student: " + error.message);
+        res.status(500).json({ message: error.message });
+      }
+    };
+
+
+    console.log(`Inserted ${inserted} new EWS entries`);
 
     res
       .status(200)
-      .json({ message: `Successfully inserted ${docs.length} EWS entries` });
-  } catch (error) {
-    console.log("Error inserting new EWS data: " + error.message);
-    res.status(500).json({ message: error.message });
-  }
+      .json({ message: `Successfully inserted ${inserted} EWS entries` });
 });
 
 router.put("/:rin", async (req, res) => {
@@ -112,9 +148,9 @@ router.delete("/", async (req, res) => {
 });
 
 router.delete("/:rin", async (req, res) => {
+  const session = await database.startSession();
+  session.startTransaction();
   try {
-    console.log(req.params.rin);
-    console.log(req.body);
     await Student.deleteOne({
       rin: req.params.rin,
       ccode: req.body.ccode,
@@ -122,13 +158,50 @@ router.delete("/:rin", async (req, res) => {
       ewsdate: req.body.ewsdate,
       ewsreason: req.body.ewsreason,
     });
+
     console.log(`EWS entry for rin:${req.params.rin}\
-    course:${req.query.csubject}${req.query.ccode} date:${req.query.ewsdate} was deleted`);
-    res.status(200).json({ message: "EWS entry deleted" });
+    course:${req.body.csubject}${req.body.ccode} date:${req.body.ewsdate} was deleted`);
   } catch (error) {
     console.log("Error deleting EWS entry: " + error.message);
+    await session.abortTransaction();
     res.status(500).json({ message: error.message });
   }
+
+  const exists = await Student.exists({
+    rin: req.params.rin,
+  });
+
+  // If it exists, attempt to return it
+  if (exists) {
+    console.log('exists')
+    try {
+      const data = await Student.findOne({
+        rin: req.params.rin,
+      });
+
+      var newewscount = data.ewscount - 1;
+      console.log(newewscount);
+
+      await Student.updateMany(
+        {
+          rin: req.params.rin,
+        },
+        {
+          ewscount: newewscount,
+        }
+      );
+    } catch (error) {
+      console.log(
+        `Error updating EWS Count for RIN: ${student.rin}` + error.message
+      );
+      await session.abortTransaction();
+      res.status(500).json({ message: error.message });
+    }
+  }
+
+  await session.commitTransaction();
+  session.endSession();
+  res.status(200).json({ message: "EWS entry deleted" });
 });
 
 module.exports = router;

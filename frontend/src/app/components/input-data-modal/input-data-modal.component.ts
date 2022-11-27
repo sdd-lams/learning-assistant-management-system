@@ -1,5 +1,4 @@
 import { Component, OnInit, EventEmitter, Output } from '@angular/core';
-import { parse } from 'path';
 import { RequestsService } from '../../services/requests.service';
 import { Student } from '../../interfaces/student';
 
@@ -28,7 +27,11 @@ export class InputDataModalComponent implements OnInit {
         .postStudents(this.allStudents)
         .subscribe((str: String) => {
           console.log(str);
-          this.onSubmitEvent.emit(this.allStudents);
+
+          this.requestService.getStudents().subscribe((students: Student[]) => {
+            console.log(students);
+            this.onSubmitEvent.emit(students);
+          });
         });
     }
   }
@@ -37,7 +40,10 @@ export class InputDataModalComponent implements OnInit {
     if (data == undefined) {
       return [];
     }
+
+    data = data.replace(/^\s*$(?:\r\n?|\n)/gm, '');
     let dataArr: string[] = data.split('\n');
+
     let allStudents: Student[] = [];
     let i: number = 0;
 
@@ -46,23 +52,33 @@ export class InputDataModalComponent implements OnInit {
     }
 
     let allStudentData: Array<string[]> = [];
+
     while (i < dataArr.length) {
       let student: string[] = [];
+
       if (dataArr[i].substring(0, 2) == '66') {
         student.push(dataArr[i]);
+
         let j: number = i + 1;
+        let repeat = false;
         while (j < dataArr.length && dataArr[j].substring(0, 2) != '66') {
-          if (dataArr[j] != '' && j - i != 6) {
-            student.push(dataArr[j]);
+          if (j - i == 8 && dataArr[j].split(',').length == 2 && !repeat) {
+            student.push('');
+            repeat = true;
+            continue;
           }
+          repeat = false;
+
+          if (dataArr[j] != '') student.push(dataArr[j]);
           j++;
         }
+
         i = j;
-        allStudentData.push(student);
+        if (student.length == 12) allStudentData.push(student);
       }
     }
+
     for (let student of allStudentData) {
-      console.log(student[4]);
       const studentObj: Student = {
         rin: parseInt(student[0]),
         fname: student[1].split(', ')[1],
@@ -74,6 +90,7 @@ export class InputDataModalComponent implements OnInit {
         ccode: student[6],
         cname: student[7],
         profcomment: student[8],
+        cprof: student[9],
         dorm: student[10],
         room: student[11],
         emailcount: 0,
