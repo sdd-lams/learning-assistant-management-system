@@ -1,4 +1,3 @@
-import { switchMap } from 'rxjs/operators';
 import { Injectable } from '@angular/core';
 import { User } from '../interfaces/user';
 import * as auth from 'firebase/auth';
@@ -8,7 +7,6 @@ import {
   AngularFirestoreDocument,
 } from '@angular/fire/compat/firestore';
 import { Router } from '@angular/router';
-import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',

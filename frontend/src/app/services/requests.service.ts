@@ -61,7 +61,7 @@ export class RequestsService {
         return this.http.post<String>(
           url,
           {
-            data: students,
+            students,
           },
           {
             headers: headers,

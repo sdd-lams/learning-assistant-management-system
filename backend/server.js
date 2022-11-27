@@ -1,5 +1,4 @@
 const express = require("express");
-const mongoose = require("mongoose");
 const bodyParser = require("body-parser");
 const cors = require("cors");
 const path = require("path");
@@ -11,20 +10,7 @@ const usersRoutes = require("./routes/users-routes");
 const LasRoutes = require("./routes/las-routes")
 
 const decode = require("./decode");
-
-// DB connection stuff
-mongoose.connect(
-  "mongodb+srv://lams-adim:adminpassword123@lams-cluster0.cywatwl.mongodb.net/lams?retryWrites=true&w=majority"
-);
-const database = mongoose.connection;
-
-database.on("error", (error) => {
-  console.log(error);
-});
-
-database.once("connected", () => {
-  console.log("Database Connected");
-});
+const database = require("./db");
 
 const limiter = rateLimit({
   windowMs: 15 * 60 * 1000, // 15 minutes
@@ -45,19 +31,9 @@ app
   // Rate limit all requests
   .use(limiter)
   // Endpoints
-  // .use("/students", decode.decodeToken, studentRoutes)
-
-  // .use("/user", decode.decodeToken, userRoutes)
-
-  // .use("/users", decode.decodeToken, usersRoutes);
-
-  // removed decodeToken for API endpoint testing
   .use("/students", decode.decodeToken, studentRoutes)
-
   .use("/user", decode.decodeToken, userRoutes)
-
   .use("/users", decode.decodeToken, usersRoutes)
-
   .use("/las", LasRoutes);
 
 // This must be the last get statement, dont put any app.use below it

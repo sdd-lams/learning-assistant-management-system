@@ -44,31 +44,40 @@ export class StudentListComponent implements OnInit {
 
   onRowClick(student: Student) {
     this.selectedStudent = student;
+    this.displayImportModal = false;
   }
 
   deleteStudent(student: Student) {
     this.requestService.deleteStudent(student).subscribe((res: String) => {
-      this.students = this.students.filter((s) => {
-        return (
-          s.rin != student.rin ||
-          s.ccode != student.ccode ||
-          s.cname != s.cname ||
-          s.ewsdate != student.ewsdate ||
-          s.ewsreason != student.ewsreason
-        );
-      });
       console.log(res);
       this.selectedStudent = undefined;
+
+      this.requestService.getStudents().subscribe((_students: Student[]) => {
+        this.students = _students;
+        // Sort student data by defaut sort option
+        this.sortEWS(this.selectedSortOption);
+
+        // handle dates better
+        for (var student of this.students) {
+          student.ewsdate = new Date(student.ewsdate.toString());
+        }
+      });
     });
   }
 
   showInputModal() {
     this.displayImportModal = true;
+    this.selectedStudent = undefined;
   }
 
-  closeInputModal(importedStudent: Student[]) {
-    this.students.push(...importedStudent);
+  closeInputModal(_students: Student[]) {
+    this.students = _students;
     this.sortEWS(this.selectedSortOption);
+
+    // handle dates better
+    for (var student of this.students) {
+      student.ewsdate = new Date(student.ewsdate.toString());
+    }
     this.displayImportModal = false;
   }
 

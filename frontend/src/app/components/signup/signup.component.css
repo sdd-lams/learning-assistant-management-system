@@ -48,25 +48,6 @@ input[type]:focus,
   flex-wrap: wrap;
 }
 
-.login-right {
-  min-height: 100vh;
-  width: 65%;
-  background-repeat: no-repeat;
-  -webkit-background-size: cover;
-  -moz-background-size: cover;
-  -o-background-size: cover;
-  background-size: cover;
-}
-
-.login-right h2 {
-  margin: 0 auto;
-  font-size: 4rem;
-  max-width: 55vw;
-  word-wrap: break-word;
-  color: white;
-  text-shadow: -2px 5px var(--off-color);
-}
-
 .login-left {
   width: 35%;
   min-height: 100vh;
