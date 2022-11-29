@@ -29,12 +29,14 @@ export class UserListComponent implements OnInit {
 
   addRole(user: User) {
     this.authService.AddRole(user.uid);
+    user.role = 'la';
     this.regUsers = this.regUsers.filter((u) => u != user);
     this.laUsers.push(user);
   }
 
   removeRole(user: User) {
     this.authService.RemoveRole(user.uid);
+    user.role = 'none';
     this.laUsers = this.laUsers.filter((u) => u != user);
     this.regUsers.push(user);
 

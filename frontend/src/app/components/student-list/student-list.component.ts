@@ -106,6 +106,9 @@ export class StudentListComponent implements OnInit {
   // Sort by ews date, most recent first
   sortByEWSDate() {
     this.students.sort((s1: Student, s2: Student) => {
+      if (s1.ewsdate == s2.ewsdate) {
+        return this.sortStr(s1.fname, s2.fname);
+      }
       if (s1.ewsdate < s2.ewsdate) {
         return 1;
       } else {
@@ -117,11 +120,7 @@ export class StudentListComponent implements OnInit {
   // Sort by student first name alphabetically
   sortByName() {
     this.students.sort((s1: Student, s2: Student) => {
-      if (s1.fname == s2.fname) {
-        return 0;
-      } else {
-        return s1.fname < s2.fname ? -1 : 1;
-      }
+      return this.sortStr(s1.fname, s2.fname);
     });
   }
 
@@ -133,7 +132,7 @@ export class StudentListComponent implements OnInit {
       } else if (!s2.status) {
         return 1;
       } else if (s1.status == s2.status) {
-        return 0;
+        return this.sortStr(s1.fname, s2.fname);
       } else {
         return s1.status < s2.status ? -1 : 1;
       }
@@ -144,7 +143,7 @@ export class StudentListComponent implements OnInit {
   sortByCourse() {
     this.students.sort((s1: Student, s2: Student) => {
       if (s1.cname == s2.cname) {
-        return 0;
+        return this.sortStr(s1.fname, s2.fname);
       } else {
         return s1.cname < s2.cname ? -1 : 1;
       }
@@ -155,7 +154,7 @@ export class StudentListComponent implements OnInit {
   sortByEwsNum() {
     this.students.sort((s1: Student, s2: Student) => {
       if (s1.ewscount == s2.ewscount) {
-        return 0;
+        return this.sortStr(s1.fname, s2.fname);
       } else {
         return s1.ewscount < s2.ewscount ? 1 : -1;
       }
@@ -170,10 +169,18 @@ export class StudentListComponent implements OnInit {
       } else if (!s2.assignedla) {
         return 1;
       } else if (s1.assignedla == s2.assignedla) {
-        return 0;
+        return this.sortStr(s1.fname, s2.fname);
       } else {
         return s1.assignedla < s2.assignedla ? -1 : 1;
       }
     });
+  }
+
+  sortStr(n1: string, n2: string) {
+    if (n1 == n2) {
+      return 0;
+    } else {
+      return n1 < n2 ? -1 : 1;
+    }
   }
 }
