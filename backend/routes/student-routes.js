@@ -59,73 +59,95 @@ router.get("/:rin", async (req, res) => {
 });
 
 router.post("/", async (req, res) => {
-    var inserted = 0;
+  var inserted = 0;
 
-    for (let student of req.body.students) {
-      try {
-        const exists = await Student.exists({
-          rin: student.rin,
-        });
+  for (let student of req.body.students) {
+    try {
+      const exists = await Student.exists({
+        rin: student.rin,
+      });
 
-        // If it exists, attempt to return it
-        if (exists) {
-          try {
-            const data = await Student.findOne({
+      // If it exists, attempt to return it
+      if (exists) {
+        try {
+          const data = await Student.findOne({
+            rin: student.rin,
+          });
+
+          var newewscount = data.ewscount + 1;
+          student.ewscount = newewscount;
+
+          await Student.updateMany(
+            {
               rin: student.rin,
-            });
-
-            var newewscount = data.ewscount + 1;
-            student.ewscount = newewscount;
-
-            await Student.updateMany(
-              {
-                rin: student.rin
-              },
-              {
-                ewscount: newewscount
-              }
-            );
-          } catch (error) {
-            console.log(`Error updating EWS Count for RIN: ${student.rin}` + error.message);
-            res.status(500).json({ message: error.message });
-          }
+            },
+            {
+              ewscount: newewscount,
+            }
+          );
+        } catch (error) {
+          console.log(
+            `Error updating EWS Count for RIN: ${student.rin}` + error.message
+          );
+          res.status(500).json({ message: error.message });
         }
-
-        await Student.create(student);
-        inserted++;
-      } catch (error) {
-        console.log("Error inserting student: " + error.message);
-        res.status(500).json({ message: error.message });
       }
-    };
 
+      await Student.create(student);
+      inserted++;
+    } catch (error) {
+      console.log("Error inserting student: " + error.message);
+      res.status(500).json({ message: error.message });
+    }
+  }
 
-    console.log(`Inserted ${inserted} new EWS entries`);
+  console.log(`Inserted ${inserted} new EWS entries`);
 
-    res
-      .status(200)
-      .json({ message: `Successfully inserted ${inserted} EWS entries` });
+  res
+    .status(200)
+    .json({ message: `Successfully inserted ${inserted} EWS entries` });
 });
 
 router.put("/:rin", async (req, res) => {
   try {
-    console.log(req.query);
     console.log(req.params);
     console.log(req.body);
-    var ret = await Student.findOneAndUpdate(
-      {
-        rin: req.params.rin,
-        ccode: req.body.ccode,
-        csubject: req.body.csubject,
-        ewsdate: req.body.ewsdate,
-        ewsreason: req.body.ewsreason
-      },
-      {
+    let filter = {
+      rin: req.params.rin,
+      ccode: req.body.ccode,
+      csubject: req.body.csubject,
+      ewsdate: req.body.ewsdate,
+      ewsreason: req.body.ewsreason,
+    };
+    let newData = undefined;
+
+    // Unset undefined values from MongoDB
+    if (req.body.status == undefined && req.body.assignedla == undefined) {
+      newData = {
+        $unset: { status: "", assignedla: "" },
+        lacomment: req.body.lacomment,
+      };
+    } else if (req.body.status == undefined) {
+      newData = {
+        $unset: { status: "" },
+        assignedla: req.body.assignedla,
+        lacomment: req.body.lacomment,
+      };
+    } else if (req.body.assignedla == undefined) {
+      newData = {
+        $unset: { assignedla: "" },
+        status: req.body.status,
+        lacomment: req.body.lacomment,
+      };
+    } else {
+      newData = {
         status: req.body.status,
         lacomment: req.body.lacomment,
         assignedla: req.body.assignedla,
-      }
-    );
+      };
+    }
+
+    var ret = await Student.findOneAndUpdate(filter, newData);
     console.log(ret);
     console.log(`EWS entrty for rin:${req.params.rin} \
 course:${req.body.csubject}${req.body.ccode} date:${req.body.ewsdate} was updated`);
@@ -173,7 +195,7 @@ router.delete("/:rin", async (req, res) => {
 
   // If it exists, attempt to return it
   if (exists) {
-    console.log('exists')
+    console.log("exists");
     try {
       const data = await Student.findOne({
         rin: req.params.rin,
