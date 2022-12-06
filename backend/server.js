@@ -10,7 +10,6 @@ const usersRoutes = require("./routes/users-routes");
 const LasRoutes = require("./routes/las-routes")
 
 const decode = require("./decode");
-const database = require("./db");
 
 const limiter = rateLimit({
   windowMs: 15 * 60 * 1000, // 15 minutes
@@ -25,6 +24,7 @@ const app = express();
 app
   .use(cors())
   // Add the static dir from frontend
+  // eslint-disable-next-line no-undef
   .use(express.static(path.join(__dirname, "../frontend/dist/lams")))
   // Parse body on all requests
   .use(bodyParser.json())
@@ -39,6 +39,7 @@ app
 // This must be the last get statement, dont put any app.use below it
 app.get("*", (req, res) => {
   res.sendFile(
+    // eslint-disable-next-line no-undef
     path.join(__dirname, "../frontend/dist/iron-therapy/index.html")
   );
 });

@@ -1,5 +1,4 @@
 const admin = require("./admin");
-const { getFireStore } = require("firebase-admin/firestore");
 
 class Decode {
   async decodeToken(req, res, next) {
