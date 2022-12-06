@@ -1,4 +1,4 @@
-import { switchMap } from 'rxjs/operators';
+/* eslint-disable  @typescript-eslint/no-unused-vars */
 import { AuthService } from './../services/auth.service';
 import { Injectable } from '@angular/core';
 import {

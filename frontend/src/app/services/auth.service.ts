@@ -33,9 +33,13 @@ export class AuthService {
   async reloadUser() {
     try {
       const user = await this.afAuth.currentUser;
-      await user!.reload();
+      if (user != null) {
+        if (user.reload() != null) {
+          await user.reload()
+        }
+      }
       localStorage.setItem('user', JSON.stringify(this.userData));
-      JSON.parse(localStorage.getItem('user')!);
+      // JSON.parse(localStorage.getItem('user')!);
     } catch (e) {
       console.error(e);
     }
@@ -47,8 +51,11 @@ export class AuthService {
       const user = await this.afAuth.currentUser;
       token = await user?.getIdToken(true);
       if (!token) {
-        let cookie = JSON.parse(localStorage.getItem('user')!);
-        token = cookie.stsTokenManager.accessToken;
+        if (localStorage.getItem('user') != null) {
+          const localStor: string =  localStorage.getItem('user') as string;
+          const cookie = JSON.parse(localStor);
+          token = cookie.stsTokenManager.accessToken;
+        }
       }
     } catch (e) {
       console.error(e);
@@ -91,9 +98,11 @@ export class AuthService {
   // Send email verfificaiton when new user sign up
   async SendVerificationMail() {
     try {
-      const user = await this.afAuth.currentUser;
-      await user!.sendEmailVerification();
-      this.router.navigate(['verify-email']);
+      const user= await this.afAuth.currentUser;
+      if (user != null) {
+        await user.sendEmailVerification();
+        this.router.navigate(['verify-email']);
+      }
     } catch (e) {
       console.error(e);
     }
@@ -110,22 +119,31 @@ export class AuthService {
   }
   // Returns true when user is looged in and email is verified
   get isLoggedIn(): boolean {
-    const user = JSON.parse(localStorage.getItem('user')!);
-    return user !== null && user.emailVerified !== false ? true : false;
+    if (localStorage.getItem('user') != null) {
+      const localStor: string = localStorage.getItem('user') as string;
+      const user = JSON.parse(localStor);
+      return user !== null && user.emailVerified !== false ? true : false;
+    }
+    return false;
   }
 
   get isLa(): Promise<boolean> {
-    const user = JSON.parse(localStorage.getItem('user')!);
+    const localStor: string = localStorage.getItem('user') as string
+    
+    const user = JSON.parse(localStor);
 
     return this.afs
       .doc<User>(`users/${user.uid}`)
       .ref.get()
       .then((doc) => {
-        var data = doc.data();
+        const data = doc.data();
         if (data?.role === undefined) {
           return false;
         }
-        return data!.role == 'la';
+        if (data != null) {
+          return data.role == 'la';
+        }
+        return false;
       });
   }
 
@@ -141,7 +159,7 @@ export class AuthService {
   // Auth logic to run auth providers
   async AuthLogin(provider: any) {
     try {
-      let result = await this.afAuth.signInWithPopup(provider);
+      const result = await this.afAuth.signInWithPopup(provider);
       localStorage.setItem('user', JSON.stringify(result.user));
       this.SetUserData(result.user);
     } catch (e) {
@@ -158,11 +176,11 @@ export class AuthService {
       `users/${user.uid}`
     );
 
-    var role: string | undefined = 'none';
+    let role: string | undefined = 'none';
     const docRef = this.afs.collection('users').doc<User>(user.uid);
     await docRef.ref.get().then((userDoc) => {
       if (userDoc.exists) {
-        var data = userDoc.data();
+        const data = userDoc.data();
         if (data?.role !== undefined) {
           role = data?.role;
         }

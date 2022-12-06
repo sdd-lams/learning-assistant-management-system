@@ -1,6 +1,6 @@
 import { AuthService } from './auth.service';
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
+import { HttpClient, HttpHeaders} from '@angular/common/http';
 import { from, Observable } from 'rxjs';
 import { switchMap } from 'rxjs/operators';
 import { Student } from '../interfaces/student';
@@ -14,7 +14,7 @@ export class RequestsService {
   constructor(private http: HttpClient, private authService: AuthService) {}
 
   getLas(): Observable<La[]> {
-    let url: string = 'http://localhost:3000/las';
+    const url = 'http://localhost:3000/las';
 
     return from(this.authService.getToken()).pipe(
       switchMap((token) => {
@@ -32,7 +32,7 @@ export class RequestsService {
   // Subscribe to the return of this method to access the values in the observable
   // Get all exercises
   getStudents(): Observable<Student[]> {
-    let url: string = 'http://localhost:3000/students';
+    const url = 'http://localhost:3000/students';
 
     return from(this.authService.getToken()).pipe(
       switchMap((token) => {
@@ -49,7 +49,7 @@ export class RequestsService {
   }
 
   postStudents(students: Student[]): Observable<string> {
-    let url: string = 'http://localhost:3000/students';
+    const url = 'http://localhost:3000/students';
 
     return from(this.authService.getToken()).pipe(
       switchMap((token) => {
@@ -73,7 +73,7 @@ export class RequestsService {
 
   // Send student update data to the backend to update a single student entry
   putStudent(student: Student): Observable<string> {
-    let url: string = `http://localhost:3000/students/${student.rin}`;
+    const url = `http://localhost:3000/students/${student.rin}`;
 
     return from(this.authService.getToken()).pipe(
       switchMap((token) => {
@@ -90,7 +90,7 @@ export class RequestsService {
   }
 
   deleteStudent(student: Student): Observable<string> {
-    let url: string = `http://localhost:3000/students/${student.rin}`;
+    const url = `http://localhost:3000/students/${student.rin}`;
     return from(this.authService.getToken()).pipe(
       switchMap((token) => {
         const reqHeader = new HttpHeaders({
@@ -106,7 +106,7 @@ export class RequestsService {
   }
 
   getUsers(): Observable<User[]> {
-    let url: string = 'http://localhost:3000/users';
+    const url = 'http://localhost:3000/users';
     return from(this.authService.getToken()).pipe(
       switchMap((token) => {
         const reqHeader = new HttpHeaders({

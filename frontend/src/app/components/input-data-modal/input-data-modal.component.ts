@@ -1,4 +1,4 @@
-import { Component, OnInit, EventEmitter, Output } from '@angular/core';
+import { Component, EventEmitter, Output } from '@angular/core';
 import { RequestsService } from '../../services/requests.service';
 import { Student } from '../../interfaces/student';
 
@@ -7,14 +7,13 @@ import { Student } from '../../interfaces/student';
   templateUrl: './input-data-modal.component.html',
   styleUrls: ['./input-data-modal.component.css'],
 })
-export class InputDataModalComponent implements OnInit {
+export class InputDataModalComponent {
   ewsData?: string;
   allStudents?: Student[];
   @Output() onCloseEvent: EventEmitter<any> = new EventEmitter();
   @Output() onSubmitEvent: EventEmitter<Student[]> = new EventEmitter();
 
   constructor(private requestService: RequestsService) {}
-  ngOnInit(): void {}
 
   onClose() {
     this.onCloseEvent.emit();
@@ -25,7 +24,7 @@ export class InputDataModalComponent implements OnInit {
     if (this.allStudents.length > 0) {
       this.requestService
         .postStudents(this.allStudents)
-        .subscribe((str: String) => {
+        .subscribe((str: string) => {
           console.log(str);
 
           this.requestService.getStudents().subscribe((students: Student[]) => {
@@ -42,19 +41,19 @@ export class InputDataModalComponent implements OnInit {
     }
 
     data = data.replace(/^\s*$(?:\r\n?|\n)/gm, '');
-    let dataArr: string[] = data.split('\n');
+    const dataArr: string[] = data.split('\n');
 
-    let allStudents: Student[] = [];
-    let i: number = 0;
+    const allStudents: Student[] = [];
+    let i = 0;
 
     if (dataArr[i].substring(0, 2) != '66') {
       return [];
     }
 
-    let allStudentData: Array<string[]> = [];
+    const allStudentData: Array<string[]> = [];
 
     while (i < dataArr.length) {
-      let student: string[] = [];
+      const student: string[] = [];
 
       if (dataArr[i].substring(0, 2) == '66') {
         student.push(dataArr[i]);
@@ -78,7 +77,7 @@ export class InputDataModalComponent implements OnInit {
       }
     }
 
-    for (let student of allStudentData) {
+    for (const student of allStudentData) {
       const studentObj: Student = {
         rin: parseInt(student[0]),
         fname: student[1].split(', ')[1],

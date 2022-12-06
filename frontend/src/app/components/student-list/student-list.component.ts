@@ -10,8 +10,8 @@ import { RequestsService } from '../../services/requests.service';
 export class StudentListComponent implements OnInit {
   students: Student[] = [];
   selectedStudent?: Student = undefined;
-  displayImportModal: boolean = false;
-  numStudents: number = 0;
+  displayImportModal = false;
+  numStudents = 0;
   sortOptions: any[] = [
     // Default option at index 0
     { option: 'ewsdate', text: 'Date' },
@@ -35,7 +35,7 @@ export class StudentListComponent implements OnInit {
       this.sortEWS(this.sortOptions[0]);
 
       // handle dates better
-      for (var student of this.students) {
+      for (const student of this.students) {
         student.ewsdate = new Date(student.ewsdate.toString());
       }
       this.numStudents = this.students.length;
@@ -48,7 +48,7 @@ export class StudentListComponent implements OnInit {
   }
 
   deleteStudent(student: Student) {
-    this.requestService.deleteStudent(student).subscribe((res: String) => {
+    this.requestService.deleteStudent(student).subscribe((res: string) => {
       console.log(res);
       this.selectedStudent = undefined;
 
@@ -58,7 +58,7 @@ export class StudentListComponent implements OnInit {
         this.sortEWS(this.selectedSortOption);
 
         // handle dates better
-        for (var student of this.students) {
+        for (const student of this.students) {
           student.ewsdate = new Date(student.ewsdate.toString());
         }
         this.numStudents = this.students.length;
@@ -77,7 +77,7 @@ export class StudentListComponent implements OnInit {
     this.numStudents = this.students.length;
 
     // handle dates better
-    for (var student of this.students) {
+    for (const student of this.students) {
       student.ewsdate = new Date(student.ewsdate.toString());
     }
     this.displayImportModal = false;

@@ -9,7 +9,7 @@ import { Router } from '@angular/router';
   styleUrls: ['./user-list.component.css'],
 })
 export class UserListComponent implements OnInit {
-  showbtn: boolean = true;
+  showbtn = true;
   laUsers: User[] = [];
   regUsers: User[] = [];
 
@@ -18,7 +18,7 @@ export class UserListComponent implements OnInit {
   async ngOnInit(): Promise<void> {
     const _users = await this.authService.GetUsers();
     _users.forEach((user: any) => {
-      var user_data: User = user.data();
+      const user_data: User = user.data();
       if (user_data.role == 'la') {
         this.laUsers.push(user_data);
       } else {
@@ -40,10 +40,14 @@ export class UserListComponent implements OnInit {
     this.laUsers = this.laUsers.filter((u) => u != user);
     this.regUsers.push(user);
 
-    console.log(JSON.parse(localStorage.getItem('user')!).uid);
+    
+    if (localStorage.getItem('user') != null) {
+      const userItem: string = localStorage.getItem('user') as string
+      console.log(JSON.parse(userItem).uid); 
 
-    if (user.uid == JSON.parse(localStorage.getItem('user')!).uid) {
-      this.router.navigate(['dashboard/la-resource']);
+      if (user.uid == JSON.parse(userItem).uid) {
+        this.router.navigate(['dashboard/la-resource']);
+      }
     }
   }
 }
