@@ -1,5 +1,4 @@
-import { Component, OnInit, Output } from '@angular/core';
-import { Student } from '../../interfaces/student';
+import { Component} from '@angular/core';
 import { RequestsService } from '../../services/requests.service';
 
 @Component({
@@ -7,13 +6,11 @@ import { RequestsService } from '../../services/requests.service';
   templateUrl: './dashboard.component.html',
   styleUrls: ['./dashboard.component.css'],
 })
-export class DashboardComponent implements OnInit {
-  displayImportModal: boolean = false;
-  displayLaContactModal: boolean = false;
+export class DashboardComponent{
+  displayImportModal = false;
+  displayLaContactModal = false;
 
   constructor(private requestService: RequestsService) {}
-
-  ngOnInit(): void {}
 
   showInputModal() {
     this.displayImportModal = true;

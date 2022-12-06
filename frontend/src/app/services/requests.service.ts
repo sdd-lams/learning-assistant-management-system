@@ -48,7 +48,7 @@ export class RequestsService {
     );
   }
 
-  postStudents(students: Student[]): Observable<String> {
+  postStudents(students: Student[]): Observable<string> {
     let url: string = 'http://localhost:3000/students';
 
     return from(this.authService.getToken()).pipe(
@@ -58,7 +58,7 @@ export class RequestsService {
           Authorization: 'Bearer ' + token,
         });
 
-        return this.http.post<String>(
+        return this.http.post<string>(
           url,
           {
             students,
@@ -72,7 +72,7 @@ export class RequestsService {
   }
 
   // Send student update data to the backend to update a single student entry
-  putStudent(student: Student): Observable<String> {
+  putStudent(student: Student): Observable<string> {
     let url: string = `http://localhost:3000/students/${student.rin}`;
 
     return from(this.authService.getToken()).pipe(
@@ -82,14 +82,14 @@ export class RequestsService {
           Authorization: 'Bearer ' + token,
         });
 
-        return this.http.put<String>(url, student, {
+        return this.http.put<string>(url, student, {
           headers: headers,
         });
       })
     );
   }
 
-  deleteStudent(student: Student): Observable<String> {
+  deleteStudent(student: Student): Observable<string> {
     let url: string = `http://localhost:3000/students/${student.rin}`;
     return from(this.authService.getToken()).pipe(
       switchMap((token) => {
@@ -97,7 +97,7 @@ export class RequestsService {
           'Content-Type': 'application/json',
           Authorization: 'Bearer ' + token,
         });
-        return this.http.request<String>('delete', url, {
+        return this.http.request<string>('delete', url, {
           headers: reqHeader,
           body: student,
         });

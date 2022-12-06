@@ -13,7 +13,6 @@ export class DropDownComponent implements OnInit {
   selectedVal?: any;
   @Output() onSelectEvent: EventEmitter<any> = new EventEmitter();
 
-  constructor() {}
   ngOnInit(): void {
     this.selectedVal = this.default;
   }
