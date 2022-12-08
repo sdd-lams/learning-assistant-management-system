@@ -214,7 +214,7 @@ router.delete("/:rin", async (req, res) => {
       );
     } catch (error) {
       console.log(
-        `Error updating EWS Count for RIN: ${student.rin}` + error.message
+        `Error updating EWS Count for RIN: ${Student.rin}` + error.message
       );
       await session.abortTransaction();
       res.status(500).json({ message: error.message });

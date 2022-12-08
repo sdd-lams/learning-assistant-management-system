@@ -45,9 +45,9 @@ export class EditStudentModalComponent implements OnInit {
 
   ngOnChanges(changes: SimpleChanges) {
     if (changes['student']) {
-      var update = changes['student']['currentValue'];
+      const update = changes['student']['currentValue'];
 
-      var patch: EditFormPatch = {
+      const patch: EditFormPatch = {
         status: update['status'] ? update['status'] : undefined,
         lacomment: update['lacomment'],
         assignedla: update['assignedla'] ? update['assignedla'] : undefined,
@@ -62,8 +62,8 @@ export class EditStudentModalComponent implements OnInit {
   }
 
   onSubmit<Key extends keyof Student>() {
-    for (var field in this.editStudentForm.value) {
-      let value: any =
+    for (const field in this.editStudentForm.value) {
+      const value: any =
         this.editStudentForm.value[
           field as keyof typeof this.editStudentForm.value
         ];
@@ -80,7 +80,7 @@ export class EditStudentModalComponent implements OnInit {
     }
 
     this.requestService.putStudent(this.student).subscribe({
-      next: (res: String) => {
+      next: (res: string) => {
         this.errors = null;
         console.log(res);
         this.requestService.getStudents();
