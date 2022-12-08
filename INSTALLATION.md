@@ -2,8 +2,8 @@
 
 ## Prerequisites
 
-1. Have Node.js installed
-2. Have Angular.js installed
+1. Have Node.js installed https://nodejs.org/en/
+2. Have Angular installed (after installing Node.js run `npm install -g @angular/cli` from your command line)
 
 ## Instructions
 
