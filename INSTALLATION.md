@@ -23,5 +23,5 @@
 
 > The backend and frontend directories are located at the root level of **/learning-assistant-management-system**
 
-8. After the npm install complete run `npm start` from within **/backend**
-9. The application will now be served on **localhost:3000**
+8. After the npm install completes, run `npm start` from within **/backend**
+9. The application will now be running on **localhost:3000**, or **localhost:4200** if you used `ng serve`
