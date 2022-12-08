@@ -16,6 +16,9 @@
 4. Update your local repository from the cloned remote
 5. Navigate into the **/frontend** directory and execute `npm install`
 6. After the npm install completes run `ng build --build-optimizer false` from within **/frontend**
+
+> For development launch the frontend using `ng serve`, which hosts the site on **locahost:4200**
+
 7. Navigate to the **/backend** directory and execute `npm install`
 
 > The backend and frontend directories are located at the root level of **/learning-assistant-management-system**
