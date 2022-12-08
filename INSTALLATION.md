@@ -17,7 +17,7 @@
 5. Navigate into the **/frontend** directory and execute `npm install`
 6. After the npm install completes run `ng build --build-optimizer false` from within **/frontend**
 
-> For development launch the frontend using `ng serve`, which hosts the site on **locahost:4200**
+> For development launch the frontend using `ng serve` (serves the frontend on **locahost:4200**)
 
 7. Navigate to the **/backend** directory and execute `npm install`
 
